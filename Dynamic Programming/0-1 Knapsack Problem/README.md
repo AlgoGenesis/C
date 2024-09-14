@@ -37,3 +37,7 @@ We can solve the 0-1 Knapsack Problem using dynamic programming by building a ta
    - If the weight of the current item is greater than `w`, do not include it: `dp[i][w] = dp[i-1][w]`
    - If the weight of the current item is less than or equal to `w`, choose the maximum value between including or excluding the item:  
      `dp[i][w] = max(dp[i-1][w], values[i-1] + dp[i-1][w-weights[i-1]])`
+
+### Example C Code
+
+Here is a C implementation of the 0-1 Knapsack Problem using dynamic programming:
