@@ -40,20 +40,6 @@ The documentation is available online and is continuously updated with new conte
 
 ---
 
-## 🤝 How to Contribute
-
-As a community-developed and maintained repository, we welcome **quality contributions**. To contribute, please follow the steps below:
-
-1. Fork the repository.
-2. Create a new branch for your algorithm (e.g., `feature/algorithm-name`).
-3. Write clear and concise code with comments explaining key parts.
-4. Test your code thoroughly.
-5. Submit a pull request with a clear description of the algorithm added.
-
-Make sure to read our [Contribution Guidelines](CONTRIBUTING.md) before submitting.
-
----
-
 ## 📜 License
 
 This repository is licensed under the **GPLv3 License**. Feel free to use the code as per the terms of the [LICENSE](LICENSE) file.
