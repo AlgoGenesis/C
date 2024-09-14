@@ -42,7 +42,7 @@ The documentation is available online and is continuously updated with new conte
 
 ## 📜 License
 
-This repository is licensed under the **GPLv3 License**. Feel free to use the code as per the terms of the [LICENSE](LICENSE) file.
+This repository is licensed under the **MIT License**. Feel free to use the code as per the terms of the [LICENSE](LICENSE) file.
 
 ---
 
