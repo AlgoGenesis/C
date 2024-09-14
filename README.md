@@ -15,28 +15,8 @@ The repository is a collection of open-source implementations of a variety of al
 - **Comprehensive Algorithm Library**: Includes a variety of algorithms implemented in C, one of the most fundamental and general-purpose programming languages.
 - **Well-documented Source Code**: Each implementation includes detailed explanations to assist learners in understanding the underlying concepts.
 - **Standard C Library Usage**: All implementations use the standard C library (libc), and no external libraries are required for compilation or execution.
-- **Cross-platform Compatibility**: The code is regularly tested and compiled on the latest versions of MacOS and Ubuntu, using AppleClang 14.0.0 and GNU 11.3.0, ensuring reliability across different environments.
 - **Adherence to C11 Standard**: The repository strictly follows the C11 standard, ensuring portability to embedded systems like ESP32, ARM Cortex, and others.
 - **Self-checks for Correctness**: Many programs include self-checking mechanisms to ensure accurate implementations.
-- **Modular and Open-Source**: The modular nature of the code allows easy integration into other projects, and the open-source GPLv3 licensing ensures accessibility and flexibility for all users.
-
----
-
-## Documentation
-
-The documentation is generated directly from the source code, providing a complete resource for each algorithm. This includes:
-
-- Source code snippets
-- Detailed explanations of how the algorithms work
-- Instructions on compiling and executing the programs
-- Flow diagrams illustrating program execution
-- Links to relevant external resources when necessary
-
-The documentation is available online and is continuously updated with new content as new algorithms are added.
-
-**Documentation of Algorithms in C by AlgoGenesis Contributors** is licensed under **CC BY-SA 4.0**. 
-- **Credit must be given** to the creator.
-- **Adaptations must be shared** under the same terms.
 
 ---
 
