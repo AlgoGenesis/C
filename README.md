@@ -6,7 +6,7 @@ Welcome to the **AlgoGenesis** collection of algorithms implemented in the **C p
 
 ## Overview
 
-The repository is a collection of open-source implementations of a variety of algorithms written in **C** and licensed under the **GPLv3 License**. The algorithms cover a wide range of topics from **computer science**, **mathematics**, **statistics**, **data science**, **machine learning**, and **engineering**. The implementations are designed to serve as a learning resource for both **educators** and **students**. For some algorithms, you may find multiple implementations that demonstrate different strategies or optimizations.
+The repository is a collection of open-source implementations of a variety of algorithms written in **C** and licensed under the **MIT License**. The algorithms cover a wide range of topics from **computer science**, **mathematics**, **statistics**, **data science**, and **engineering**. The implementations are designed to serve as a learning resource for both **educators** and **students**. For some algorithms, you may find multiple implementations that demonstrate different strategies or optimizations.
 
 ---
 
