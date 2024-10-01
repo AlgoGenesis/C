@@ -27,12 +27,23 @@ This project demonstrates the implementation of **Dijkstra's Algorithm** in C, u
 
 ## How to Run
 
-### Prerequisites
-- A C compiler (e.g., GCC).
-
-### Compilation
+## Compilation
 
 1. To compile the program, use the following command:
   ```bash
   gcc -o dijkstra main.c
+  ./dijkstra
+
+## Example Output
+Vertex   Distance from Source
+0        0
+1        4
+2        12
+3        19
+4        21
+5        11
+6        9
+7        8
+8        14
+
 
