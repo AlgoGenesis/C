@@ -28,9 +28,8 @@ This project demonstrates the implementation of **Dijkstra's Algorithm** in C, u
 ## How to Run
 
 ## Compilation
-
 1. To compile the program, use the following command:
-  ```bash
+  ``bash
   gcc -o dijkstra main.c
   ./dijkstra
 
@@ -45,5 +44,14 @@ Vertex   Distance from Source
 6        9
 7        8
 8        14
+
+## Limitations
+Time Complexity: This implementation uses a basic O(V²) approach. It can be optimized using a priority queue (min-heap) to achieve a time complexity of O((V + E) log V), where V is the number of vertices and E is the number of edges.
+Graph Size: The adjacency matrix representation used here becomes inefficient for large, sparse graphs due to its O(V²) space complexity.
+
+## License
+This project is licensed under the MIT License.
+
+
 
 
