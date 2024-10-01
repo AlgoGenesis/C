@@ -14,7 +14,7 @@ Please describe the changes you want to make to the existing algorithm and why t
 - [ ] Want to work on it
 
 ## Affected Algorithm:
-Mention which algorithm you want to update and the specific part of the code.
+Mention which algorithm you want to update and the specific directory where you want to change.
 
 ## Additional Information:
 Any extra details or suggestions related to the update.
