@@ -3,7 +3,7 @@
 Welcome to the **AlgoGenesis** collection of algorithms implemented in the **C programming language**. This repository aims to provide a centralized, well-documented source of algorithms that can help both beginners and advanced developers in understanding and solving algorithmic problems efficiently.
 
 ---
-![image](https://github.com/user-attachments/assets/bed0b832-8d77-4998-839a-555e9f9668b8)
+![{D247B268-6D5C-44D4-AE29-F488A5B9BB36}](https://github.com/user-attachments/assets/de0d430b-0bdc-4560-84f6-ab24f0d57cb2)
 
 ## Overview
 
