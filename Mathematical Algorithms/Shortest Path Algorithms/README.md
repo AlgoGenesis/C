@@ -25,14 +25,6 @@ This project demonstrates the implementation of **Dijkstra's Algorithm** in C, u
 3. **Time Complexity**: 
    - This implementation runs with a time complexity of O(V²), where `V` is the number of vertices in the graph.
 
-## How to Run
-
-## Compilation
-1. To compile the program, use the following command:
-  ``bash
-  gcc -o dijkstra main.c
-  ./dijkstra
-
 ## Example Output
 Vertex   Distance from Source
 0        0
@@ -51,6 +43,17 @@ Graph Size: The adjacency matrix representation used here becomes inefficient fo
 
 ## License
 This project is licensed under the MIT License.
+
+## How to Run
+
+### Compile the Code:
+Use a C compiler to compile the source code. For example:
+
+```bash
+gcc -o dijkstra dijkstra.c
+
+### Run the compiled code:
+./dijkstra
 
 
 
