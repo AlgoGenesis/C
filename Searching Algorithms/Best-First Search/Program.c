@@ -12,7 +12,7 @@ typedef struct Node {
 } Node;
 
 typedef struct {
-    Node* nodes[MAX_NODES];
+    Node* front;
     int size;
 } PriorityQueue;
 
@@ -33,33 +33,42 @@ Node* createNode(int id, int heuristic) {
 
 // Function to initialize the priority queue
 void initQueue(PriorityQueue* queue) {
+    queue->front = NULL;
     queue->size = 0;
 }
 
-// Function to enqueue a node based on heuristic value
+// Function to enqueue a node based on heuristic value (sorted insert)
 void enqueue(PriorityQueue* queue, int id, int heuristic) {
     Node* newNode = createNode(id, heuristic);
-    int i;
-    for (i = 0; i < queue->size; i++) {
-        if (queue->nodes[i]->heuristic > heuristic) {
-            break;
+
+    if (queue->size >= MAX_NODES) {
+        printf("Queue overflow, cannot enqueue node %d\n", id);
+        free(newNode); // Prevent memory leak if queue is full
+        return;
+    }
+
+    if (queue->front == NULL || queue->front->heuristic > heuristic) {
+        newNode->next = queue->front;
+        queue->front = newNode;
+    } else {
+        Node* current = queue->front;
+        while (current->next != NULL && current->next->heuristic <= heuristic) {
+            current = current->next;
         }
+        newNode->next = current->next;
+        current->next = newNode;
     }
-    for (int j = queue->size; j > i; j--) {
-        queue->nodes[j] = queue->nodes[j - 1];
-    }
-    queue->nodes[i] = newNode;
     queue->size++;
 }
 
 // Function to dequeue the node with the lowest heuristic value
 Node* dequeue(PriorityQueue* queue) {
     if (queue->size == 0) return NULL;
-    Node* node = queue->nodes[0];
-    for (int i = 1; i < queue->size; i++) {
-        queue->nodes[i - 1] = queue->nodes[i];
-    }
+
+    Node* node = queue->front;
+    queue->front = queue->front->next;
     queue->size--;
+
     return node;
 }
 
@@ -78,7 +87,8 @@ void bestFirstSearch(Graph* graph, int start, int goal) {
         // If we reached the goal
         if (currentId == goal) {
             printf("Goal node %d found!\n", goal);
-            return;
+            free(currentNode);  // Free the current node to prevent memory leak
+            break;
         }
 
         if (!visited[currentId]) {
@@ -92,8 +102,17 @@ void bestFirstSearch(Graph* graph, int start, int goal) {
                 }
             }
         }
+
+        // Free the memory of the processed node
+        free(currentNode);
     }
-    printf("Goal node %d not found.\n", goal);
+
+    // Cleanup remaining nodes in the queue
+    while (queue.size > 0) {
+        Node* remainingNode = dequeue(&queue);
+        free(remainingNode); // Free remaining nodes to prevent memory leak
+    }
+    printf("Search completed.\n");
 }
 
 int main() {
