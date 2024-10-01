@@ -4,11 +4,11 @@ This repository contains various mathematical algorithms implemented in C, focus
 
 ## Algorithms
 
-### Backtracking Algorithms
-- **N-Queens Problem**: A solution for placing N queens on an N×N chessboard without threatening each other.
+- **Backtracking Algorithms**:  
+  - **N-Queens Problem**: A solution for placing N queens on an N×N chessboard without threatening each other.
 
-### Karatsuba Algorithm
-- **Karatsuba Multiplication**: An efficient method for multiplying large numbers using a divide-and-conquer approach.
+- **Karatsuba Algorithm**:  
+  - **Karatsuba Multiplication**: An efficient method for multiplying large numbers using a divide-and-conquer approach.
 
 ## Usage
 
@@ -16,8 +16,8 @@ This repository contains various mathematical algorithms implemented in C, focus
    ```bash
    git clone https://github.com/Deeptig9138/C.git
    cd C/Mathematical\ Algorithms
-
-2. Complie and run:
+   
+2. Compile and run:
    gcc <algorithm_file.c> -o <output_name>
    ./<output_name>
 
