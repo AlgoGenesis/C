@@ -2,7 +2,7 @@
 name: Update Algorithm
 about: Suggest changes to an existing algorithm
 title: "[UPDATE ALGORITHM] "
-labels: update-algorithm
+labels: algorithm update, gssoc-ext
 assignees: ''
 ---
 
