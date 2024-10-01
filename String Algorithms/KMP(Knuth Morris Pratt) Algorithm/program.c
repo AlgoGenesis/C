@@ -9,12 +9,12 @@ void computePrefixTable(char *pattern, int *lps) {
 
     for (int i = 1; i < m; i++) {
         while (j > 0 && pattern[i] != pattern[j]) {
-            j = lps[j - 1]; // backtrack
+            j = lps[j - 1]; 
         }
         if (pattern[i] == pattern[j]) {
-            j++; // found a match
+            j++; 
         }
-        lps[i] = j; // set lps value
+        lps[i] = j; 
     }
 }
 
@@ -22,13 +22,12 @@ void computePrefixTable(char *pattern, int *lps) {
 void KMPSearch(char *text, char *pattern) {
     int n = strlen(text);
     int m = strlen(pattern);
-    int lps[m]; // Longest Prefix Suffix table
+    int lps[m]; 
 
-    // Compute the prefix table
     computePrefixTable(pattern, lps);
 
-    int i = 0; // index for text
-    int j = 0; // index for pattern
+    int i = 0; //text
+    int j = 0; // pattern
 
     while (i < n) {
         if (pattern[j] == text[i]) {
@@ -38,11 +37,10 @@ void KMPSearch(char *text, char *pattern) {
 
         if (j == m) {
             printf("Pattern found at index %d\n", i - j);
-            j = lps[j - 1]; // Continue searching
+            j = lps[j - 1]; 
         } else if (i < n && pattern[j] != text[i]) {
-            // mismatch after j matches
             if (j != 0) {
-                j = lps[j - 1]; // Use the prefix table to avoid unnecessary comparisons
+                j = lps[j - 1]; 
             } else {
                 i++;
             }
