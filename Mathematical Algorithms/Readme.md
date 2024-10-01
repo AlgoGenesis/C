@@ -18,6 +18,7 @@ This repository contains various mathematical algorithms implemented in C, focus
    cd C/Mathematical\ Algorithms
    
 2. Compile and run:
+   ```bash
    gcc <algorithm_file.c> -o <output_name>
    ./<output_name>
 
