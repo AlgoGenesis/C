@@ -3,9 +3,9 @@
 ## Description
 The factorial of a non-negative integer n is the product of all positive integers less than or equal to n. The factorial is defined as follows:
 
-F(0) = 1
-F(n) = n * F(n-1) for n > 0
-The factorial function is commonly used in mathematics and computer science, particularly in combinatorics, probability, and algorithms.
+F(0) = 1   <br>
+F(n) = n * F(n-1) for n > 0   <br>
+The factorial function is commonly used in mathematics and computer science, particularly in combinatorics, probability, and algorithms.  
 
 ### Problem Definition
 Given a non-negative integer n, the objective is to compute the factorial of n using a recursive function.
