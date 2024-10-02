@@ -12,7 +12,7 @@ A graph with V vertices and weighted edges.
 Each edge is defined by a pair (u, v) where u is the starting vertex, v is the ending vertex, and the associated weight represents the distance between them.
 Objective:
 
-Find the shortest path from a source vertex S to all other vertices in the graph.
+Find the shortest path from a source vertex S to all other vertices in the graph
 
 
 ### Algorithm Overview
