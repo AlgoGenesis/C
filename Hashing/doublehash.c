@@ -4,67 +4,58 @@
 #define TABLE_SIZE 10
 #define EMPTY -1
 
-// Hash table declaration
 int hashTable[TABLE_SIZE];
 
-// Initialize the hash table with -1 (indicating that it's empty)
 void initializeTable() {
     for (int i = 0; i < TABLE_SIZE; i++) {
         hashTable[i] = EMPTY;
     }
 }
 
-// Primary hash function
 int primaryHash(int key) {
     return key % TABLE_SIZE;
 }
 
-// Secondary hash function (for calculating the step size)
 int secondaryHash(int key) {
-    return (7 - (key % 7));  // Step size, typically based on prime number smaller than TABLE_SIZE
+    return (7 - (key % 7));  
 }
-
-// Insert a key into the hash table using double hashing
 void insert(int key) {
     int index = primaryHash(key);
     int stepSize = secondaryHash(key);
     
     int originalIndex = index;
 
-    // Check for collision and resolve using double hashing
     while (hashTable[index] != EMPTY) {
-        index = (index + stepSize) % TABLE_SIZE; // Probe to the next index using step size
-        if (index == originalIndex) { // Loop around; hash table is full
+        index = (index + stepSize) % TABLE_SIZE; 
+        if (index == originalIndex) { 
             printf("Hash table is full, cannot insert key: %d\n", key);
             return;
         }
     }
 
-    // Insert key when an empty slot is found
+  
     hashTable[index] = key;
 }
 
-// Search for a key in the hash table
+
 int search(int key) {
     int index = primaryHash(key);
     int stepSize = secondaryHash(key);
 
     int originalIndex = index;
     
-    // Traverse the hash table using the probing sequence
     while (hashTable[index] != EMPTY) {
         if (hashTable[index] == key) {
-            return index; // Key found
+            return index; 
         }
         index = (index + stepSize) % TABLE_SIZE;
         if (index == originalIndex) {
-            return -1; // Key not found, looped around
+            return -1; 
         }
     }
-    return -1; // Key not found
+    return -1; 
 }
 
-// Delete a key from the hash table
 void deleteKey(int key) {
     int index = search(key);
     if (index == -1) {
@@ -75,7 +66,6 @@ void deleteKey(int key) {
     }
 }
 
-// Display the hash table
 void display() {
     printf("Hash table:\n");
     for (int i = 0; i < TABLE_SIZE; i++) {
@@ -100,7 +90,7 @@ int main() {
     // Display the hash table
     display();
 
-    // Search for a key
+    // Searching
     int key = 27;
     int index = search(key);
     if (index != -1) {
@@ -109,7 +99,6 @@ int main() {
         printf("Key %d not found.\n", key);
     }
 
-    // Delete a key
     deleteKey(13);
     
     // Display the hash table after deletion
