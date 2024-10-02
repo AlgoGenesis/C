@@ -1,6 +1,8 @@
 # Circular Queue Implementation in C
 
-This project implements a Circular Queue data structure in C. The Circular Queue is designed for efficient management of a fixed-size buffer, providing constant time complexity for both enqueue and dequeue operations.
+## Description
+
+This project implements a Circular Queue data structure in C. A Circular Queue allows for efficient use of storage by connecting the end of the queue back to the beginning, enabling the reuse of space from dequeued elements. It operates on the First-In-First-Out (FIFO) principle.
 
 ## Features
 
@@ -9,17 +11,28 @@ This project implements a Circular Queue data structure in C. The Circular Queue
 - **Error Handling**: Includes error handling for queue overflow and underflow conditions.
 - **Display Functionality**: Provides a method to visualize the elements in the queue.
 
-## Data Structure
+## Problem Definition
 
-### CircularQueue
+### Given:
+- An integer array that will be managed using the circular queue structure.
 
-The CircularQueue structure consists of:
-- `size`: The maximum number of elements the queue can hold.
-- `front`: The index of the front element in the queue.
-- `rear`: The index of the rear element in the queue.
-- `Q`: A pointer to the array that stores the queue elements.
+### Objective:
+- Implement basic queue operations such as enqueue, dequeue, and display.
 
-## Getting Started
+## Algorithm Overview
+
+1. **Initialize Queue**: Allocate memory for the queue and set initial front and rear indices.
+2. **Enqueue Operation**: Add an element to the rear of the queue. If the queue is full, display an overflow message.
+3. **Dequeue Operation**: Remove an element from the front of the queue. If the queue is empty, display an underflow message.
+4. **Display Queue**: Print the elements of the queue from front to rear.
+
+## Time Complexity
+
+- **Enqueue**: O(1) - Constant time complexity for adding an element.
+- **Dequeue**: O(1) - Constant time complexity for removing an element.
+- **Display**: O(n) - Linear time complexity to display all elements.
+
+## Implementation
 
 ### Prerequisites
 
@@ -31,4 +44,4 @@ The CircularQueue structure consists of:
 To compile the code, navigate to the project directory and run:
 
 ```bash
-gcc -o circular_queue program.c
+gcc -o circular_queue circular_queue.c

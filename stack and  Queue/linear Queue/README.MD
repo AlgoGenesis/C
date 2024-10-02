@@ -1,3 +1,5 @@
+
+
 # Linear Queue Implementation in C
 
 ## Description
@@ -45,4 +47,12 @@ To compile the code, navigate to the project directory and run:
 
 ```bash
 gcc -o linear_queue linear_queue.c
+
+### Instructions
+
+1. Save the above content as `README.md` in your project directory.
+2. Modify any sections to better match your specific code structure or details.
+3. Add any additional sections that might be relevant, such as installation instructions or contribution guidelines.
+
+If you need further modifications or have specific requirements, feel free to let me know!
 
