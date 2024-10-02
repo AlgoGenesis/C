@@ -8,11 +8,13 @@ QuickSort is one of the best sorting algorithms that follows the divide-and-conq
 QuickSort is to select a pivot element from the array and partition the other elements into two sub-arrays according to whether they are less than or greater than the pivot. The sub-arrays are then sorted recursively. This process of partitioning and sorting continues until the entire array is sorted.
 
 Given:
--Single Dimensional unsorted Array arr[] with predefined elements.
+
+Single Dimensional unsorted Array arr[] with predefined elements.
 
 Objective:
--Efficiency: Quick Sort is known for its efficiency and is often faster in practice compared to other sorting algorithms such as Merge Sort or Heap Sort.
--Randomized Pivot Selection: To mitigate the worst-case time complexity of Quick Sort, it is common to use randomized pivot selection techniques that help avoid worst-case scenarios, ensuring a more balanced partitioning of the array. 
+
+Efficiency: Quick Sort is known for its efficiency and is often faster in practice compared to other sorting algorithms such as Merge Sort or Heap Sort.
+Randomized Pivot Selection: To mitigate the worst-case time complexity of Quick Sort, it is common to use randomized pivot selection techniques that help avoid worst-case scenarios, ensuring a more balanced partitioning of the array. 
 
 ### Algorithm Overview
 
