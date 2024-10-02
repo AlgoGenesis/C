@@ -1,1 +1,0 @@
-Selection Sort divides the array into a sorted and an unsorted region and repeatedly selects the smallest (or largest) element from the unsorted region to add to the sorted region.
