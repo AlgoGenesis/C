@@ -149,39 +149,42 @@ At this point, the algorithm stops because **p² > n** (i.e., 7² > 30). The rem
 
 <p>Thus, the number of times the loop runs in the Sieve of Eratosthenes is proportional to <code>n · log(log(n))</code>.</p>
 
-<h3>4. Harmonic Progression and Proof</h3>
+### 4. Harmonic Progression and Proof
 
-<p>The next step is to understand why <code>1/2 + 1/3 + 1/5 + ... ≈ log(log(n))</code>. This is proven using <strong>Euler's product formula</strong>, which relates the sum of reciprocals of primes to the logarithmic function.</p>
+The next step is to understand why \( \frac{1}{2} + \frac{1}{3} + \frac{1}{5} + \ldots \approx \log(\log(n)) \). This is proven using **Euler's product formula**, which relates the sum of reciprocals of primes to the logarithmic function.
 
-<ul>
-    <li><strong>Harmonic Series</strong>: The sum of the reciprocals of all integers up to <code>n</code> is given by the Harmonic series:</li>
-    <p>
-        <code>H_n = 1 + 1/2 + 1/3 + ... + 1/n ≈ log(n)</code>
-    </p>
-    <p>This is a well-known result, and the logarithmic growth comes from the approximation of the Harmonic series.</p>
+- **Harmonic Series**: The sum of the reciprocals of all integers up to \( n \) is given by the Harmonic series:
+  
+  \[
+  H_n = 1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{n} \approx \log(n)
+  \]
 
-    <li><strong>Prime Harmonic Series</strong>: The sum of the reciprocals of prime numbers follows a similar pattern but is restricted to primes only. Using <strong>Euler’s product formula</strong>, we have:</li>
-    <p>
-        <code>∑_{p \, \text{prime}} 1/p ≈ log(log(n))</code>
-    </p>
-    <p>This means the sum of the reciprocals of primes grows much slower than the Harmonic series for all integers, and the double logarithm <code>log(log(n))</code> emerges naturally.</p>
-</ul>
+This is a well-known result, and the logarithmic growth comes from the approximation of the Harmonic series.
 
-<h3>5. Euler’s Product Formula</h3>
+- **Prime Harmonic Series**: The sum of the reciprocals of prime numbers follows a similar pattern but is restricted to primes only. Using **Euler’s product formula**, we have:
 
-<p>Euler's product formula is used to derive this result. It states that for any series involving reciprocals of primes, we can represent it as a product over primes:</p>
+  \[
+  \sum_{p \, \text{prime}} \frac{1}{p} \approx \log(\log(n))
+  \]
 
-<p>
-    <code>∑_{n=1}^{∞} 1/n^s = ∏_{p \, \text{prime}} 1/(1 - p^{-s})</code>
-</p>
+This means the sum of the reciprocals of primes grows much slower than the Harmonic series for all integers, and the double logarithm \( \log(\log(n)) \) emerges naturally.
 
-<p>For <code>s = 1</code>, this gives the relationship between the sum of reciprocals of primes and logarithmic functions. Applying logarithms to both sides of this product and simplifying with Taylor expansions, we eventually arrive at the approximation:</p>
+### 5. Euler’s Product Formula
 
-<p>
-    <code>∑_{p \, \text{prime}} 1/p ≈ log(log(n))</code>
-</p>
+Euler's product formula is used to derive this result. It states that for any series involving reciprocals of primes, we can represent it as a product over primes:
 
-<p>This step is crucial in proving that the time complexity is <code>O(n · log(log(n)))</code>.</p>
+\[
+\sum_{n=1}^{\infty} \frac{1}{n^s} = \prod_{p \, \text{prime}} \frac{1}{1 - p^{-s}}
+\]
+
+For \( s = 1 \), this gives the relationship between the sum of reciprocals of primes and logarithmic functions. Applying logarithms to both sides of this product and simplifying with Taylor expansions, we eventually arrive at the approximation:
+
+\[
+\sum_{p \, \text{prime}} \frac{1}{p} \approx \log(\log(n))
+\]
+
+This step is crucial in proving that the time complexity is \( O(n \cdot \log(\log(n))) \).
+
 
 <h3>6. Final Time Complexity</h3>
 
