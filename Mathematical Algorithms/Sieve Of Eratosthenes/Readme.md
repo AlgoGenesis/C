@@ -100,7 +100,7 @@ Remaining list:
 
 Remaining list:
 
-`[2, 3, 5, 7, 11, 13, 17, 19, 23, 29]`
+`[2, 3, 5, 7, 11, 13, 17, 19, 23, 25, 29]`
 
 #### **Step 4: Next prime (5)**:
 - Mark multiples of 5 (25) as non-prime.
