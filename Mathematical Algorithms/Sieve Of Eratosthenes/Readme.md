@@ -113,7 +113,7 @@ At this point, the algorithm stops because **p² > n** (i.e., 7² > 30). The rem
 
 ---
 
-<h2>Detailed Explanation of Time Complexity <code>O(n \cdot \log(\log(n)))</code> for the Sieve of Eratosthenes</h2>
+<h2>Detailed Explanation of Time Complexity <code>O(n  \log(\log(n)))</code> for the Sieve of Eratosthenes</h2>
 
 <p>To understand why the time complexity of the Sieve of Eratosthenes is <code>O(n \cdot \log(\log(n)))</code>, we need to break down how the algorithm works and introduce the concept of <strong>Harmonic Progression</strong> and <strong>Euler’s product formula</strong>. Here's a step-by-step explanation:</p>
 
