@@ -168,7 +168,7 @@ $$
 $$
 
 
-This means the sum of the reciprocals of primes grows much slower than the Harmonic series for all integers, and the double logarithm \( \log(\log(n))\) emerges naturally.
+This means the sum of the reciprocals of primes grows much slower than the Harmonic series for all integers, and the double logarithm log(log(n)) emerges naturally.
 
 ### 5. Euler’s Product Formula
 
@@ -187,8 +187,6 @@ $$
 
 
 This step is crucial in proving that the time complexity is `O(n * log(log(n)))`.
-
-.
 
 
 <h3>6. Final Time Complexity</h3>
