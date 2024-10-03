@@ -227,15 +227,15 @@ Thus, the dominant factor in the space complexity is the array itself, leading t
 
 ---
 
-/*The size of the prime list in the Sieve of Eratosthenes algorithm can be estimated based on the distribution of prime numbers as governed by the **Prime Number Theorem**. Here’s a detailed explanation of how we arrive at this estimation:
+The size of the prime list in the Sieve of Eratosthenes algorithm can be estimated based on the distribution of prime numbers as governed by the **Prime Number Theorem**. Here’s a detailed explanation of how we arrive at this estimation:
 
 ### 1. **Understanding the Prime Number Theorem**
 
 The Prime Number Theorem states that the number of prime numbers less than or equal to a given number \( n \) is approximately given by:
 
-\[
+$$
 \pi(n) \sim \frac{n}{\log(n)}
-\]
+$$
 
 Where:
 - \( \pi(n) \) is the prime counting function, representing the number of primes less than or equal to \( n \).
