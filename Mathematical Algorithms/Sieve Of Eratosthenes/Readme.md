@@ -151,7 +151,8 @@ At this point, the algorithm stops because **p² > n** (i.e., 7² > 30). The rem
 
 ### 4. Harmonic Progression and Proof
 
-The next step is to understand why \( \frac{1}{2} + \frac{1}{3} + \frac{1}{5} + \ldots \approx \log(\log(n)) \). This is proven using **Euler's product formula**, which relates the sum of reciprocals of primes to the logarithmic function.
+The next step is to understand why ![Equation](https://latex.codecogs.com/svg.latex?\frac{1}{2}+\frac{1}{3}+\frac{1}{5}+\ldots\approx\log(\log(n)))
+. This is proven using **Euler's product formula**, which relates the sum of reciprocals of primes to the logarithmic function.
 
 - **Harmonic Series**: The sum of the reciprocals of all integers up to \( n \) is given by the Harmonic series:
   
