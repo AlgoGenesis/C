@@ -127,9 +127,9 @@ At this point, the algorithm stops because **p² > n** (i.e., 7² > 30). The rem
 
 <p>For any prime <code>p</code>, its multiples up to <code>n</code> are marked as non-prime. The number of multiples of a prime <code>p</code> less than <code>n</code> is approximately <code>n/p</code>. The algorithm marks all multiples of primes starting from 2, 3, 5, 7, and so on. Therefore, the number of operations needed to mark composites can be expressed as:</p>
 
-<pre><code>
-n/2 + n/3 + n/5 + n/7 + ...
-</code></pre>
+<p>
+    <code>n/2 + n/3 + n/5 + n/7 + ...</code>
+</p>
 
 <p>This sum counts how many numbers are marked as composite by each prime <code>p</code>.</p>
 
@@ -137,15 +137,15 @@ n/2 + n/3 + n/5 + n/7 + ...
 
 <p>We take <code>n</code> common from the sum:</p>
 
-<pre><code>
-n (1/2 + 1/3 + 1/5 + 1/7 + ...)
-</code></pre>
+<p>
+    <code>n (1/2 + 1/3 + 1/5 + 1/7 + ...)</code>
+</p>
 
 <p>Now we need to calculate the sum of reciprocals of primes. The sum of the reciprocals of primes is related to the <strong>Harmonic Progression</strong>, but restricted only to prime numbers. Mathematically, this sum is known to converge to <code>log(log(n))</code>. Hence, we rewrite the equation as:</p>
 
-<pre><code>
-n · log(log(n))
-</code></pre>
+<p>
+    <code>n · log(log(n))</code>
+</p>
 
 <p>Thus, the number of times the loop runs in the Sieve of Eratosthenes is proportional to <code>n · log(log(n))</code>.</p>
 
@@ -155,15 +155,15 @@ n · log(log(n))
 
 <ul>
     <li><strong>Harmonic Series</strong>: The sum of the reciprocals of all integers up to <code>n</code> is given by the Harmonic series:</li>
-    <pre><code>
-H_n = 1 + 1/2 + 1/3 + ... + 1/n ≈ log(n)
-</code></pre>
+    <p>
+        <code>H_n = 1 + 1/2 + 1/3 + ... + 1/n ≈ log(n)</code>
+    </p>
     <p>This is a well-known result, and the logarithmic growth comes from the approximation of the Harmonic series.</p>
 
     <li><strong>Prime Harmonic Series</strong>: The sum of the reciprocals of prime numbers follows a similar pattern but is restricted to primes only. Using <strong>Euler’s product formula</strong>, we have:</li>
-    <pre><code>
-∑_{p \, \text{prime}} 1/p ≈ log(log(n))
-</code></pre>
+    <p>
+        <code>∑_{p \, \text{prime}} 1/p ≈ log(log(n))</code>
+    </p>
     <p>This means the sum of the reciprocals of primes grows much slower than the Harmonic series for all integers, and the double logarithm <code>log(log(n))</code> emerges naturally.</p>
 </ul>
 
@@ -171,15 +171,15 @@ H_n = 1 + 1/2 + 1/3 + ... + 1/n ≈ log(n)
 
 <p>Euler's product formula is used to derive this result. It states that for any series involving reciprocals of primes, we can represent it as a product over primes:</p>
 
-<pre><code>
-∑_{n=1}^{∞} 1/n^s = ∏_{p \, \text{prime}} 1/(1 - p^{-s})
-</code></pre>
+<p>
+    <code>∑_{n=1}^{∞} 1/n^s = ∏_{p \, \text{prime}} 1/(1 - p^{-s})</code>
+</p>
 
 <p>For <code>s = 1</code>, this gives the relationship between the sum of reciprocals of primes and logarithmic functions. Applying logarithms to both sides of this product and simplifying with Taylor expansions, we eventually arrive at the approximation:</p>
 
-<pre><code>
-∑_{p \, \text{prime}} 1/p ≈ log(log(n))
-</code></pre>
+<p>
+    <code>∑_{p \, \text{prime}} 1/p ≈ log(log(n))</code>
+</p>
 
 <p>This step is crucial in proving that the time complexity is <code>O(n · log(log(n)))</code>.</p>
 
@@ -187,9 +187,10 @@ H_n = 1 + 1/2 + 1/3 + ... + 1/n ≈ log(n)
 
 <p>Combining everything, we conclude that the total number of operations performed by the algorithm is proportional to <code>n · log(log(n))</code>. Thus, the time complexity of the Sieve of Eratosthenes is:</p>
 
-<pre><code>
-O(n · log(log(n)))
-</code></pre>
+<p>
+    <code>O(n · log(log(n)))</code>
+</p>
+
 
 ---
 
