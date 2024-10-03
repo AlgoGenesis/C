@@ -238,18 +238,18 @@ $$
 $$
 
 Where:
-- \( \pi(n) \) is the prime counting function, representing the number of primes less than or equal to \( n \).
-- \( \log(n) \) is the natural logarithm of \( n \).
+- $$\pi(n)$$ is the prime counting function, representing the number of primes less than or equal to \( n \).
+- $$\log(n)$$ is the natural logarithm of \( n \).
 
 ### 2. **Estimation of the Number of Primes**
 
 From the above theorem, we can derive that the number of primes up to \( n \) grows slower than \( n \) but is significant enough to warrant consideration in terms of space complexity:
 
-\[
+$$
 \pi(n) \approx \frac{n}{\log(n)}
-\]
+$$
 
-This means, for any positive integer \( n \), the expected number of primes will be around \( \frac{n}{\log(n)} \).
+This means, for any positive integer \( n \), the expected number of primes will be around $$\frac{n}{\log(n)} $$.
 
 ### 3. **Memory Allocation for the List of Primes**
 
