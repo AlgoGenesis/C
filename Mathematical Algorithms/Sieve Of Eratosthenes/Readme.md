@@ -127,9 +127,9 @@ At this point, the algorithm stops because **p² > n** (i.e., 7² > 30). The rem
 
 <p>For any prime <code>p</code>, its multiples up to <code>n</code> are marked as non-prime. The number of multiples of a prime <code>p</code> less than <code>n</code> is approximately <code>n/p</code>. The algorithm marks all multiples of primes starting from 2, 3, 5, 7, and so on. Therefore, the number of operations needed to mark composites can be expressed as:</p>
 
-<p>
-    <code>n/2 + n/3 + n/5 + n/7 + ...</code>
-</p>
+$$
+\frac{n}{2} + \frac{n}{3} + \frac{n}{5} + \frac{n}{7} + \ldots
+$$
 
 <p>This sum counts how many numbers are marked as composite by each prime <code>p</code>.</p>
 
@@ -137,15 +137,15 @@ At this point, the algorithm stops because **p² > n** (i.e., 7² > 30). The rem
 
 <p>We take <code>n</code> common from the sum:</p>
 
-<p>
-    <code>n (1/2 + 1/3 + 1/5 + 1/7 + ...)</code>
-</p>
+$$
+n \left( \frac{1}{2} + \frac{1}{3} + \frac{1}{5} + \frac{1}{7} + \ldots \right)
+$$
 
 <p>Now we need to calculate the sum of reciprocals of primes. The sum of the reciprocals of primes is related to the <strong>Harmonic Progression</strong>, but restricted only to prime numbers. Mathematically, this sum is known to converge to <code>log(log(n))</code>. Hence, we rewrite the equation as:</p>
 
-<p>
-    <code>n · log(log(n))</code>
-</p>
+$$
+n \cdot \log(\log(n))
+$$
 
 <p>Thus, the number of times the loop runs in the Sieve of Eratosthenes is proportional to <code>n · log(log(n))</code>.</p>
 
