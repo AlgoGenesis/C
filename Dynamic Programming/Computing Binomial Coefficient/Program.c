@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include<stdlib.h>
 
 int binomialCoeff(int n, int k, int t[100][100]) {
     // If the value is already calculated, return it
