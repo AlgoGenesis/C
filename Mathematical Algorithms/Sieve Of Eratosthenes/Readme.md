@@ -173,13 +173,22 @@ This means the sum of the reciprocals of primes grows much slower than the Harmo
 
 Euler's product formula is used to derive this result. It states that for any series involving reciprocals of primes, we can represent it as a product over primes:
 
-`\sum_{n=1}^{\infty} \frac{1}{n^s} = \prod_{p \, \text{prime}} \frac{1}{1 - p^{-s}}`
+$$
+\sum_{n=1}^{\infty} \frac{1}{n^s} = \prod_{p \, \text{prime}} \frac{1}{1 - p^{-s}}
+$$
+
 
 For `s = 1`, this gives the relationship between the sum of reciprocals of primes and logarithmic functions. Applying logarithms to both sides of this product and simplifying with Taylor expansions, we eventually arrive at the approximation:
 
-`\sum_{p \, \text{prime}} \frac{1}{p} \approx \log(\log(n))`
+$$
+\sum_{p \, \text{prime}} \frac{1}{p} \approx \log(\log(n))
+$$
 
-This step is crucial in proving that the time complexity is `O(n \cdot \log(\log(n)))`.
+
+This step is crucial in proving that the time complexity is `$$
+O(n \cdot \log(\log(n)))
+$$
+.
 
 
 <h3>6. Final Time Complexity</h3>
