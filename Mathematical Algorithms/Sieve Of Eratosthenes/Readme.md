@@ -155,8 +155,9 @@ The next step is to understand why `1/2 + 1/3 + 1/5 + ... ≈ log(log(n))` . Thi
 
 - **Harmonic Series**: The sum of the reciprocals of all integers up to \(n\) is given by the Harmonic series:
 
-`H(n) = 1 + 1/2 + 1/3 + ... + 1/n ≈ log(n)`
-
+$$
+H(n) = 1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{n} \approx \log(n)
+$$
 
 This is a well-known result, and the logarithmic growth comes from the approximation of the Harmonic series.
 
@@ -185,9 +186,8 @@ $$
 $$
 
 
-This step is crucial in proving that the time complexity is $$
-O(n \cdot \log(\log(n)))
-$$
+This step is crucial in proving that the time complexity is `O(n * log(log(n)))`.
+
 .
 
 
