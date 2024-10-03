@@ -185,7 +185,7 @@ $$
 $$
 
 
-This step is crucial in proving that the time complexity is `$$
+This step is crucial in proving that the time complexity is $$
 O(n \cdot \log(\log(n)))
 $$
 .
