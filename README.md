@@ -21,6 +21,13 @@ The repository is a collection of open-source implementations of a variety of al
 
 ---
 
+## Our Valuable Contributors ❤️✨
+
+[![Contributors](https://contrib.rocks/image?repo=AlgoGenesis/C)](https://github.com/AlgoGenesis/C/graphs/contributors)
+## 📜 License
+
+---
+
 ## 📜 License
 
 This repository is licensed under the **MIT License**. Feel free to use the code as per the terms of the [LICENSE](LICENSE) file.
