@@ -206,9 +206,7 @@ The space complexity of the Sieve of Eratosthenes is \( O(n) \).
 
 Thus, the dominant factor in the space complexity is the array itself, leading to an overall space complexity of \( O(n) \). 
 
-### Summary:
-- **Space Complexity**: \( O(n) \)
-- **Reason**: Requires an array to store primality information for all integers up to \( n \).
+ **Reason**: Requires an array to store primality information for all integers up to \( n \).
 
 ---
 
@@ -220,6 +218,4 @@ Thus, the dominant factor in the space complexity is the array itself, leading t
 
 ### **Optimization for Large Inputs**:
 - **Segmented Sieve**: When dealing with extremely large values of **n**, a segmented version of the Sieve of Eratosthenes can be used. It divides the range into smaller segments, reducing the memory footprint while maintaining the efficiency of the algorithm.
-
----
 
