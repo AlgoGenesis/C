@@ -257,7 +257,7 @@ In the C program, we need to allocate enough memory for the list of primes \( L 
 
 ### 4. **Adding 1 to the Estimate**
 
-- The addition of 1 in the allocation `(n / log(n) + 1)` is a precaution to ensure there is enough space in the array. This prevents potential overflow or memory access violations, which can occur if the actual number of primes turns out to be slightly more than the estimated count.
+The addition of 1 in the allocation `(n / log(n) + 1)` is a precaution to ensure there is enough space in the array. This prevents potential overflow or memory access violations, which can occur if the actual number of primes turns out to be slightly more than the estimated count.
 
 ### 5. **Empirical Evidence**
 
