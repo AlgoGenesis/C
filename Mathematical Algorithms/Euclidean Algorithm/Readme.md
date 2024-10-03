@@ -25,6 +25,9 @@ Here's a step-by-step breakdown of the Euclidean Algorithm:
 ### **Pseudocode**
 ```plaintext
   gcd(a, b)
+   //Computes gcd(m, n) by Euclid’s algorithm
+   //Input: Two nonnegative, not-both-zero integers m and n
+   //Output: Greatest common divisor of m and n
     while b ≠ 0 do
         r ← a mod b
         a ← b
