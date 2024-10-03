@@ -16,39 +16,66 @@ The **Sieve of Eratosthenes** is an ancient and efficient algorithm used to find
 ### **Algorithm**:
 
 #### **Input**: A positive integer **n > 1**  
-#### **Output**: A list of all prime numbers ≤ **n**
+#### **Output**: Array **L** containing all prime numbers less than or equal to **n**
 
-1. **Create a boolean array** `isPrime[]` of size **n + 1**, initialized to `true`. Set `isPrime[0]` and `isPrime[1]` to `false` because 0 and 1 are not prime.
-   
-2. **Iterate through the numbers** starting from 2 up to **√n**:
-    - For each prime number **p** (i.e., `isPrime[p]` is `true`):
-        - Mark all multiples of **p** starting from **p²** (since smaller multiples of **p** have already been marked) as non-prime (i.e., set `isPrime[j] = false` for multiples **j**).
-        
-3. **Collect all numbers** that are still marked `true` in the `isPrime[]` array — these are the prime numbers ≤ **n**.
+1. **Initialize the array**:
+   - Create an array **A** of size **n+1**.
+   - Set **A[p] = p** for all **p** from 2 to **n**.
+
+2. **Mark non-prime numbers**:
+   - For each number **p** from 2 to **√n**:
+     - If **A[p] ≠ 0** (i.e., **p** is prime):
+       - Set **j = p * p** (start eliminating from **p²**).
+       - While **j ≤ n**:
+         - Set **A[j] = 0** (mark the multiple of **p** as non-prime).
+         - Increment **j** by **p** (move to the next multiple of **p**).
+
+3. **Collect prime numbers**:
+   - Initialize an empty list **L** to store prime numbers.
+   - For each number **p** from 2 to **n**:
+     - If **A[p] ≠ 0**, add **A[p]** to the list **L**.
+
+4. **Return the list**:
+   - Return the list **L** of prime numbers.
 
 ---
 
-### **Pseudocode**:
+### **Generalized Pseudocode**:
 
-```python
-SieveOfEratosthenes(n):
-    Create an array isPrime[0..n] and initialize all elements to true
-    Set isPrime[0] = false and isPrime[1] = false  # 0 and 1 are not primes
+```text
+Sieve(n)
+    # Step 1: Initialize the array A
+    for p ← 2 to n do
+        A[p] ← p
 
-    for p = 2 to √n do:
-        if isPrime[p] == true:
-            # Mark all multiples of p from p² to n as non-prime
-            for j = p*p to n do:
-                isPrime[j] = false
+    # Step 2: Mark non-prime numbers
+    for p ← 2 to √n do
+        if A[p] ≠ 0 then   # If p is prime
+            j ← p * p       # Start from p^2
+            while j ≤ n do
+                A[j] ← 0    # Mark multiple as non-prime
+                j ← j + p   # Move to next multiple of p
 
-    # Collect all primes
-    primes = []
-    for p = 2 to n do:
-        if isPrime[p] == true:
-            primes.append(p)
+    # Step 3: Collect prime numbers into list L
+    i ← 0
+    for p ← 2 to n do
+        if A[p] ≠ 0 then
+            L[i] ← A[p]     # Add prime number to L
+            i ← i + 1
 
-    return primes
+    # Step 4: Return the list of primes
+    return L
 ```
+
+---
+
+### **Explanation of Key Steps**:
+- **Step 1**: Initializes an array **A** where each index represents a number from 2 to **n**.
+- **Step 2**: Eliminates the multiples of each prime number starting from **p²** because all smaller multiples will have been eliminated in previous steps.
+- **Step 3**: After marking all multiples of primes, collects the remaining non-zero values in **A**, which represent the prime numbers.
+- **Step 4**: Returns the list of all prime numbers less than or equal to **n**.
+
+This pseudocode describes the logic of the Sieve of Eratosthenes in a simple and general format.
 
 ---
 
@@ -114,8 +141,4 @@ The space complexity is **O(n)**, as we need to store the boolean array `isPrime
 - **Segmented Sieve**: When dealing with extremely large values of **n**, a segmented version of the Sieve of Eratosthenes can be used. It divides the range into smaller segments, reducing the memory footprint while maintaining the efficiency of the algorithm.
 
 ---
-
-### **Conclusion**:
-
-The Sieve of Eratosthenes is a powerful and efficient algorithm for finding all prime numbers up to a given limit **n**. Its simplicity, combined with its efficiency, makes it one of the most popular algorithms for prime number generation, especially for large values of **n**. The time complexity **O(n log log n)** and space complexity **O(n)** make it suitable for large inputs, and it can be further optimized using techniques like segmentation.
 
