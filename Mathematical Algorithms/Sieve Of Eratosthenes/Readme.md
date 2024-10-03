@@ -153,36 +153,30 @@ At this point, the algorithm stops because **p² > n** (i.e., 7² > 30). The rem
 
 The next step is to understand why `1/2 + 1/3 + 1/5 + ... ≈ log(log(n))` . This is proven using **Euler's product formula**, which relates the sum of reciprocals of primes to the logarithmic function.
 
-- **Harmonic Series**: The sum of the reciprocals of all integers up to \( n \) is given by the Harmonic series:
+- **Harmonic Series**: The sum of the reciprocals of all integers up to \(n\) is given by the Harmonic series:
 
-`H_n = 1 + 1/2 + 1/3 + ... + 1/n ≈ log(n)`
+`H(n) = 1 + 1/2 + 1/3 + ... + 1/n ≈ log(n)`
 
 
 This is a well-known result, and the logarithmic growth comes from the approximation of the Harmonic series.
 
 - **Prime Harmonic Series**: The sum of the reciprocals of prime numbers follows a similar pattern but is restricted to primes only. Using **Euler’s product formula**, we have:
 
-  \[
-  \sum_{p \, \text{prime}} \frac{1}{p} \approx \log(\log(n))
-  \]
+`\sum_{p \, \text{prime}} \frac{1}{p} \approx \log(\log(n))`
 
-This means the sum of the reciprocals of primes grows much slower than the Harmonic series for all integers, and the double logarithm \( \log(\log(n)) \) emerges naturally.
+This means the sum of the reciprocals of primes grows much slower than the Harmonic series for all integers, and the double logarithm \( \log(\log(n))\) emerges naturally.
 
 ### 5. Euler’s Product Formula
 
 Euler's product formula is used to derive this result. It states that for any series involving reciprocals of primes, we can represent it as a product over primes:
 
-\[
-\sum_{n=1}^{\infty} \frac{1}{n^s} = \prod_{p \, \text{prime}} \frac{1}{1 - p^{-s}}
-\]
+`\sum_{n=1}^{\infty} \frac{1}{n^s} = \prod_{p \, \text{prime}} \frac{1}{1 - p^{-s}}`
 
-For \( s = 1 \), this gives the relationship between the sum of reciprocals of primes and logarithmic functions. Applying logarithms to both sides of this product and simplifying with Taylor expansions, we eventually arrive at the approximation:
+For `s = 1`, this gives the relationship between the sum of reciprocals of primes and logarithmic functions. Applying logarithms to both sides of this product and simplifying with Taylor expansions, we eventually arrive at the approximation:
 
-\[
-\sum_{p \, \text{prime}} \frac{1}{p} \approx \log(\log(n))
-\]
+`\sum_{p \, \text{prime}} \frac{1}{p} \approx \log(\log(n))`
 
-This step is crucial in proving that the time complexity is \( O(n \cdot \log(\log(n))) \).
+This step is crucial in proving that the time complexity is `O(n \cdot \log(\log(n)))`.
 
 
 <h3>6. Final Time Complexity</h3>
