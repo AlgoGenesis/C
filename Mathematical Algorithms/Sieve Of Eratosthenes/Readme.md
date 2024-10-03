@@ -225,3 +225,45 @@ Thus, the dominant factor in the space complexity is the array itself, leading t
 ### **Optimization for Large Inputs**:
 - **Segmented Sieve**: When dealing with extremely large values of **n**, a segmented version of the Sieve of Eratosthenes can be used. It divides the range into smaller segments, reducing the memory footprint while maintaining the efficiency of the algorithm.
 
+---
+
+/*The size of the prime list in the Sieve of Eratosthenes algorithm can be estimated based on the distribution of prime numbers as governed by the **Prime Number Theorem**. Here’s a detailed explanation of how we arrive at this estimation:
+
+### 1. **Understanding the Prime Number Theorem**
+
+The Prime Number Theorem states that the number of prime numbers less than or equal to a given number \( n \) is approximately given by:
+
+\[
+\pi(n) \sim \frac{n}{\log(n)}
+\]
+
+Where:
+- \( \pi(n) \) is the prime counting function, representing the number of primes less than or equal to \( n \).
+- \( \log(n) \) is the natural logarithm of \( n \).
+
+### 2. **Estimation of the Number of Primes**
+
+From the above theorem, we can derive that the number of primes up to \( n \) grows slower than \( n \) but is significant enough to warrant consideration in terms of space complexity:
+
+\[
+\pi(n) \approx \frac{n}{\log(n)}
+\]
+
+This means, for any positive integer \( n \), the expected number of primes will be around \( \frac{n}{\log(n)} \).
+
+### 3. **Memory Allocation for the List of Primes**
+
+In the C program, we need to allocate enough memory for the list of primes \( L \). Since we want to accommodate all primes up to \( n \), we can use the estimation from the Prime Number Theorem to size our array:
+
+### 4. **Adding 1 to the Estimate**
+
+- The addition of 1 in the allocation `(n / log(n) + 1)` is a precaution to ensure there is enough space in the array. This prevents potential overflow or memory access violations, which can occur if the actual number of primes turns out to be slightly more than the estimated count.
+
+### 5. **Empirical Evidence**
+
+Empirical studies and historical observations of prime distribution affirm that the approximation provided by the Prime Number Theorem becomes increasingly accurate as \( n \) grows larger. For smaller values of \( n \), the exact count can vary, but for practical purposes in algorithms like the Sieve of Eratosthenes, this approximation is generally sufficient.
+
+### 6. **Practical Considerations**
+
+- **Performance**: While allocating more memory than necessary does not inherently harm the algorithm, it can lead to inefficiencies. Thus, the approximation serves as a balance between ensuring enough space for the primes and avoiding excessive memory usage.
+- **Dynamic Allocation**: Since the size of \( n \) can vary, dynamic allocation allows the algorithm to adapt to different input sizes without a fixed limit on array size.
