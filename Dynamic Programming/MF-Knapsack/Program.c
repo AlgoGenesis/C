@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int max(int a, int b){
- return (a>b) ? a : b;
+int max(int i, int j){
+ return (i>j) ? i : j;
 }
 
 int t[100][100], v[100], w[100], n, m, i, j;

@@ -19,23 +19,23 @@ int binomialCoeff(int n, int k, int t[100][100]) {
 }
 
 int main() {
-    int n, k;
+    int n, r;
     int t[100][100];
 
     printf("Enter n and k for C(n, k):\n");
-    scanf("%d %d", &n, &k);
+    scanf("%d %d", &n, &r);
 
     // Initialize the table with -1 (indicating uncalculated values)
     for (int i = 0; i <= n; i++) {
-        for (int j = 0; j <= k; j++) {
+        for (int j = 0; j <= r; j++) {
             t[i][j] = -1;
         }
     }
 
     // Compute the binomial coefficient
-    int result = binomialCoeff(n, k, t);
+    int result = binomialCoeff(n, r, t);
 
-    printf("C(%d, %d) = %d\n", n, k, result);
+    printf("C(%d, %d) = %d\n", n, r, result);
 
     return 0;
 }
