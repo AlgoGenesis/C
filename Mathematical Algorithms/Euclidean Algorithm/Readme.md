@@ -5,7 +5,7 @@ The **Euclidean Algorithm** is an ancient and efficient method for computing the
 ### **Description**
 The Euclidean Algorithm relies on the principle that the GCD of two numbers also divides their difference. The key observation is:
 
-** ` gcd(a, b) = gcd(b, a mod b)`**
+** gcd(a, b) = gcd(b, a mod b)**
 Where:
 - **a** is the larger number.
 - **b** is the smaller number.
@@ -24,7 +24,7 @@ Here's a step-by-step breakdown of the Euclidean Algorithm:
 
 ### **Pseudocode**
 ```plaintext
-function gcd(a, b)
+  gcd(a, b)
     while b ≠ 0 do
         r ← a mod b
         a ← b
