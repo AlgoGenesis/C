@@ -133,7 +133,6 @@ int main() {
     postorderTraversal(root);
     printf("NULL\n");
 
-    
     printf("\nLevel-order Traversal (Breadth-First):\n");
     levelOrderTraversal(root);
     printf("NULL\n");
