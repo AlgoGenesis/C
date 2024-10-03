@@ -162,7 +162,10 @@ This is a well-known result, and the logarithmic growth comes from the approxima
 
 - **Prime Harmonic Series**: The sum of the reciprocals of prime numbers follows a similar pattern but is restricted to primes only. Using **Euler’s product formula**, we have:
 
-`\sum_{p \, \text{prime}} \frac{1}{p} \approx \log(\log(n))`
+$$
+\sum_{p \, \text{prime}} \frac{1}{p} \approx \log(\log(n))
+$$
+
 
 This means the sum of the reciprocals of primes grows much slower than the Harmonic series for all integers, and the double logarithm \( \log(\log(n))\) emerges naturally.
 
