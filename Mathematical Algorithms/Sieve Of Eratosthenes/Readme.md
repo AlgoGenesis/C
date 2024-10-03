@@ -149,7 +149,7 @@ $$
 
 <p>Thus, the number of times the loop runs in the Sieve of Eratosthenes is proportional to <code>n · log(log(n))</code>.</p>
 
-### 4. Harmonic Progression and Proof
+### 4. Harmonic Progression Proof
 
 The next step is to understand why `1/2 + 1/3 + 1/5 + ... ≈ log(log(n))` . This is proven using **Euler's product formula**, which relates the sum of reciprocals of primes to the logarithmic function.
 
@@ -170,7 +170,7 @@ $$
 
 This means the sum of the reciprocals of primes grows much slower than the Harmonic series for all integers, and the double logarithm log(log(n)) emerges naturally.
 
-### 5. Euler’s Product Formula
+### 5. Euler’s Product Formula Proof
 
 Euler's product formula is used to derive this result. It states that for any series involving reciprocals of primes, we can represent it as a product over primes:
 
