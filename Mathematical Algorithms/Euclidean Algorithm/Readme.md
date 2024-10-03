@@ -1,5 +1,3 @@
-Here’s the text with the requested formatting changes, using `$$` for all the mathematical expressions:
-
 ## Euclidean Algorithm
 
 The **Euclidean Algorithm** is an ancient and efficient method for computing the **Greatest Common Divisor (GCD)** of two integers. The GCD of two numbers is the largest number that divides both of them without leaving a remainder. The algorithm is named after the ancient Greek mathematician Euclid, who first described it in his work "Elements."
@@ -7,14 +5,11 @@ The **Euclidean Algorithm** is an ancient and efficient method for computing the
 ### **Description**
 The Euclidean Algorithm relies on the principle that the GCD of two numbers also divides their difference. The key observation is:
 
-$$
-\text{gcd}(a, b) = \text{gcd}(b, a \mod b)
-$$
-
+$$ \gcd(a, b) = \gcd(b, a \mod b) $$
 Where:
 - **a** is the larger number.
 - **b** is the smaller number.
-- $$ a \mod b $$ is the remainder when **a** is divided by **b**.
+- **a mod b** is the remainder when **a** is divided by **b**.
 
 This means that instead of working with the original numbers, we can replace the larger number with the remainder. The process is repeated until one of the numbers becomes zero. At that point, the other number will be the GCD.
 
@@ -22,10 +17,10 @@ This means that instead of working with the original numbers, we can replace the
 Here's a step-by-step breakdown of the Euclidean Algorithm:
 
 1. **Input**: Two non-negative integers **a** and **b** (assume \( a \geq b \)).
-2. **While** $$ b \neq 0 $$:
-   - Calculate the remainder $$ r = a \mod b $$.
-   - Set $$ a = b $$ and $$ b = r $$.
-3. **Output**: When $$ b = 0 $$, the GCD is $$ a $$.
+2. **While** \( b != 0 \):
+   - Calculate the remainder \( r = a mod b \).
+   - Set \( a = b \) and \( b = r \).
+3. **Output**: When \( b = 0 \), the GCD is \( a \).
 
 ### **Pseudocode**
 ```plaintext
@@ -52,28 +47,21 @@ The Euclidean Algorithm is extremely efficient, even for large integers. Here’
 
 3. **Application in Cryptography**: The algorithm is widely used in cryptographic applications, such as finding the GCD in key generation algorithms (e.g., RSA). Its efficiency ensures that even very large keys can be processed quickly.
 
-### **Visual Representation**
+### **Example**
 Here's a visual representation of the Euclidean Algorithm for finding the GCD of 48 and 18:
 
-1. **Start with** $$ a = 48 $$ and $$ b = 18 $$:
-   $$
-   \text{gcd}(48, 18)
-   $$
+1. **Start with** \( a = 48 \) and \( b = 18 \): 48 mod 18
+   
 
 2. **First Iteration**:
-   $$
-   48 \mod 18 = 12 \quad \Rightarrow \quad \text{gcd}(18, 12)
-   $$
+48 mod 18 = 12 => gcd(18, 12)
 
 3. **Second Iteration**:
-   $$
-   18 \mod 12 = 6 \quad \Rightarrow \quad \text{gcd}(12, 6)
-   $$
+    18 mod 12 = 6 => gcd(12, 6)
 
 4. **Third Iteration**:
-   $$
-   12 \mod 6 = 0 \quad \Rightarrow \quad \text{gcd}(6, 0)
-   $$
+   12 mod 6 = 0 => gcd(6, 0)
 
 5. **Result**:
-   - When $$ b = 0 $$, the GCD is $$ a = 6 $$.
+   - When \( b = 0 \), the GCD is \( a = 6 \).
+
