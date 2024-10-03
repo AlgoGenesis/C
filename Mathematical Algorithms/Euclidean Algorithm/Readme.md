@@ -5,7 +5,7 @@ The **Euclidean Algorithm** is an ancient and efficient method for computing the
 ### **Description**
 The Euclidean Algorithm relies on the principle that the GCD of two numbers also divides their difference. The key observation is:
 
-$$ \gcd(a, b) = \gcd(b, a \mod b) $$
+ ` **gcd(a, b) = gcd(b, a mod b)**`
 Where:
 - **a** is the larger number.
 - **b** is the smaller number.
