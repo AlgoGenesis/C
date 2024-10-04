@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+
+// Node structure for the queue
+typedef struct Node {
+    int data;
+    struct Node* next;
+} Node;
+
+// Queue structure
+typedef struct Queue {
+    Node* front;
+    Node* rear;
+    int size;
+    pthread_mutex_t mutex;  // Mutex for thread-safe access
+    pthread_cond_t cond;    // Condition variable for signaling
+} Queue;
+
+// Initialize the queue
+void initQueue(Queue* q) {
+    q->front = q->rear = NULL;
+    q->size = 0;
+    pthread_mutex_init(&q->mutex, NULL);
+    pthread_cond_init(&q->cond, NULL);
+}
+
+// Enqueue function (Thread-Safe)
+void enqueue(Queue* q, int value) {
+    // Lock the mutex to ensure exclusive access
+    pthread_mutex_lock(&q->mutex);
+
+    // Create a new node
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->data = value;
+    newNode->next = NULL;
+
+    // If the queue is empty, set front and rear to the new node
+    if (q->rear == NULL) {
+        q->front = q->rear = newNode;
+    } else {
+        q->rear->next = newNode;
+        q->rear = newNode;
+    }
+    q->size++;
+
+    // Signal to any waiting thread that a new element has been added
+    pthread_cond_signal(&q->cond);
+
+    // Unlock the mutex
+    pthread_mutex_unlock(&q->mutex);
+}
+
+// Dequeue function (Thread-Safe)
+int dequeue(Queue* q) {
+    // Lock the mutex
+    pthread_mutex_lock(&q->mutex);
+
+    // Wait if the queue is empty
+    while (q->front == NULL) {
+        pthread_cond_wait(&q->cond, &q->mutex);
+    }
+
+    // Remove the front node
+    Node* temp = q->front;
+    int value = temp->data;
+    q->front = q->front->next;
+
+    // If the queue is empty after dequeue, set rear to NULL
+    if (q->front == NULL) {
+        q->rear = NULL;
+    }
+
+    q->size--;
+    free(temp);
+
+    // Unlock the mutex
+    pthread_mutex_unlock(&q->mutex);
+
+    return value;
+}
+
+// Cleanup the queue
+void cleanupQueue(Queue* q) {
+    pthread_mutex_destroy(&q->mutex);
+    pthread_cond_destroy(&q->cond);
+}
