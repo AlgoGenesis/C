@@ -1,4 +1,4 @@
-**# Quick Sort
+# Quick Sort
 
 # Description
 
@@ -44,13 +44,13 @@ Objectives:
 
    1. It is a divide-and-conquer algorithm that makes it easier to solve problems.
    2. It is efficient on large data sets.
-   3. It has a low overhead, as it only requires a small amount of memory to          function.
-   4. It is Cache Friendly as we work on the same array to sort and do not copy       data to any auxiliary array.
-   5. Fastest general purpose algorithm for large data when stability is not          required.
+   3. It has a low overhead, as it only requires a small amount of memory to function.
+   4. It is Cache Friendly as we work on the same array to sort and do not copy data to any auxiliary       array.
+   5. Fastest general purpose algorithm for large data when stability is not required.
    6. It is tail recursive and hence all the tail call optimization can be done.
 
 #  Disadvantages of Quick Sort
 
-   1. It has a worst-case time complexity of O(n2), which occurs when the pivot is    chosen poorly.
+   1. It has a worst-case time complexity of O(n2), which occurs when the pivot is chosen poorly.
    2. It is not a good choice for small data sets. 
    3. It is not a stable sort.
