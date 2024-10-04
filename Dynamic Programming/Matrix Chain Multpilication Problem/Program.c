@@ -1,39 +1,69 @@
 #include <stdio.h>
 #include <limits.h>
 
-// Function to find the minimum number of scalar multiplications
-int matrixChainOrder(int p[], int n) {
-    int m[n][n];
-    int i, j, k, L, q;
+// Function to print the optimal parenthesis placement
+void printOptimalParens(int s[][100], int i, int j) {
+    if (i == j)
+        printf("A%d", i);
+    else {
+        printf("(");
+        printOptimalParens(s, i, s[i][j]);
+        printOptimalParens(s, s[i][j] + 1, j);
+        printf(")");
+    }
+}
 
-    // Initialize the diagonal of the matrix to 0 (single matrix case)
-    for (i = 1; i < n; i++)
+// Function to compute the matrix chain multiplication order
+void matrixChainOrder(int p[], int n) {
+    int m[100][100]; // m[i,j] will store the minimum number of multiplications needed for matrices Ai...Aj
+    int s[100][100]; // s[i,j] will store the index at which the optimal split occurs
+
+    // Initialize the diagonal to 0, as the cost of multiplying one matrix is 0
+    for (int i = 1; i < n; i++) {
         m[i][i] = 0;
+    }
 
-    // L is chain length
-    for (L = 2; L < n; L++) {
-        for (i = 1; i < n - L + 1; i++) {
-            j = i + L - 1;
+    // l is chain length
+    for (int l = 2; l < n; l++) {
+        for (int i = 1; i <= n - l; i++) {
+            int j = i + l - 1;
             m[i][j] = INT_MAX;
 
-            for (k = i; k <= j - 1; k++) {
-                // Calculate q = cost/scalar multiplications
-                q = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j];
-                if (q < m[i][j])
-                    m[i][j] = q;
+            for (int k = i; k < j; k++) {
+                // Cost of splitting at k
+                int cost = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j];
+                
+                if (cost < m[i][j]) {
+                    m[i][j] = cost;
+                    s[i][j] = k;
+                }
             }
         }
     }
 
-    return m[1][n - 1]; // Return the minimum cost for multiplying all matrices
+    // Output the minimum cost
+    printf("Minimum number of multiplications: %d\n", m[1][n - 1]);
+
+    // Output the optimal parenthesization
+    printf("Optimal Parenthesization: ");
+    printOptimalParens(s, 1, n - 1);
+    printf("\n");
 }
-
-// Driver code
 int main() {
-    int arr[] = {40, 20, 30, 10, 30};
-    int size = sizeof(arr) / sizeof(arr[0]);
+    int n;
 
-    printf("Minimum number of multiplications is %d\n", matrixChainOrder(arr, size));
+    // Input number of matrices
+    printf("Enter the number of matrices: ");
+    scanf("%d", &n);
+
+    int p[n + 1]; // Array to store matrix dimensions
+    printf("Enter the dimensions of the matrices:\n");
+    for (int i = 0; i <= n; i++) {
+        scanf("%d", &p[i]);
+    }
+
+    // Call function to compute optimal matrix multiplication order
+    matrixChainOrder(p, n + 1);
 
     return 0;
 }
