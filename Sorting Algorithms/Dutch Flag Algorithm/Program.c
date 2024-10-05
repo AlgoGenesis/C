@@ -1,51 +1,53 @@
 #include <stdio.h>
 
-void dutchFlagSort(int arr[], int size) {
-    int low = 0;       // Pointer for the next position of 0
-    int mid = 0;       // Pointer for the current element
-    int high = size - 1; // Pointer for the next position of 2
+// Function to swap two elements
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
 
+// Function implementing Dutch National Flag Algorithm
+void dutchFlagSort(int arr[], int n) {
+    int low = 0;      // Starting index of the array
+    int mid = 0;      // Current element being checked
+    int high = n - 1; // Ending index of the array
+
+    // Traverse the array and arrange the elements
     while (mid <= high) {
-        switch (arr[mid]) {
-            case 0:
-                // Swap arr[low] and arr[mid]
-                int temp0 = arr[low];
-                arr[low] = arr[mid];
-                arr[mid] = temp0;
-                low++;
-                mid++;
-                break;
-            case 1:
-                mid++;
-                break;
-            case 2:
-                // Swap arr[mid] and arr[high]
-                int temp1 = arr[mid];
-                arr[mid] = arr[high];
-                arr[high] = temp1;
-                high--;
-                break;
+        if (arr[mid] == 0) {
+            swap(&arr[low], &arr[mid]);
+            low++;
+            mid++;
+        } else if (arr[mid] == 1) {
+            mid++;
+        } else if (arr[mid] == 2) {
+            swap(&arr[high], &arr[mid]);
+            high--;
         }
     }
 }
 
+// Function to print the array
+void printArray(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+// Driver code
 int main() {
-    int arr[] = {2, 0, 2, 1, 1, 0}; // Example array
-    int size = sizeof(arr) / sizeof(arr[0]); // Get the size of the array
+    int arr[] = {2, 0, 2, 1, 1, 0};
+    int n = sizeof(arr) / sizeof(arr[0]);
 
     printf("Original array: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
+    printArray(arr, n);
 
-    dutchFlagSort(arr, size); // Sorting the array using the Dutch Flag algorithm
+    dutchFlagSort(arr, n);
 
     printf("Sorted array: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
+    printArray(arr, n);
 
     return 0;
 }
