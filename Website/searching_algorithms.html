@@ -197,6 +197,34 @@
             transform: translateY(-10px);
             transition: 0.5s;
         }
+        
+        .code-display {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        
+        .dark-theme .code-display {
+            background-color: #2e2e2e;
+            color: #ffffff;
+        }
+        
+        pre[class*="language-"] {
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            padding: 20px;
+            overflow: auto;
+            font-size: 14px;
+        }
+        
+        .dark-theme pre[class*="language-"] {
+            background-color: #2e2e2e;
+            color: #ffffff;
+        }
     </style>
 </head>
 
@@ -216,40 +244,71 @@
     </nav>
 
     <div class="box-container">
-        <div class="box">
+        <div class="box" onclick="toggleCodeDisplay('SearchingAlgorithms/Tower of Hanoi/Program.c', 'Best-First Search')">
             <span class=" lang-text ">best_first_search</span>
             <div class="ball "></div>
         </div>
-        <div class="box ">
+        <div class="box " onclick="toggleCodeDisplay('SearchingAlgorithms/Binary Search/Program.c', 'Binary Search')">
             <span class="lang-text ">binary_search</span>
             <div class="ball "></div>
         </div>
-        <div class="box ">
+        <div class="box " onclick="toggleCodeDisplay('SearchingAlgorithms/Depth First Search/Program.c', 'Depth First Search')">
             <span class="lang-text ">dfs</span>
             <div class="ball "></div>
         </div>
     </div>
     <div class="box-container ">
-        <div class="box ">
+        <div class="box " onclick="toggleCodeDisplay('SearchingAlgorithms/Jump Search/Program.c', 'Jump Search')">
             <span class="lang-text ">jump_search</span>
             <div class="ball "></div>
         </div>
-        <div class="box ">
+        <div class="box " onclick="toggleCodeDisplay('SearchingAlgorithms/Linear Search/Program.c', 'Linear Search')">
             <span class="lang-text ">linear_search</span>
             <div class="ball "></div>
         </div>
     </div>
 
-    <script>
-        const themeToggle = document.querySelector('.theme-toggle');
-        const lightThemeIcon = document.querySelector('#light-theme-icon');
-        const darkThemeIcon = document.querySelector('#dark-theme-icon');
 
+    <div id="code-display" class="code-display">
+        <h3 id="code-title"></h3>
+        <pre><code class="language-c" id="code-content"></code></pre>
+    </div>
+
+    <!-- Prism.js script for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-c.min.js"></script>
+    <script>
+        let isCodeVisible = false;
+
+        const themeToggle = document.querySelector('.theme-toggle');
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-theme');
-            lightThemeIcon.style.display = document.body.classList.contains('dark-theme') ? 'none' : 'block';
-            darkThemeIcon.style.display = document.body.classList.contains('dark-theme') ? 'block' : 'none';
+            themeToggle.querySelector('#light-theme-icon').style.display =
+                document.body.classList.contains('dark-theme') ? 'none' : 'block';
+            themeToggle.querySelector('#dark-theme-icon').style.display =
+                document.body.classList.contains('dark-theme') ? 'block' : 'none';
         });
+
+        function toggleCodeDisplay(filePath, title) {
+            const codeDisplay = document.getElementById('code-display');
+            const codeContent = document.getElementById('code-content');
+            const codeTitle = document.getElementById('code-title');
+
+            if (!isCodeVisible) {
+                fetch(filePath)
+                    .then(response => response.text())
+                    .then(data => {
+                        codeContent.textContent = data;
+                        codeTitle.textContent = title;
+                        Prism.highlightElement(codeContent);
+                        codeDisplay.style.display = 'block';
+                        isCodeVisible = true;
+                    });
+            } else {
+                codeDisplay.style.display = 'none';
+                isCodeVisible = false;
+            }
+        }
     </script>
 
 

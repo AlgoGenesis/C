@@ -135,7 +135,6 @@
             background-color: #2e2e2e;
             color: #ffffff;
         }
-        /* Prism.js syntax highlighting */
         
         pre[class*="language-"] {
             background-color: #f4f4f4;
@@ -148,6 +147,55 @@
         .dark-theme pre[class*="language-"] {
             background-color: #2e2e2e;
             color: #ffffff;
+        }
+        
+        .ball {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #ff69b4;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .box:hover .ball {
+            opacity: 1;
+            animation: moveBall 4s linear infinite;
+        }
+        
+        @keyframes moveBall {
+            0% {
+                top: 10px;
+                left: 20px;
+            }
+            25% {
+                top: 10px;
+                left: 270px;
+                /* Right side */
+            }
+            50% {
+                top: 270px;
+                /* Bottom side */
+                left: 270px;
+            }
+            75% {
+                top: 270px;
+                left: 10px;
+                /* Left side */
+            }
+            100% {
+                top: 10px;
+                /* Back to top-left */
+                left: 10px;
+            }
+        }
+        
+        .box:hover .lang-text {
+            transform: translateY(-10px);
+            transition: 0.5s;
         }
     </style>
 </head>
@@ -196,49 +244,20 @@
             const codeContent = document.getElementById('code-content');
 
 
+            if (!isCodeVisible) {
+                fetch('BinaryTreeAlgorithms/TraversalAlgorithms/Traversal.c')
+                    .then(response => response.text())
+                    .then(data => {
+                        codeContent.textContent = data;
+                        Prism.highlightElement(codeContent);
+                        codeDisplay.style.display = 'block';
+                    })
+                    .catch(error => console.error('Error loading code:', error));
+            } else {
+                codeDisplay.style.display = 'none';
+            }
 
-            fetch('C/BinaryTreeAlgorithms/TraversalAlgorithms/Traversal.c')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    codeContent.textContent = data;
-                    Prism.highlightElement(codeContent);
-                    codeDisplay.style.display = 'block';
-                })
-                .catch(error => {
-                    console.error('Error loading code:', error);
-                    alert('Failed to load the code file: ' + error.message);
-                });
-
-
-            // fetch('c/BinaryTreeAlgorithms/TraversalAlgorithms/Traversal.c')
-            //     .then(response => response.text())
-            //     .then(data => {
-            //         codeContent.textContent = data;
-            //         Prism.highlightElement(codeContent); // Syntax highlighting
-            //         codeDisplay.style.display = 'block';
-            //     })
-            //     .catch(error => console.error('Error loading code:', error));
-
-
-            // if (!isCodeVisible) {
-            //     fetch('c/BinaryTreeAlgorithms/TraversalAlgorithms/Traversal.c')
-            //         .then(response => response.text())
-            //         .then(data => {
-            //             codeContent.textContent = data;
-            //             Prism.highlightElement(codeContent);
-            //             codeDisplay.style.display = 'block';
-            //         })
-            //         .catch(error => console.error('Error loading code:', error));
-            // } else {
-            //     codeDisplay.style.display = 'none';
-            // }
-
-            // isCodeVisible = !isCodeVisible;
+            isCodeVisible = !isCodeVisible;
         }
     </script>
 </body>
