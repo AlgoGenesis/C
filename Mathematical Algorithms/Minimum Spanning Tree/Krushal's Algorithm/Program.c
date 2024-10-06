@@ -113,7 +113,7 @@ int main() {
     graph->edge[1].weight = 6;
 
     graph->edge[2].src = 0;
-    graph->edge[2].dest = 3;
+    graph->edge [2].dest = 3;
     graph->edge[2].weight = 5;
 
     graph->edge[3].src = 1;
@@ -124,12 +124,7 @@ int main() {
     graph->edge[4].dest = 3;
     graph->edge[4].weight = 4;
 
-    // Function call
     KruskalMST(graph);
-
-    free(graph->edge); // Free allocated memory for edges
-    free(graph); // Free allocated memory for graph
 
     return 0;
 }
-

@@ -7,10 +7,8 @@ void toH(int n, char rodA, char rodC, char rodB) {
         printf("\nMove disk 1 from rod %c to rod %c", rodA, rodC);
         return;
     }
-         toH(n - 1, rodA, rodB, rodC);
-   
+    toH(n - 1, rodA, rodB, rodC);
     printf("\nMove disk %d from rod %c to rod %c", n, rodA, rodC);
-    
     toH(n - 1, rodB, rodC, rodA);
 }
 

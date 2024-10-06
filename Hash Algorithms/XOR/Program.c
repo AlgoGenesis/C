@@ -28,8 +28,6 @@ void test_xor8()
     printf("Tests passed\n");
 }
 
-/** @} */
-
 /** Main function */
 int main()
 {

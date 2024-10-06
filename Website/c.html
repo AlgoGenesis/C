@@ -132,7 +132,7 @@
             text-align: center;
             display: block;
             margin: 0 auto;
-            font-size: 46px;
+            font-size: 40px;
             /* Increased font size from 24px to 36px */
             font-weight: bold;
             background: linear-gradient(to right, #ff69b4, #33cc33, #6666ff);
@@ -216,32 +216,63 @@
     </nav>
 
     <div class="box-container">
-        <div class="box" onclick="openTopicsPage('c.html')">
-            <span class="lang-text">C</span>
-            <div class="ball"></div>
+        <div class="box" onclick="openTopicsPage('BinaryTreeAlgorithms')">
+            <span class=" lang-text ">Binary TreeAlgorithms</span>
+            <div class="ball "></div>
         </div>
-        <div class="box">
-            <span class="lang-text">C++</span>
-            <div class="ball"></div>
+        <div class="box" onclick="openTopicsPage('Divideandconquer.html')">
+            <span class="lang-text ">Divide and Conquer</span>
+            <div class="ball "></div>
         </div>
-        <div class="box">
-            <span class="lang-text">Java</span>
-            <div class="ball"></div>
+        <div class="box" onclick="openTopicsPage('DynamicProgramming.html')">
+            <span class="lang-text ">Dynamic Programming</span>
+            <div class="ball "></div>
         </div>
     </div>
-    <div class="box-container">
-        <div class="box">
-            <span class="lang-text">Python</span>
-            <div class="ball"></div>
+    <div class="box-container ">
+        <div class="box" onclick="openTopicsPage('graph_algorithms.html')">
+            <span class="lang-text ">Graph Algorithms</span>
+            <div class="ball "></div>
         </div>
-        <div class="box">
-            <span class="lang-text">JavaScript</span>
-            <div class="ball"></div>
+        <div class="box" onclick="openTopicsPage('hash_algorithms.html')">
+            <span class="lang-text "> Hash Algorithms</span>
+            <div class="ball "></div>
         </div>
-        <div class="box">
-            <span class="lang-text">PHP</span>
-            <div class="ball"></div>
+        <div class="box" onclick="openTopicsPage('mathematical_algorithms.html')">
+            <span class="lang-text ">Mathematical Algorithms</span>
+            <div class="ball "></div>
         </div>
+    </div>
+    <div class="box-container ">
+        <div class="box" onclick="openTopicsPage('recursion.html')">
+            <span class="lang-text ">Recursion</span>
+            <div class="ball "></div>
+        </div>
+        <div class="box" onclick="openTopicsPage('searching_algorithms.html')">
+            <span class="lang-text "> Searching Algorithms</span>
+            <div class="ball "></div>
+        </div>
+        <div class="box" onclick="openTopicsPage('sorting_algorithms.html')">
+            <span class="lang-text ">Sorting Algorithms</span>
+            <div class="ball "></div>
+        </div>
+    </div>
+    <div class="box-container ">
+        <div class="box" onclick="openTopicsPage('stack_queues.html')">
+            <span class="lang-text "> StackQueues</span>
+            <div class="ball "></div>
+        </div>
+        <div class="box" onclick="openTopicsPage('string_algorithms.html')">
+            <span class="lang-text ">String Algorithms</span>
+            <div class="ball "></div>
+        </div>
+        <div class="box" onclick="openTopicsPage('sorting_algorithms.html')">
+            <span class="lang-text ">Sorting Algorithms</span>
+            <div class="ball "></div>
+        </div>
+    </div>
+
+
     </div>
 
 
@@ -260,6 +291,11 @@
         function openTopicsPage(page) {
             window.open(page, '_self');
         }
+
+
+        document.getElementById('binary-tree-box').addEventListener('click', () => {
+            document.getElementById('travel-div').style.display = 'block';
+        });
     </script>
 
 

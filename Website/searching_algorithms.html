@@ -132,7 +132,7 @@
             text-align: center;
             display: block;
             margin: 0 auto;
-            font-size: 46px;
+            font-size: 40px;
             /* Increased font size from 24px to 36px */
             font-weight: bold;
             background: linear-gradient(to right, #ff69b4, #33cc33, #6666ff);
@@ -216,34 +216,29 @@
     </nav>
 
     <div class="box-container">
-        <div class="box" onclick="openTopicsPage('c.html')">
-            <span class="lang-text">C</span>
-            <div class="ball"></div>
-        </div>
         <div class="box">
-            <span class="lang-text">C++</span>
-            <div class="ball"></div>
+            <span class=" lang-text ">best_first_search</span>
+            <div class="ball "></div>
         </div>
-        <div class="box">
-            <span class="lang-text">Java</span>
-            <div class="ball"></div>
+        <div class="box ">
+            <span class="lang-text ">binary_search</span>
+            <div class="ball "></div>
+        </div>
+        <div class="box ">
+            <span class="lang-text ">dfs</span>
+            <div class="ball "></div>
         </div>
     </div>
-    <div class="box-container">
-        <div class="box">
-            <span class="lang-text">Python</span>
-            <div class="ball"></div>
+    <div class="box-container ">
+        <div class="box ">
+            <span class="lang-text ">jump_search</span>
+            <div class="ball "></div>
         </div>
-        <div class="box">
-            <span class="lang-text">JavaScript</span>
-            <div class="ball"></div>
-        </div>
-        <div class="box">
-            <span class="lang-text">PHP</span>
-            <div class="ball"></div>
+        <div class="box ">
+            <span class="lang-text ">linear_search</span>
+            <div class="ball "></div>
         </div>
     </div>
-
 
     <script>
         const themeToggle = document.querySelector('.theme-toggle');
@@ -255,11 +250,6 @@
             lightThemeIcon.style.display = document.body.classList.contains('dark-theme') ? 'none' : 'block';
             darkThemeIcon.style.display = document.body.classList.contains('dark-theme') ? 'block' : 'none';
         });
-
-
-        function openTopicsPage(page) {
-            window.open(page, '_self');
-        }
     </script>
 
 

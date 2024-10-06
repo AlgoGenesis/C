@@ -1,56 +1,45 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-#define MAX 100
+// Function to perform binary search
+int binarySearch(int arr[], int n, int x) {
+    int left = 0;
+    int right = n - 1;
 
-// Adjacency matrix representation of the graph
-int graph[MAX][MAX];
-int visited[MAX];
+    while (left <= right) {
+        int mid = left + (right - left) / 2; // Calculate middle index
 
-// Function to perform DFS
-void DFS(int vertex, int n) {
-    visited[vertex] = 1; // Mark the current vertex as visited
-    printf("Visited vertex: %d\n", vertex);
+        // Check if x is present at mid
+        if (arr[mid] == x) {
+            return mid; // Return the index of the target
+        }
 
-    for (int i = 0; i < n; i++) {
-        if (graph[vertex][i] == 1 && !visited[i]) {
-            DFS(i, n); // Visit the unvisited neighboring vertex
+        // If x is greater, ignore the left half
+        if (arr[mid] < x) {
+            left = mid + 1;
+        }
+        // If x is smaller, ignore the right half
+        else {
+            right = mid - 1;
         }
     }
+
+    return -1; // Target not found
 }
 
 int main() {
-    int n, edges;
+    int arr[] = {2, 3, 4, 10, 40}; // Sorted array
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int x;
 
-    printf("Enter the number of vertices: ");
-    scanf("%d", &n);
+    printf("Enter a number to search: ");
+    scanf("%d", &x);
 
-    printf("Enter the number of edges: ");
-    scanf("%d", &edges);
-
-    // Initialize the graph and visited array
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            graph[i][j] = 0;
-        }
-        visited[i] = 0;
+    int result = binarySearch(arr, n, x);
+    if (result != -1) {
+        printf("Element found at index: %d\n", result);
+    } else {
+        printf("Element not found in the array.\n");
     }
-
-    // Input edges for the graph
-    printf("Enter the edges (u v):\n");
-    for (int i = 0; i < edges; i++) {
-        int u, v;
-        scanf("%d %d", &u, &v);
-        graph[u][v] = 1;
-        graph[v][u] = 1; // For undirected graph
-    }
-
-    int startVertex;
-    printf("Enter the starting vertex: ");
-    scanf("%d", &startVertex);
-
-    // Perform DFS starting from the specified vertex
-    DFS(startVertex, n);
 
     return 0;
 }

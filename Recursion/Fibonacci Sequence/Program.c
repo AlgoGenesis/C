@@ -1,27 +1,26 @@
 #include <stdio.h>
 
-// Recursive function to calculate Fibonacci number
-int fibonacci(int n) {
-    if (n == 0) {
-        return 0; // Base case: F(0) = 0
-    } else if (n == 1) {
-        return 1; // Base case: F(1) = 1
-    } else {
-        return fibonacci(n - 1) + fibonacci(n - 2); // Recursive case
-    }
+// Recursive function
+int factorial(int n)
+{
+    return (n == 0) ? 1 : n * factorial(n - 1);
 }
 
-int main() {
+int main()
+{
     int n;
-
+    // Taking input from user
     printf("Enter a non-negative integer: ");
     scanf("%d", &n);
 
-    if (n < 0) {
-        printf("Please enter a non-negative integer.\n");
-        return 1; // Exit if input is negative
+    if (n < 0)
+    { // base case
+        printf("Factorial is not defined for negative integers.\n");
+        return 1;
     }
 
-    printf("Fibonacci number F(%d) = %d\n", n, fibonacci(n));
+    // Print the factorial
+    printf("Factorial of %d is %d\n", n, factorial(n));
+
     return 0;
 }

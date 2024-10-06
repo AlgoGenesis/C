@@ -1,66 +1,39 @@
 #include <stdio.h>
 #include <limits.h>
 
-#define V 5 // Number of vertices in the graph
+// Function to find the minimum number of scalar multiplications
+int matrixChainOrder(int p[], int n) {
+    int m[n][n];
+    int i, j, k, L, q;
 
-// Structure to represent an edge
-struct Edge {
-    int src, dest, weight;
-};
+    // Initialize the diagonal of the matrix to 0 (single matrix case)
+    for (i = 1; i < n; i++)
+        m[i][i] = 0;
 
-// Function to implement the Bellman-Ford algorithm
-void bellmanFord(struct Edge edges[], int edgeCount, int src) {
-    int distance[V];
-    
-    // Step 1: Initialize distances from src to all other vertices as infinite
-    for (int i = 0; i < V; i++)
-        distance[i] = INT_MAX;
-    distance[src] = 0;
+    // L is chain length
+    for (L = 2; L < n; L++) {
+        for (i = 1; i < n - L + 1; i++) {
+            j = i + L - 1;
+            m[i][j] = INT_MAX;
 
-    // Step 2: Relax all edges |V| - 1 times
-    for (int i = 1; i <= V - 1; i++) {
-        for (int j = 0; j < edgeCount; j++) {
-            int u = edges[j].src;
-            int v = edges[j].dest;
-            int weight = edges[j].weight;
-            if (distance[u] != INT_MAX && distance[u] + weight < distance[v]) {
-                distance[v] = distance[u] + weight;
+            for (k = i; k <= j - 1; k++) {
+                // Calculate q = cost/scalar multiplications
+                q = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j];
+                if (q < m[i][j])
+                    m[i][j] = q;
             }
         }
     }
 
-    // Step 3: Check for negative weight cycles
-    for (int j = 0; j < edgeCount; j++) {
-        int u = edges[j].src;
-        int v = edges[j].dest;
-        int weight = edges[j].weight;
-        if (distance[u] != INT_MAX && distance[u] + weight < distance[v]) {
-            printf("Graph contains negative weight cycle\n");
-            return;
-        }
-    }
-
-    // Print the distance from source to all vertices
-    printf("Vertex Distance from Source\n");
-    for (int i = 0; i < V; i++) {
-        printf("%d \t\t %d\n", i, distance[i]);
-    }
+    return m[1][n - 1]; // Return the minimum cost for multiplying all matrices
 }
 
+// Driver code
 int main() {
-    struct Edge edges[] = {
-        {0, 1, -1},
-        {0, 2, 4},
-        {1, 2, 3},
-        {1, 3, 2},
-        {1, 4, 2},
-        {3, 2, 5},
-        {3, 1, 1},
-        {4, 3, -3}
-    };
-    int edgeCount = sizeof(edges) / sizeof(edges[0]);
+    int arr[] = {40, 20, 30, 10, 30};
+    int size = sizeof(arr) / sizeof(arr[0]);
 
-    bellmanFord(edges, edgeCount, 0);
+    printf("Minimum number of multiplications is %d\n", matrixChainOrder(arr, size));
 
     return 0;
 }
