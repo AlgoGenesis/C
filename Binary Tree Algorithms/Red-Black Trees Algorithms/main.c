@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -134,21 +133,9 @@ Node* RB_insert(Node* root, int key){
     return root;
 }
 
-
-void search(Node* root, int key) {
-    while(root) {
-        if(root->key > key) {
-            root = root->left;
-        } else if(root->key < key) {
-            root = root->right;
-        } else {
-            printf("%d found.\n", key);
-            return;
-        }
-    }
-    printf("%d not found.\n", key);
+Node* RB_delete(Node* root, int key) {
+    
 }
-
 
 void inorder(Node* root){
     if(root){
@@ -158,40 +145,26 @@ void inorder(Node* root){
     }
 }
 
+void postorder(Node* root){
+    if(root){
+        postorder(root->left);
+        postorder(root->right);
+        printf("%d %c  ", root->key, root->color);
+    }
+}
 
 int main()
 {
     Node* root=NULL;
-    printf("i for insertion\nd for deletion\ns for search\no for inorder display\nq for quitting");
-    while(1) {
-        char x;
-        scanf("%c", &x);
-        if(x=='i') {
-            int n;
-            printf("Enter the key you want to insert: ");
-            scanf("%d", &n);
-            root = RB_insert(root, n);
-        } else if(x=='d') {
-            int n;
-            printf("Enter the key you want to delete: ");
-            scanf("%d", &n);
-            int flag=0;
-            //root = deletion(root, n, &flag);
-            if(flag==1) printf("Deletion of %d was successful.\n", n);
-            else    printf("Deletion of %d wasn't successful.\n", n);
-        } else if(x=='s') {
-            int n;
-            printf("Enter the key you want to look-up: ");
-            scanf("%d", &n);
-            search(root, n);
-
-        } else if(x=='o') {
-            inorder(root);
-            printf("\n");
-        } else if(x=='q') {
-            printf("Exiting...\n");
-        }
-    }
+    root=RB_insert(root, 41);
+    root=RB_insert(root, 38);
+    root=RB_insert(root, 31);
+    root=RB_insert(root, 12);
+    root=RB_insert(root, 19);
+    root=RB_insert(root, 8);
+    inorder(root);
+    printf("\n");
+    postorder(root);
 
     return 0;
 }

@@ -2,214 +2,302 @@
 #include <stdio.h>
 #include <math.h>
 
-typedef struct treeNode{
-    int key;
-    struct treeNode* left;
-    struct treeNode* right;
-    int height;
-} Node;
+// Define the structure for a tree node in the AVL tree
+typedef struct avl_node
+{
+    int value;                // The value stored in the node
+    struct avl_node *left;    // Pointer to the left child
+    struct avl_node *right;   // Pointer to the right child
+    int height;              // Height of the node for balancing
+} avl_node;
 
-Node* create(int key){
-    Node* p=(Node*)malloc(sizeof(Node));
-    p->key=key;
-    p->height=1;
-    p->left=NULL;
-    p->right=NULL;
-    return p;
+// Function to create a new tree node
+avl_node *create_node(int value)
+{
+    avl_node *new_node = (avl_node *)malloc(sizeof(avl_node)); // Allocate memory for the new node
+    new_node->value = value;          // Set the value of the node
+    new_node->height = 1;             // Initialize height to 1 (new node is a leaf)
+    new_node->left = NULL;            // Initialize left child to NULL
+    new_node->right = NULL;           // Initialize right child to NULL
+    return new_node;                  // Return the newly created node
 }
 
-int max(int a, int b){
-    return a > b ? a : b;
+// Function to get the maximum of two integers
+int max(int a, int b)
+{
+    return a > b ? a : b; // Return the greater of a or b
 }
 
-int height(Node* root){
-    if(root==NULL)  return 0;
-    else {
-        int left=height(root->left);
-        int right=height(root->right);
-        return max(left, right) + 1;
+// Function to calculate the height of a node
+int calculate_height(avl_node *node)
+{
+    if (node == NULL)
+        return 0; // If node is NULL, height is 0
+    else
+    {
+        // Recursively calculate the height of the left and right subtrees
+        int left_height = calculate_height(node->left);
+        int right_height = calculate_height(node->right);
+        return max(left_height, right_height) + 1; // Height is max of left and right heights + 1
     }
 }
 
-int get_bf(Node* root){
-    if(root==NULL)  return 0;
-    return height(root->left) - height(root->right);
+// Function to calculate the balance factor of a node
+int get_balance_factor(avl_node *node)
+{
+    if (node == NULL)
+        return 0; // Balance factor is 0 for NULL nodes
+    return calculate_height(node->left) - calculate_height(node->right); // Balance factor = left height - right height
 }
 
-Node* LL(Node* node){
-    Node* child=node->right;
-    node->right=child->left;
-    child->left=node;
-    node->height=max(height(node->right), height(node->left))+1;
-    child->height=max(height(child->right), height(child->left))+1;
-    return child;
+// Left-Left rotation (single rotation)
+avl_node *rotate_left(avl_node *node)
+{
+    avl_node *right_node = node->right; // Store the right child
+    node->right = right_node->left;      // Perform rotation
+    right_node->left = node;              // Child becomes new root
+    // Update heights of the rotated nodes
+    node->height = max(calculate_height(node->right), calculate_height(node->left)) + 1;
+    right_node->height = max(calculate_height(right_node->right), calculate_height(right_node->left)) + 1;
+    return right_node; // Return new root
 }
 
-Node* RR(Node* node){
-    Node* child=node->left;
-    node->left=child->right;
-    child->right=node;
-    node->height=max(height(node->right), height(node->left))+1;
-    child->height=max(height(child->right), height(child->left))+1;
-    return child;
+// Right-Right rotation (single rotation)
+avl_node *rotate_right(avl_node *node)
+{
+    avl_node *left_node = node->left; // Store the left child
+    node->left = left_node->right;    // Perform rotation
+    left_node->right = node;          // Child becomes new root
+    // Update heights of the rotated nodes
+    node->height = max(calculate_height(node->right), calculate_height(node->left)) + 1;
+    left_node->height = max(calculate_height(left_node->right), calculate_height(left_node->left)) + 1;
+    return left_node; // Return new root
 }
 
-Node* AVL_insert(Node* root, int key){
-        if(root==NULL){
-            return create(key);
+// Function to insert a value into the AVL tree
+avl_node *insert_value(avl_node *root, int value)
+{
+    // If the tree is empty, create a new node
+    if (root == NULL)
+    {
+        return create_node(value);
+    }
+
+    // Insert recursively in the appropriate subtree
+    if (value < root->value)
+    {
+        root->left = insert_value(root->left, value); // Insert in left subtree
+    }
+    else if (value > root->value)
+    {
+        root->right = insert_value(root->right, value); // Insert in right subtree
+    }
+    else
+    {
+        return root; // Duplicate values are not allowed
+    }
+
+    // Update the height of the ancestor node
+    root->height = max(calculate_height(root->right), calculate_height(root->left)) + 1;
+
+    // Get the balance factor of this ancestor node
+    int balance_factor = get_balance_factor(root);
+
+    // Perform rotations if the node becomes unbalanced
+    // Left heavy
+    if (balance_factor > 1)
+    {
+        // Left-Right case
+        if (get_balance_factor(root->left) < 0)
+        {
+            root->left = rotate_left(root->left); // Perform left rotation on left child
         }
-        if(key < root->key){
-            root->left=AVL_insert(root->left, key);
+        return rotate_right(root); // Perform right rotation on current node
+    }
+    // Right heavy
+    else if (balance_factor < -1)
+    {
+        // Right-Left case
+        if (get_balance_factor(root->right) > 0)
+        {
+            root->right = rotate_right(root->right); // Perform right rotation on right child
         }
-        else if(key > root->key){
-            root->right=AVL_insert(root->right, key);
-        }
-        else{
-            return root;
-        }
-        root->height=max(height(root->right), height(root->left)) + 1;
-        int bf=get_bf(root);
-        //trace a path upwards recursively
-        //left heavy
-        if(bf>1){
-            //perform rotations
-            if(get_bf(root->left)<0){
-                root->left=LL(root->left);
-            }
-            return RR(root);
-            
-        } else if(bf<-1) {
-            if(get_bf(root->right)>0){
-                root->right=RR(root->right);
-            }
-            return LL(root);
-        }
-    
-    return root;
+        return rotate_left(root); // Perform left rotation on current node
+    }
+
+    return root; // Return the (potentially) new root of the subtree
 }
 
-
-void search(Node* root, int key) {
-    while(root) {
-        if(root->key > key) {
-            root = root->left;
-        } else if(root->key < key) {
-            root = root->right;
-        } else {
-            printf("%d found.\n", key);
+// Function to search for a value in the AVL tree
+void search_value(avl_node *root, int value)
+{
+    while (root)
+    {
+        // Navigate through the tree to find the value
+        if (root->value > value)
+        {
+            root = root->left; // Go left
+        }
+        else if (root->value < value)
+        {
+            root = root->right; // Go right
+        }
+        else
+        {
+            printf("%d found.\n", value); // Value found
             return;
         }
     }
-    printf("%d not found.\n", key);
+    printf("%d not found.\n", value); // Value not found
 }
 
-
-
-Node* inorder_succ(Node* root){
-    // guarantee that root is not NIL.
-    // find min in right subtree.
-    Node* p=root->right;
-    // guarantee that p is not NIL.
-    while(p->left){
-        p=p->left;
+// Function to find the inorder successor of a given node
+avl_node *find_inorder_successor(avl_node *node)
+{
+    // Start from the right subtree
+    avl_node *successor = node->right;
+    // Keep going left to find the minimum value in the right subtree
+    while (successor->left)
+    {
+        successor = successor->left;
     }
-    return p;
-    
+    return successor; // Return the inorder successor
 }
 
-Node* AVL_delete(Node* root, int key, int* flag){
-    // base case- we have not found our required node- backtrack till root
-    if(root==NULL){
-        return root;
+// Function to delete a value from the AVL tree
+avl_node *delete_value(avl_node *root, int value, int *is_deleted)
+{
+    // Base case: we have not found the required node
+    if (root == NULL)
+    {
+        return root; // Value not found, return NULL
     }
-    if(key<root->key){
-        root->left=AVL_delete(root->left, key, flag);
+    // Navigate through the tree to find the value
+    if (value < root->value)
+    {
+        root->left = delete_value(root->left, value, is_deleted); // Go left
     }
-    else if(key>root->key){
-        root->right=AVL_delete(root->right, key, flag);
+    else if (value > root->value)
+    {
+        root->right = delete_value(root->right, value, is_deleted); // Go right
     }
-    else{
-        (*flag)=1;
-        if(root->left==NULL || root->right==NULL){
-            Node* temp=root->left ? root->left:root->right;
-            if(temp==NULL){
-                root=NULL;
-            } else{
-                root=temp;
-                free(temp);
+    else // Value found
+    {
+        (*is_deleted) = 1; // Set flag indicating successful deletion
+        // Node with only one child or no child
+        if (root->left == NULL || root->right == NULL)
+        {
+            avl_node *child = root->left ? root->left : root->right; // Get the non-null child
+            if (child == NULL)
+            {
+                root = NULL; // No children, delete the node
             }
-            
-        } else {
-            // find inorder successor of root
-            Node* y=inorder_succ(root);
-            // copy the successor's key to the root
-            root->key=y->key;
-            //delete the successor from root's right subtree
-            root->right=AVL_delete(root->right, y->key, flag);
+            else
+            {
+                root = child; // One child, replace root with child
+                free(child);  // Free the old node
+            }
         }
-        
-    }
-    if(root==NULL){
-        return root;
-    }
-    root->height=max(height(root->left), height(root->right))+1;
-    int bf=get_bf(root);
-    if(bf>1){
-            //perform rotations
-        if(get_bf(root->left)<0){
-            root->left=LL(root->left);
+        else // Node with two children
+        {
+            // Find inorder successor of root
+            avl_node *successor = find_inorder_successor(root);
+            // Copy the successor's value to the root
+            root->value = successor->value;
+            // Delete the successor from the right subtree
+            root->right = delete_value(root->right, successor->value, is_deleted);
         }
-        return RR(root);
-            
-    } else if(bf<-1) {
-        if(get_bf(root->right)>0){
-            root->right=RR(root->right);
-        }
-        return LL(root);
     }
-    return root;
+
+    // If the tree has only one node, return it
+    if (root == NULL)
+    {
+        return root; // Tree is now empty
+    }
+
+    // Update the height of the current node
+    root->height = max(calculate_height(root->left), calculate_height(root->right)) + 1;
+
+    // Check balance and perform rotations if necessary
+    int balance_factor = get_balance_factor(root);
+    if (balance_factor > 1) // Left heavy
+    {
+        // Perform rotations
+        if (get_balance_factor(root->left) < 0) // Left-Right case
+        {
+            root->left = rotate_left(root->left);
+        }
+        return rotate_right(root); // Left-Left case
+    }
+    else if (balance_factor < -1) // Right heavy
+    {
+        if (get_balance_factor(root->right) > 0) // Right-Left case
+        {
+            root->right = rotate_right(root->right);
+        }
+        return rotate_left(root); // Right-Right case
+    }
+    return root; // Return the (potentially) new root of the subtree
 }
 
-void inorder(Node* root){
-    if(root){
-        inorder(root->left);
-        printf("node val: %d | height: %d ", root->key, root->height);
-        inorder(root->right);
+// Function to perform inorder traversal of the AVL tree
+void inorder_traversal(avl_node *root)
+{
+    if (root)
+    {
+        inorder_traversal(root->left); // Traverse left subtree
+        // Print the node value and its height
+        printf("node val: %d | height: %d ", root->value, root->height);
+        inorder_traversal(root->right); // Traverse right subtree
     }
 }
 
-
+// Main function to interact with the AVL tree
 int main()
 {
-    Node* root=NULL;
-    printf("i for insertion\nd for deletion\ns for search\no for inorder display\nq for quitting");
-    while(1) {
-        char x;
-        scanf("%c", &x);
-        if(x=='i') {
-            int n;
+    avl_node *root = NULL; // Initialize the root of the AVL tree to NULL
+    printf("i for insertion\nd for deletion\ns for search\no for inorder display\nq for quitting\n");
+
+    while (1)
+    {
+        char x; 
+        scanf("%c", &x); 
+        if (x == 'i') 
+        {
+            int value;
             printf("Enter the key you want to insert: ");
-            scanf("%d", &n);
-            root = AVL_insert(root, n);
-        } else if(x=='d') {
-            int n;
+            scanf("%d", &value);
+            root = insert_value(root, value); // Insert the value
+        }
+        else if (x == 'd') 
+        {
+            int value;
             printf("Enter the key you want to delete: ");
-            scanf("%d", &n);
-            int flag=0;
-            root = AVL_delete(root, n, &flag);
-            if(flag==1) printf("Deletion of %d was successful.\n", n);
-            else    printf("Deletion of %d wasn't successful.\n", n);
-        } else if(x=='s') {
-            int n;
+            scanf("%d", &value);
+            int is_deleted = 0; // Flag to track deletion success
+            root = delete_value(root, value, &is_deleted); // Delete the value
+            if (is_deleted)
+                printf("Deletion of %d was successful.\n", value);
+            else
+                printf("Deletion of %d wasn't successful.\n", value);
+        }
+        else if (x == 's') 
+        {
+            int value;
             printf("Enter the key you want to look-up: ");
-            scanf("%d", &n);
-            search(root, n);
-        } else if(x=='o') {
-            inorder(root);
+            scanf("%d", &value);
+            search_value(root, value); // Search for the value
+        }
+        else if (x == 'o') 
+        {
+            inorder_traversal(root); // Display the inorder traversal
             printf("\n");
-        } else if(x=='q') {
+        }
+        else if (x == 'q') 
+        {
             printf("Exiting...\n");
+            break;
         }
     }
-    return 0;
+    return 0; 
 }
