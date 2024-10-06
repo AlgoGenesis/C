@@ -1,66 +1,81 @@
 #include <stdio.h>
 #include <limits.h>
+#include <stdbool.h>
+#include <stdlib.h>
 
-#define V 5 // Number of vertices in the graph
-
-// Structure to represent an edge
 struct Edge {
-    int src, dest, weight;
+    int u, v, weight;
 };
 
-// Function to implement the Bellman-Ford algorithm
-void bellmanFord(struct Edge edges[], int edgeCount, int src) {
-    int distance[V];
-    
-    // Step 1: Initialize distances from src to all other vertices as infinite
-    for (int i = 0; i < V; i++)
-        distance[i] = INT_MAX;
-    distance[src] = 0;
+const int INF = INT_MAX;
 
-    // Step 2: Relax all edges |V| - 1 times
-    for (int i = 1; i <= V - 1; i++) {
-        for (int j = 0; j < edgeCount; j++) {
-            int u = edges[j].src;
-            int v = edges[j].dest;
-            int weight = edges[j].weight;
-            if (distance[u] != INT_MAX && distance[u] + weight < distance[v]) {
-                distance[v] = distance[u] + weight;
+bool bellmanFord(int n, int source, struct Edge* edges, int m, int* dist) {
+    // Initialize distance array
+    for (int i = 0; i < n; i++) {
+        dist[i] = INF;
+    }
+    dist[source] = 0;
+
+    // Relaxation step: iterate n-1 times
+    for (int step = 1; step < n; ++step) {
+        bool updated = false;
+        for (int i = 0; i < m; ++i) {
+            int u = edges[i].u;
+            int v = edges[i].v;
+            int weight = edges[i].weight;
+            if (dist[u] != INF && dist[v] > dist[u] + weight) {
+                dist[v] = dist[u] + weight;
+                updated = true;
             }
         }
+        // Early stopping if no updates in this step
+        if (!updated) break;
     }
 
-    // Step 3: Check for negative weight cycles
-    for (int j = 0; j < edgeCount; j++) {
-        int u = edges[j].src;
-        int v = edges[j].dest;
-        int weight = edges[j].weight;
-        if (distance[u] != INT_MAX && distance[u] + weight < distance[v]) {
-            printf("Graph contains negative weight cycle\n");
-            return;
+    // Check for negative weight cycle in the nth step
+    for (int i = 0; i < m; ++i) {
+        int u = edges[i].u;
+        int v = edges[i].v;
+        int weight = edges[i].weight;
+        if (dist[u] != INF && dist[v] > dist[u] + weight) {
+            return true; // Negative cycle found
         }
     }
 
-    // Print the distance from source to all vertices
-    printf("Vertex Distance from Source\n");
-    for (int i = 0; i < V; i++) {
-        printf("%d \t\t %d\n", i, distance[i]);
-    }
+    return false; // No negative cycle
 }
 
 int main() {
-    struct Edge edges[] = {
-        {0, 1, -1},
-        {0, 2, 4},
-        {1, 2, 3},
-        {1, 3, 2},
-        {1, 4, 2},
-        {3, 2, 5},
-        {3, 1, 1},
-        {4, 3, -3}
-    };
-    int edgeCount = sizeof(edges) / sizeof(edges[0]);
+    int n, m;
+    printf("Enter number of vertices and edges: ");
+    scanf("%d %d", &n, &m);
 
-    bellmanFord(edges, edgeCount, 0);
+    struct Edge* edges = (struct Edge*)malloc(m * sizeof(struct Edge));
+    printf("Enter edges (u v weight):\n");
+    for (int i = 0; i < m; ++i) {
+        scanf("%d %d %d", &edges[i].u, &edges[i].v, &edges[i].weight);
+    }
 
+    int source;
+    printf("Enter source vertex: ");
+    scanf("%d", &source);
+
+    int* dist = (int*)malloc(n * sizeof(int));
+    if (bellmanFord(n, source, edges, m, dist)) {
+        printf("Negative cycle found\n");
+    } else {
+        printf("Shortest distances from source vertex %d are:\n", source);
+        for (int i = 0; i < n; ++i) {
+            if (dist[i] == INF) {
+                printf("INF ");
+            } else {
+                printf("%d ", dist[i]);
+            }
+        }
+        printf("\n");
+    }
+
+    free(edges);
+    free(dist);
     return 0;
 }
