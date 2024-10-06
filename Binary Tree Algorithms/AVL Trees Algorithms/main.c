@@ -2,42 +2,42 @@
 #include <stdio.h>
 #include <math.h>
 
-// Define the structure for a tree node in the AVL tree
+
 typedef struct avl_node
 {
-    int value;                // The value stored in the node
-    struct avl_node *left;    // Pointer to the left child
-    struct avl_node *right;   // Pointer to the right child
-    int height;              // Height of the node for balancing
+    int value;                
+    struct avl_node *left;    
+    struct avl_node *right;   
+    int height;              
 } avl_node;
 
-// Function to create a new tree node
+
 avl_node *create_node(int value)
 {
-    avl_node *new_node = (avl_node *)malloc(sizeof(avl_node)); // Allocate memory for the new node
-    new_node->value = value;          // Set the value of the node
-    new_node->height = 1;             // Initialize height to 1 (new node is a leaf)
-    new_node->left = NULL;            // Initialize left child to NULL
-    new_node->right = NULL;           // Initialize right child to NULL
-    return new_node;                  // Return the newly created node
+    avl_node *new_node = (avl_node *)malloc(sizeof(avl_node)); 
+    new_node->value = value;          
+    new_node->height = 1;             
+    new_node->left = NULL;           
+    new_node->right = NULL;           
+    return new_node;                 
 }
 
-// Function to get the maximum of two integers
+
 int max(int a, int b)
 {
     return a > b ? a : b; // Return the greater of a or b
 }
 
 // Function to calculate the height of a node
-int calculate_height(avl_node *node)
+int height(avl_node *node)
 {
     if (node == NULL)
         return 0; // If node is NULL, height is 0
     else
     {
         // Recursively calculate the height of the left and right subtrees
-        int left_height = calculate_height(node->left);
-        int right_height = calculate_height(node->right);
+        int left_height = height(node->left);
+        int right_height = height(node->right);
         return max(left_height, right_height) + 1; // Height is max of left and right heights + 1
     }
 }
@@ -47,7 +47,7 @@ int get_balance_factor(avl_node *node)
 {
     if (node == NULL)
         return 0; // Balance factor is 0 for NULL nodes
-    return calculate_height(node->left) - calculate_height(node->right); // Balance factor = left height - right height
+    return height(node->left) - height(node->right); // Balance factor = left height - right height
 }
 
 // Left-Left rotation (single rotation)
@@ -57,8 +57,8 @@ avl_node *rotate_left(avl_node *node)
     node->right = right_node->left;      // Perform rotation
     right_node->left = node;              // Child becomes new root
     // Update heights of the rotated nodes
-    node->height = max(calculate_height(node->right), calculate_height(node->left)) + 1;
-    right_node->height = max(calculate_height(right_node->right), calculate_height(right_node->left)) + 1;
+    node->height = max(height(node->right), height(node->left)) + 1;
+    right_node->height = max(height(right_node->right), height(right_node->left)) + 1;
     return right_node; // Return new root
 }
 
@@ -69,8 +69,8 @@ avl_node *rotate_right(avl_node *node)
     node->left = left_node->right;    // Perform rotation
     left_node->right = node;          // Child becomes new root
     // Update heights of the rotated nodes
-    node->height = max(calculate_height(node->right), calculate_height(node->left)) + 1;
-    left_node->height = max(calculate_height(left_node->right), calculate_height(left_node->left)) + 1;
+    node->height = max(height(node->right), height(node->left)) + 1;
+    left_node->height = max(height(left_node->right), height(left_node->left)) + 1;
     return left_node; // Return new root
 }
 
@@ -98,7 +98,7 @@ avl_node *insert_value(avl_node *root, int value)
     }
 
     // Update the height of the ancestor node
-    root->height = max(calculate_height(root->right), calculate_height(root->left)) + 1;
+    root->height = max(height(root->right), height(root->left)) + 1;
 
     // Get the balance factor of this ancestor node
     int balance_factor = get_balance_factor(root);
@@ -152,7 +152,7 @@ void search_value(avl_node *root, int value)
 }
 
 // Function to find the inorder successor of a given node
-avl_node *find_inorder_successor(avl_node *node)
+avl_node *successor(avl_node *node)
 {
     // Start from the right subtree
     avl_node *successor = node->right;
@@ -201,11 +201,11 @@ avl_node *delete_value(avl_node *root, int value, int *is_deleted)
         else // Node with two children
         {
             // Find inorder successor of root
-            avl_node *successor = find_inorder_successor(root);
+            avl_node *succ = successor(root);
             // Copy the successor's value to the root
-            root->value = successor->value;
+            root->value = succ->value;
             // Delete the successor from the right subtree
-            root->right = delete_value(root->right, successor->value, is_deleted);
+            root->right = delete_value(root->right, succ->value, is_deleted);
         }
     }
 
@@ -216,7 +216,7 @@ avl_node *delete_value(avl_node *root, int value, int *is_deleted)
     }
 
     // Update the height of the current node
-    root->height = max(calculate_height(root->left), calculate_height(root->right)) + 1;
+    root->height = max(height(root->left), height(root->right)) + 1;
 
     // Check balance and perform rotations if necessary
     int balance_factor = get_balance_factor(root);
@@ -241,14 +241,14 @@ avl_node *delete_value(avl_node *root, int value, int *is_deleted)
 }
 
 // Function to perform inorder traversal of the AVL tree
-void inorder_traversal(avl_node *root)
+void inorder(avl_node *root)
 {
     if (root)
     {
-        inorder_traversal(root->left); // Traverse left subtree
+        inorder(root->left); // Traverse left subtree
         // Print the node value and its height
         printf("node val: %d | height: %d ", root->value, root->height);
-        inorder_traversal(root->right); // Traverse right subtree
+        inorder(root->right); // Traverse right subtree
     }
 }
 
@@ -290,7 +290,7 @@ int main()
         }
         else if (x == 'o') 
         {
-            inorder_traversal(root); // Display the inorder traversal
+            inorder(root); // Display the inorder traversal
             printf("\n");
         }
         else if (x == 'q') 

@@ -1,23 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Define a structure for a node in the binary search tree (BST)
+
 typedef struct bst_node
 {
-    int key;                      // The key value of the node
-    struct bst_node *left;       // Pointer to the left child
-    struct bst_node *right;      // Pointer to the right child
+    int key;                      
+    struct bst_node *left;       
+    struct bst_node *right;      
 } bst_node;
 
-// Function to create a new BST node
+
 bst_node *create_node(int key)
 {
-    // Allocate memory for a new node
+
     bst_node *new_node = (bst_node *)malloc(sizeof(bst_node));
-    new_node->key = key;          // Set the key
-    new_node->left = NULL;        // Initialize left pointer to NULL
-    new_node->right = NULL;       // Initialize right pointer to NULL
-    return new_node;              // Return the new node
+    new_node->key = key;          
+    new_node->left = NULL;        
+    new_node->right = NULL;       
+    return new_node;              
 }
 
 // Function to insert a new key into the BST
