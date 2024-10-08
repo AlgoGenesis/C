@@ -1,0 +1,127 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+
+#define INF LLONG_MIN // Represents negative infinity for the purpose of comparison
+
+typedef long long data_t;
+
+// Structure representing a line y = slope * x + intercept
+typedef struct {
+    data_t slope, intercept;
+} Line;
+
+// Structure representing a node in the Li Chao Tree
+typedef struct Node {
+    Line line;
+    struct Node* leftChild;
+    struct Node* rightChild;
+} Node;
+
+// Function to create a new node with a default line
+Node* createNode() {
+    Node* node = (Node*)malloc(sizeof(Node));
+    node->line.slope = 0;
+    node->line.intercept = INF;
+    node->leftChild = NULL;
+    node->rightChild = NULL;
+    return node;
+}
+
+// Get the y-value for a given x on a specific line
+data_t get(Line line, data_t x) {
+    return line.slope * x + line.intercept;
+}
+
+// Insert the line knowingly, updating the nodes if the new line is better in parts of the current range
+void insertLineKnowingly(Node** node, data_t leftBound, data_t rightBound, Line newLine) {
+    if (*node == NULL) *node = createNode();
+    
+    // Swap the lines if the new line is better at the left bound
+    if (get((*node)->line, leftBound) < get(newLine, leftBound)) {
+        Line temp = (*node)->line;
+        (*node)->line = newLine;
+        newLine = temp;
+    }
+
+    // If the new line is worse at the right bound, we can stop
+    if (get((*node)->line, rightBound) >= get(newLine, rightBound)) return;
+
+    if (leftBound == rightBound) return;
+
+    data_t mid = (leftBound + rightBound) / 2;
+    
+    // Recursively insert into the right child if the new line is better at the midpoint
+    if (get((*node)->line, mid) > get(newLine, mid)) {
+        insertLineKnowingly(&((*node)->rightChild), mid + 1, rightBound, newLine);
+    } else {
+        Line temp = (*node)->line;
+        (*node)->line = newLine;
+        newLine = temp;
+        insertLineKnowingly(&((*node)->leftChild), leftBound, mid, newLine);
+    }
+}
+
+// Insert a line in the given range [l, r]
+void insertLine(Node** node, data_t leftBound, data_t rightBound, data_t queryLeft, data_t queryRight, Line newLine) {
+    if (rightBound < queryLeft || queryRight < leftBound || leftBound > rightBound || queryLeft > queryRight) return;
+
+    if (*node == NULL) *node = createNode();
+
+    if (queryLeft <= leftBound && rightBound <= queryRight) {
+        insertLineKnowingly(node, leftBound, rightBound, newLine);
+        return;
+    }
+
+    data_t mid = (leftBound + rightBound) / 2;
+    
+    // Recursively insert into the left and right children
+    insertLine(&((*node)->leftChild), leftBound, mid, queryLeft, queryRight, newLine);
+    insertLine(&((*node)->rightChild), mid + 1, rightBound, queryLeft, queryRight, newLine);
+}
+
+// Query the maximum value at point x
+data_t query(Node* node, data_t leftBound, data_t rightBound, data_t x) {
+    if (node == NULL) return INF;
+
+    if (leftBound == rightBound) return get(node->line, x);
+
+    data_t result = get(node->line, x);
+    data_t mid = (leftBound + rightBound) / 2;
+
+    if (x <= mid) {
+        result = fmax(result, query(node->leftChild, leftBound, mid, x));
+    } else {
+        result = fmax(result, query(node->rightChild, mid + 1, rightBound, x));
+    }
+
+    return result;
+}
+
+// Global variables for the root of the tree and the size of the tree range
+Node* root = NULL;
+data_t sz = 1000000; // Maximum size of the tree range
+
+// Wrapper function to insert a line in the range [l, r]
+void insertLineWrapper(data_t l, data_t r, Line newLine) {
+    insertLine(&root, 0, sz - 1, l, r, newLine);
+}
+
+// Wrapper function to query the maximum value at a specific point x
+data_t queryWrapper(data_t x) {
+    return query(root, 0, sz - 1, x);
+}
+
+// Example usage
+int main() {
+    Line line1 = {2, 3};  // y = 2x + 3
+    Line line2 = {-1, 10}; // y = -1x + 10
+
+    insertLineWrapper(1, 5, line1);   // Insert line1 in the range [1, 5]
+    insertLineWrapper(2, 4, line2);   // Insert line2 in the range [2, 4]
+
+    printf("Query at x = 3: %lld\n", queryWrapper(3));  // Query at x = 3
+    printf("Query at x = 1: %lld\n", queryWrapper(1));  // Query at x = 1
+
+    return 0;
+}
