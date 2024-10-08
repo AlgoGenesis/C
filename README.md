@@ -20,7 +20,6 @@ The repository is a collection of open-source implementations of a variety of al
 - **Self-checks for Correctness**: Many programs include self-checking mechanisms to ensure accurate implementations.
 
 ---
-![Untitled design (1)](https://github.com/user-attachments/assets/b9ccb114-0cfc-4fb8-a5cc-cabc4005c5cb)
 
 
 ## How to Contribute to This Project
