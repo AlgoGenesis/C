@@ -1,5 +1,5 @@
 ---
-labels: gssoc-ext
+labels: gssoc-ext, hacktoberfest-accepted, level1
 ---
 
 ## Description:
