@@ -1,0 +1,121 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_SIZE 100
+
+// Global variables for heaps and their sizes
+int minHeap[MAX_SIZE], maxHeap[MAX_SIZE];
+int minHeapSize = 0, maxHeapSize = 0;
+
+// Utility functions for min-heap
+void swap(int* a, int* b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void minHeapifyUp(int index) {
+    while (index > 0 && minHeap[(index - 1) / 2] > minHeap[index]) {
+        swap(&minHeap[index], &minHeap[(index - 1) / 2]);
+        index = (index - 1) / 2;
+    }
+}
+
+void minHeapifyDown(int index) {
+    int left = 2 * index + 1;
+    int right = 2 * index + 2;
+    int smallest = index;
+
+    if (left < minHeapSize && minHeap[left] < minHeap[smallest])
+        smallest = left;
+
+    if (right < minHeapSize && minHeap[right] < minHeap[smallest])
+        smallest = right;
+
+    if (smallest != index) {
+        swap(&minHeap[index], &minHeap[smallest]);
+        minHeapifyDown(smallest);
+    }
+}
+
+// Utility functions for max-heap
+void maxHeapifyUp(int index) {
+    while (index > 0 && maxHeap[(index - 1) / 2] < maxHeap[index]) {
+        swap(&maxHeap[index], &maxHeap[(index - 1) / 2]);
+        index = (index - 1) / 2;
+    }
+}
+
+void maxHeapifyDown(int index) {
+    int left = 2 * index + 1;
+    int right = 2 * index + 2;
+    int largest = index;
+
+    if (left < maxHeapSize && maxHeap[left] > maxHeap[largest])
+        largest = left;
+
+    if (right < maxHeapSize && maxHeap[right] > maxHeap[largest])
+        largest = right;
+
+    if (largest != index) {
+        swap(&maxHeap[index], &maxHeap[largest]);
+        maxHeapifyDown(largest);
+    }
+}
+
+// Insert an element into both heaps
+void insert(int value) {
+    // Insert into min-heap
+    minHeap[minHeapSize] = value;
+    minHeapifyUp(minHeapSize);
+    minHeapSize++;
+
+    // Insert into max-heap
+    maxHeap[maxHeapSize] = value;
+    maxHeapifyUp(maxHeapSize);
+    maxHeapSize++;
+}
+
+// Remove the minimum element from the min-heap
+int removeMin() {
+    if (minHeapSize == 0) {
+        printf("Min-Heap is empty!\n");
+        return -1;
+    }
+
+    int minValue = minHeap[0];
+    minHeap[0] = minHeap[--minHeapSize];
+    minHeapifyDown(0);
+
+    return minValue;
+}
+
+// Remove the maximum element from the max-heap
+int removeMax() {
+    if (maxHeapSize == 0) {
+        printf("Max-Heap is empty!\n");
+        return -1;
+    }
+
+    int maxValue = maxHeap[0];
+    maxHeap[0] = maxHeap[--maxHeapSize];
+    maxHeapifyDown(0);
+
+    return maxValue;
+}
+
+// Main function to demonstrate Double Priority Queue
+int main() {
+    insert(10);
+    insert(20);
+    insert(15);
+    insert(40);
+    insert(5);
+
+    printf("Max element: %d\n", removeMax());
+    printf("Min element: %d\n", removeMin());
+    printf("Max element: %d\n", removeMax());
+    printf("Min element: %d\n", removeMin());
+
+    return 0;
+}
