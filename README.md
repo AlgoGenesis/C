@@ -20,6 +20,48 @@ The repository is a collection of open-source implementations of a variety of al
 - **Self-checks for Correctness**: Many programs include self-checking mechanisms to ensure accurate implementations.
 
 ---
+![Untitled design (1)](https://github.com/user-attachments/assets/b9ccb114-0cfc-4fb8-a5cc-cabc4005c5cb)
+
+
+## How to Contribute to This Project
+We’re excited to have you contribute to the WordWise Blogging Website project! Follow these simple steps to get started:
+
+🍴 Fork the Repository
+
+Go to the repository page.
+Click the Fork button (top right) to create a copy in your GitHub account.
+💻 Clone Your Fork
+
+Open your terminal and run:
+git clone https://github.com/your-username/AlgoGenesis.git
+Replace your-username with your GitHub username.
+🌿 Create a New Branch
+
+Create a new branch for your work:
+git checkout -b your-branch-name
+🛠️ Make Your Changes
+
+Open the project files in your code editor and make your changes.
+Contact the project manager for any queries.
+✅ Test Your Changes
+
+Test your changes locally by opening the index.html file in your browser.
+💬 Commit Your Changes
+
+Once ready, commit them with a descriptive message:
+git add .
+git commit -m "Added feature X or Fixed issue Y"
+📤 Push Your Changes
+
+Push your changes to your forked repository:
+git push origin your-branch-name
+🔄 Create a Pull Request (PR)
+
+Go back to the original repository here.
+Click the Compare & pull request button, write a short description of your changes, and submit the PR.
+🔎 Review Changes
+
+The project manager will review your PR, and if approved, your request will be merged.
 
 ## Our Valuable Contributors ❤️✨
 
