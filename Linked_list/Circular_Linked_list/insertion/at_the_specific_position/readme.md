@@ -1,6 +1,6 @@
-# Singly Linked List - Insertion at a Specific Position
+# Circluar Linked List - Insertion at a Specific Position
 
-This program contains an implementation of a **Singly Linked List** with the ability to **insert a node at a specific position** within the list.
+This program contains an implementation of a **Circular Linked List** with the ability to **insert a node at a specific position** within the list.
 
 ## Node Structure
 
@@ -14,8 +14,8 @@ The `insertAtPosition` function allows you to add a new node at a specified posi
 
 1. **Memory Allocation**: Allocate memory for the new node.
 2. **Data Assignment**: Assign the provided data to the new node.
-3. **Handle Head Insertion**: If the position is 1, make the new node the head of the list.
-4. **Traverse the List**: Navigate through the list to find the node that precedes the desired insertion position.
+3. **Check for Empty list**: If the list is empty, make the new node the head of the list.
+4. **Insertion at beginning**: Navigate through the list to find the node that precedes the desired insertion position.
 5. **Check Validity**: If the specified position is beyond the current length of the list, print an error message.
 6. **Insert the Node**: Adjust the pointers to insert the new node at the desired position.
 
@@ -31,6 +31,6 @@ The complete implementation demonstrates the following functionalities:
 
 ### Example Output
 
-When running the program, the output will display the linked list after inserting nodes at various positions. 
+When running the program, the output will display the circular linked list after inserting nodes at various positions. 
 
-For example: 5 -> 30 -> 10 -> 15 -> 20 -> 25 -> NULL
+For example: 50 -> 10 -> 40 -> 20 -> 30 -> (Back to head)
