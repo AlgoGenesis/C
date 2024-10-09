@@ -12,9 +12,7 @@ The word can be constructed from letters of sequentially adjacent cells, where a
 
 ### Example 1:
 
-**Input:**
-
-```plaintext
+Input:
 board = [
   ["A","B","C","E"],
   ["S","F","C","S"],
@@ -23,11 +21,11 @@ board = [
 word = "ABCCED"
 Output: true
 
-Example 2:
+### Example 2:
 Input:
 
-plaintext
-Copy code
+
+
 board = [
   ["A","B","C","E"],
   ["S","F","C","S"],
@@ -36,19 +34,19 @@ board = [
 word = "ABCB"
 Output: false
 
-Approach
+### Approach
 This problem can be solved using backtracking. We will first search for the first character of the word in the grid. If we find it, we will recursively search for the next character in all four directions: up, down, left, and right. We will also ensure that we do not visit the same cell twice by marking cells as visited during the search.
 
-Steps:
+### Steps:
 Start by searching the first character of the word in the grid.
 Use a helper function to recursively check adjacent cells (up, down, left, right) for the next character.
 Mark the current cell as visited by changing its value temporarily to a special character (e.g., '!').
 If the word is found, return true. If not, backtrack by restoring the previous cell value and continue searching.
-Edge Cases:
+### Edge Cases:
 Ensure boundaries of the grid are respected.
 Ensure cells are not reused in the word.
 Stop the search early if the word is found.
-Complexity
+### Complexity
 Time Complexity:
 Worst Case: O(m * n * 4^k) where:
 m is the number of rows.
