@@ -15,24 +15,24 @@ At the end of the list
 After a specific node (based on its value)
 
 # Functions
-1. Insert at the Beginning
+## 1. Insert at the Beginning
 
-## Description: Inserts a node with the specified value at the beginning of the circular linked list.
-## Parameters:-
+### Description: Inserts a node with the specified value at the beginning of the circular linked list.
+### Parameters:-
 head: A pointer to the head node of the list.
 data: The value to be inserted.
 
-2. Insert at the End
+## 2. Insert at the End
 
-## Description: Inserts a node with the specified value at the end of the circular linked list.
-## Parameters:
+### Description: Inserts a node with the specified value at the end of the circular linked list.
+### Parameters:
 head: A pointer to the head node of the list.
 data: The value to be inserted.
 
-3. Insert After a Given Node
+## 3. Insert After a Given Node
 
-## Description: Inserts a node with the specified value after a given node.
-## Parameters:
+### Description: Inserts a node with the specified value after a given node.
+### Parameters:
 prevNode: The node after which the new node will be inserted.
 data: The value to be inserted.
 
