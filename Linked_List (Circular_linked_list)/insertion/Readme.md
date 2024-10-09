@@ -18,8 +18,9 @@ After a specific node (based on its value)
 ## 1. Insert at the Beginning
 
 ### Description: Inserts a node with the specified value at the beginning of the circular linked list.
-### Parameters:-
+### Parameters:
 head: A pointer to the head node of the list.
+
 data: The value to be inserted.
 
 ## 2. Insert at the End
@@ -27,6 +28,7 @@ data: The value to be inserted.
 ### Description: Inserts a node with the specified value at the end of the circular linked list.
 ### Parameters:
 head: A pointer to the head node of the list.
+
 data: The value to be inserted.
 
 ## 3. Insert After a Given Node
@@ -34,6 +36,7 @@ data: The value to be inserted.
 ### Description: Inserts a node with the specified value after a given node.
 ### Parameters:
 prevNode: The node after which the new node will be inserted.
+
 data: The value to be inserted.
 
 ## Examples
