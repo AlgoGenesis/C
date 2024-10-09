@@ -1,3 +1,0 @@
-A* Algorithm:
-Path: 0 -> 1 -> 2 -> 4
-Total cost: 40
