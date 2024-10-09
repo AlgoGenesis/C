@@ -15,25 +15,22 @@ At the end of the list
 After a specific node (based on its value)
 
 # Functions
-1. Insert at Beginning
+1. Insert at the Beginning
 
-void insertAtBeginning(struct Node** head, int data);
 ## Description: Inserts a node with the specified value at the beginning of the circular linked list.
-## Parameters:
+## Parameters:-
 head: A pointer to the head node of the list.
 data: The value to be inserted.
 
-2. Insert at End
+2. Insert at the End
 
-void insertAtEnd(struct Node** head, int data);
 ## Description: Inserts a node with the specified value at the end of the circular linked list.
 ## Parameters:
 head: A pointer to the head node of the list.
 data: The value to be inserted.
 
-3. Insert After a Given Nodec
+3. Insert After a Given Node
 
-void insertAfter(struct Node* prevNode, int data);
 ## Description: Inserts a node with the specified value after a given node.
 ## Parameters:
 prevNode: The node after which the new node will be inserted.
