@@ -19,6 +19,7 @@ This function deletes a node with the specified data key from the circular linke
 
 #### Parameters:
 head: Double pointer to the head node of the circular linked list.
+
 key: The data value of the node to be deleted.
 #### Functionality:
 If the list is empty, it displays a message: "List is empty."
@@ -34,11 +35,12 @@ deleteNode(&head, 3);
 
 Deletes the node containing the value 3 from the circular linked list.
 
-### 2.display(struct Node* head)
+### 2.Display
 This function displays the contents of the circular linked list.
 
 #### Parameters:
 head: Pointer to the head node of the circular linked list.
+
 #### Functionality:
 If the list is empty, it displays a message: "List is empty."
 
@@ -46,6 +48,7 @@ It prints each node's data in a circular fashion, showing that the last node poi
 #### Example:
 
 display(head);
+
 Displays the current nodes in the list.
 
 ## Sample Output
