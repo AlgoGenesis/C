@@ -1,37 +1,61 @@
-# Circular Linked List
+# Circular Linked Lists
 
-## Definition
-A **Circular Linked List** is a type of data structure that consists of a sequence of elements called nodes, where each node contains two parts:
+## Circular Singly Linked List
+
+### Definition
+A **Circular Singly Linked List** is a type of linked list where the last node points back to the first node, creating a circular structure. Each node contains two parts:
 
 - **Data**: The value or information stored in the node.
 - **Next Pointer**: A reference (or pointer) to the next node in the sequence.
 
-In a circular linked list:
-- The last node points back to the first node, creating a circular structure.
-- There is no null reference for the last node, allowing continuous traversal of the list without a defined end.
-
-## Structure of a Node
-Each node in a circular linked list contains:
+### Structure of a Node
+Each node in a circular singly linked list contains:
 - **Data**: Stores the actual data value.
 - **Next**: A pointer to the next node in the list.
 
-## Operations on Circular Linked List
-Some common operations performed on a circular linked list include:
+### Operations on Circular Singly Linked List
+Common operations include:
+1. **Insertion**: Adding a new node (at the beginning, end, or specific position).
+2. **Deletion**: Removing a node (by value or by position).
+3. **Traversal**: Visiting each node starting from the head and continuing until returning to the head.
+4. **Searching**: Finding a specific node by its value.
+5. **Reversal**: Reversing the order of nodes (less common).
 
-1. **Insertion**: Adding a new node to the list (at the beginning, end, or specific position).
-2. **Deletion**: Removing a node from the list (by value or by position).
-3. **Traversal**: Visiting each node in the list starting from the head and continuing until returning to the head.
-4. **Searching**: Finding a specific node in the list by its value.
-5. **Reversal**: Reversing the order of the nodes in the list (though this is less common with circular lists).
+### Advantages
+- **No Null References**: Continuous traversal without null references.
+- **Dynamic Size**: Can grow or shrink dynamically.
+- **Efficient Insertions/Deletions**: More efficient than arrays for certain operations.
 
-## Advantages of Circular Linked List
-- **No Null References**: Unlike singly linked lists, circular linked lists do not have null references for the last node, allowing for continuous traversal.
-- **Efficient for Circular Iteration**: It is especially useful for applications that require a circular traversal, such as round-robin scheduling.
-- **Dynamic Size**: Like singly linked lists, circular linked lists can grow or shrink dynamically as elements are added or removed.
-- **Efficient Insertion/Deletion**: Inserting or deleting elements from the beginning or end of the list can be done without traversing the entire list.
+### Disadvantages
+- **Complexity**: Managing circularity can complicate logic.
+- **No Backward Traversal**: Cannot traverse in reverse.
 
-## Disadvantages of Circular Linked List
-- **Complexity**: The logic for managing the circular nature can complicate implementations and lead to potential issues, such as infinite loops if not handled properly.
-- **No Backward Traversal**: Similar to singly linked lists, you cannot traverse the list in reverse without additional pointers (as in a doubly linked list).
-- **Memory Usage**: Each node requires extra memory for storing the pointer to the next node, which can be a concern in memory-constrained environments.
+---
 
+## Circular Doubly Linked List
+
+### Definition
+A **Circular Doubly Linked List** is a type of linked list where each node contains pointers to both the next and previous nodes, and the last node points back to the first node. This allows traversal in both directions.
+
+### Structure of a Node
+Each node in a circular doubly linked list contains:
+- **Data**: Stores the actual data value.
+- **Next**: A pointer to the next node in the list.
+- **Prev**: A pointer to the previous node in the list.
+
+### Operations on Circular Doubly Linked List
+Common operations include:
+1. **Insertion**: Adding a new node (at the beginning, end, or specific position).
+2. **Deletion**: Removing a node (by value or by position).
+3. **Traversal**: Visiting each node in both forward and backward directions.
+4. **Searching**: Finding a specific node by its value.
+5. **Reversal**: Reversing the order of nodes.
+
+### Advantages
+- **Bidirectional Traversal**: Can traverse in both forward and backward directions.
+- **Dynamic Size**: Can grow or shrink dynamically.
+- **Efficient Insertions/Deletions**: Efficient for operations at both ends and in the middle.
+
+### Disadvantages
+- **More Memory Usage**: Requires more memory for storing an additional pointer.
+- **Complexity**: More complex implementation compared to singly linked lists.
