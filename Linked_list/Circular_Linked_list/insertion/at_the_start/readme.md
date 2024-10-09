@@ -16,9 +16,10 @@ The `insertAtStart` function allows you to add a new node to the beginning of th
 2. **Data Assignment**: Assign the provided data to the new node.
 3. **Check for Empty List**:
    - If the linked list is empty (i.e., the head is `NULL`), make the new node the head of the list and point it's pointer to itself (circular list).
-4. **Adding new node in between head and head->next**:
-   - new node is inserted between the head and the linked list connected next to head.
-5. **Swap the new node and head's data**: Swapping the  data of new_node to the data of head of the list (the first node).
+4. **Transversing the nodes**:
+   - Transverse the nodes till temp pointer points to head again
+5. **Change the current head**: the pointer of new node points to the head of the list (the first node before insertion).
+6. **Change the 
 
 ## Display the List
 
