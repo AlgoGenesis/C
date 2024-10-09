@@ -12,10 +12,13 @@ Each node in the singly linked list consists of two components:
 
 The `insertAtStart` function allows you to add a new node to the beginning of the circular linked list. The steps involved in this process are as follows:
 
-1. **Memory Allocation**: Allocate memory for the new_node.
-2. **Data Assignment**: Assign the provided data to the new_node.
-3. **Update Next Pointer**: Make the new_node point to the current head of the list (the first node).
-4. **Update Head**: Move the head of the list to point to the new node, effectively making it the first node.
+1. **Memory Allocation**: Allocate memory for the new node.
+2. **Data Assignment**: Assign the provided data to the new node.
+3. **Check for Empty List**:
+   - If the linked list is empty (i.e., the head is `NULL`), make the new node the head of the list and point it's pointer to itself (circular list).
+4. **Adding new node in between head and head->next**:
+   - new node is inserted between the head and the linked list connected next to head.
+5. **Swap the new node and head's data**: Swapping the  data of new_node to the data of head of the list (the first node).
 
 ## Display the List
 
