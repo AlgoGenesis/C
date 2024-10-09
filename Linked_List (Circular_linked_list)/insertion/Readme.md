@@ -42,10 +42,13 @@ data: The value to be inserted.
 
 ## Examples
 Inserting Nodes
-    insertAtEnd(&head, 30);
-    insertAtBeginning(&head, 20);
-    insertAtBeginning(&head, 10);
-    insertAfter(head->next, 25);  Insert 25 after 20
+insertAtEnd(&head, 30);
+
+insertAtBeginning(&head, 20);
+    
+insertAtBeginning(&head, 10);
+
+insertAfter(head->next, 25);  Insert 25 after 20
 
 ## Output
 Circular Linked List: 10 -> 20 -> 25 -> 30 -> (Back to head)
