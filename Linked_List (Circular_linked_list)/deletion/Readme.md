@@ -22,9 +22,13 @@ head: Double pointer to the head node of the circular linked list.
 key: The data value of the node to be deleted.
 #### Functionality:
 If the list is empty, it displays a message: "List is empty."
+
 If the node to be deleted is the head and it's the only node, the list becomes empty after deletion.
+
 If the head node needs to be deleted but there are more nodes, the head is updated to the next node, and the last node's pointer is updated accordingly.
+
 For other nodes, it searches for the node with the specified key and deletes it by adjusting the pointers of the neighboring nodes.
+
 #### Example:
 deleteNode(&head, 3);
 
@@ -37,6 +41,7 @@ This function displays the contents of the circular linked list.
 head: Pointer to the head node of the circular linked list.
 #### Functionality:
 If the list is empty, it displays a message: "List is empty."
+
 It prints each node's data in a circular fashion, showing that the last node points back to the head.
 #### Example:
 
