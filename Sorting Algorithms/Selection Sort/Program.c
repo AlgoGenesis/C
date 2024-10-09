@@ -1,38 +1,48 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-void SelectionSort(int A[], int size)
-{
-    int i,j;
-	for(i=0; i<size-1; i++)
-	{
-		int Imin = i;
-		for(j=i+1; j<size; j++)
-		{
-			if( A[j] < A[Imin] )
-			{
-				Imin = j;
-			}
-		}
-		int temp = A[Imin];
-		A[Imin] = A[i];
-		A[i] = temp;
-	}
-}
+void SelectionSort(int array[], int);
+void swap(int *, int *);
 
-// Driver Code:-
 int main()
 {
-    int size=10;
-    int i;
-    int num[10];
-    printf("Enter an array of size 10:\n");
-    for(i=0; i<10; i++)
-        scanf("%d", &num[i]);
-    SelectionSort(num, 10);
-    printf("\nAfter Sorting:\n");
-    for(i=0; i<10; i++)
-        printf("%d\t",num[i]);
-    printf("\n");
-    return 0;
+	int n;
+	printf("\nEnter how many numbers you want to sort : ");
+	scanf("%d", &n);
+	int arr[n];
+	printf("\nEnter an unsorted array : ");
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%d", &arr[i]);
+	}
+	SelectionSort(arr, n);
+	printf("\nYour sorted array is : ");
+	for (int i = 0; i < n; i++)
+	{
+		printf("%d\t", arr[i]);
+	}
+	return 0;
+}
+
+void SelectionSort(int array[], int n)
+{
+	int loc;
+	for (int i = 0; i < n - 1; i++)
+	{
+		loc = i;
+		for (int j = i + 1; j < n; j++)
+		{
+			if (array[loc] > array[j])
+			{
+				loc = j;
+			}
+		}
+		swap(&array[i], &array[loc]);
+	}
+}
+void swap(int *a, int *b)
+{
+	int temp;
+	temp = *a;
+	*a = *b;
+	*b = temp;
 }
