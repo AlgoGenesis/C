@@ -11,33 +11,31 @@ Deletion: Removes specific nodes while maintaining the circular structure.
 ## How It Works
 A Circular Linked List is a variation of a linked list where the last node points back to the first node, forming a loop. The list can be traversed starting from any node, and the traversal will continue until you loop back to the starting point.
 
-### This implementation includes:
+## This implementation includes:
 
 Inserting nodes at the end or beginning of the list.
 Traversing the list and displaying its contents.
 Deleting a node from the list.
 
 ## Functions
-1. Insertion
-void insertEnd(struct Node** head, int data);
+### 1. Insertion
 
-### Description: Inserts a node with the given value (data) at the end of the list, ensuring the circular property is maintained.
-### Parameters:
+#### Description: Inserts a node with the given value (data) at the end of the list, ensuring the circular property is maintained.
+#### Parameters:
 head: Pointer to the head node of the list.
 data: The value to be inserted into the new node.
 
-2. Deletion
-void deleteNode(struct Node** head, int key);
+### 2. Deletion
 
-### Description: Deletes a node with a specific value (key) from the list, ensuring the circular structure is preserved.
-### Parameters:
+#### Description: Deletes a node with a specific value (key) from the list, ensuring the circular structure is preserved.
+#### Parameters:
 head: Pointer to the head node of the list.
 key: The value of the node to be deleted.
-3. Traversal
-void display(struct Node* head);
 
-### Description: Traverses the circular linked list, displaying all the nodes in the list starting from the head and looping back to it.
-### Parameters:
+### 3. Traversal
+
+#### Description: Traverses the circular linked list, displaying all the nodes in the list starting from the head and looping back to it.
+#### Parameters:
 head: Pointer to the head node of the list.
 
 ## OUTPUT:-
