@@ -8,7 +8,7 @@ The **Floyd-Warshall Algorithm** is a dynamic programming algorithm used to find
 
 Given:
 - A weighted directed graph with \( V \) vertices.
-- Weighted directed graph should be a \( VxV \) 2D Array.
+- Graph should be a \( VxV \) .
 
 Objective:
 - Find the shortest path between every pair of vertices in the graph.
