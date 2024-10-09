@@ -27,19 +27,7 @@ If the head node needs to be deleted but there are more nodes, the head is updat
 For other nodes, it searches for the node with the specified key and deletes it by adjusting the pointers of the neighboring nodes.
 #### Example:
 deleteNode(&head, 3);
-Deletes the node containing the value 3 from the circular linked list.
 
-### Display
-This function displays the contents of the circular linked list.
-
-#### Parameters:
-head: Pointer to the head node of the circular linked list.
-#### Functionality:
-If the list is empty, it displays a message: "List is empty."
-It prints each node's data in a circular fashion, showing that the last node points back to the head.
-#### Example:
-
-deleteNode(&head, 3);
 Deletes the node containing the value 3 from the circular linked list.
 
 ### 2.display(struct Node* head)
