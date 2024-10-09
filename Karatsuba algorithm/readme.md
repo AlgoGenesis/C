@@ -12,4 +12,3 @@ n
 2
 {\displaystyle n^{2}} single-digit products.
 Time Complexity: Time complexity of the above solution is O(nlog23) = O(n1.59).
-Time complexity of multiplication can be further improved using another Divide and Conquer algorithm, fast Fourier transform. We will soon be discussing fast Fourier transform as a separate post.
