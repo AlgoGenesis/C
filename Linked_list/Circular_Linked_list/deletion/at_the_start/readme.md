@@ -1,6 +1,6 @@
 # Circular Linked List - Deletion at the Start
 
-This program contains an implementation of a **Circular Linked List** with the ability to **delete a node at the start** of the list.
+This program contains an implementation of a **Circular Linked List** with the ability to **delete a node from the start** of the list.
 
 ## Node Structure
 
@@ -16,9 +16,9 @@ To add a new node at the end of the linked list:
 - If the list is empty, the new node becomes the head.
 - Otherwise, traverse to the last node of the list and update the last node’s next pointer to point to the new node. Then, set the new node pointer to point at head.
 
-## Deletion at the Start
+## Deletion from the Start
 
-To delete a node at the start of the linked list:
+To delete a node from the start of the linked list:
 - If the list is empty, print a message indicating that list is empty and there is nothing to delete.
 - If the list has only single element, free the node and set the head to `NULL`.
 - Store a reference to the current head node (in last and temp).
