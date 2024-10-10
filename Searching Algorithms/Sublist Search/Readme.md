@@ -32,9 +32,8 @@ Objective:
 
 ### Time Complexity
 
-The time complexity of Sublist Search is \( O(n \cdot m) \), where:
-- \( n \) is the number of nodes in the **main list**.
-- \( m \) is the number of nodes in the **pattern list**.
+The time complexity of Sublist Search is 𝑂(𝑛⋅𝑚), where:
+- 𝑛 is the number of nodes in the **main list**.
+- 𝑚 is the number of nodes in the **pattern list**.
 
 In the worst case, we have to compare the **pattern list** with every possible starting node in the **main list**, leading to this time complexity.
-
