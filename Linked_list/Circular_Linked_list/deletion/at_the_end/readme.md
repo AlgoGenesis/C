@@ -1,4 +1,4 @@
-# Circular Linked List - Deletion at the End
+# Circular Linked List - Deletion from the End
 
 This program contains an implementation of a **Circular Linked List** with the ability to **delete a node from the end** of the list.
 
@@ -60,5 +60,5 @@ To run the implementation:
 ## Key Points
 
 - **Memory Management**: Ensure to free the memory of deleted nodes to avoid memory leaks.
-- **Deletion at the Start**: This implementation supports the removal of a node from the start of the linked list.
+- **Deletion at the Start**: This implementation supports the removal of a node from the end of the linked list.
 - **Traversal**: The display function helps in visualizing the structure of the linked list at any point in time.
