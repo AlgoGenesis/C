@@ -22,7 +22,7 @@ To delete a node from the start of the linked list:
 - If the list is empty, print a message indicating that list is empty and there is nothing to delete.
 - If the list has only single element, free the node and set the head to `NULL`.
 - Store a reference to the current head node (in last and temp).
-- Transverse the list to the last node and update the last node's pointer to point to the next node of head.
+- Traverse the list to the last node and update the last node's pointer to point to the next node of head.
 - Update the head to next of current head
 - Free the memory of the old head node.
 
