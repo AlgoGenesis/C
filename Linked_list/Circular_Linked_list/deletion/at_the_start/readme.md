@@ -1,4 +1,4 @@
-# Circular Linked List - Deletion at the Start
+# Circular Linked List - Deletion from the Start
 
 This program contains an implementation of a **Circular Linked List** with the ability to **delete a node from the start** of the list.
 
