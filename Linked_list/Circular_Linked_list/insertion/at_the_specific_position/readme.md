@@ -15,13 +15,13 @@ The `insertAtPosition` function allows you to add a new node at a specified posi
 1. **Memory Allocation**: Allocate memory for the new node.
 2. **Data Assignment**: Assign the provided data to the new node.
 3. **Check for Empty list**: If the list is empty, make the new node the head of the list.
-4. **Insertion at beginning**: Navigate through the list to find the node that precedes the desired insertion position.
+4. **Insertion at the beginning**: Navigate through the list to find the node that precedes the desired insertion position.
 5. **Check Validity**: If the specified position is beyond the current length of the list, print an error message.
 6. **Insert the Node**: Adjust the pointers to insert the new node at the desired position.
 
 ## Display the List
 
-The `display` function is used to traverse the linked list and print the data of each node. It continues until the end of the list is reached (i.e., when the next pointer is `NULL`). The output format shows the data values of the nodes followed by an arrow, ending with `NULL` to indicate the end of the list.
+The `display` function traverses the linked list and prints the data of each node. It continues until the end of the list is reached (i.e., when the next pointer is `NULL`). The output format shows the data values of the nodes followed by an arrow, ending with `NULL` to indicate the end of the list.
 
 ## Full Example
 
