@@ -15,8 +15,8 @@ The `insertAtPosition` function allows you to add a new node at a specified posi
 1. **Memory Allocation**: Allocate memory for the new node.
 2. **Data Assignment**: Assign the provided data to the new node.
 3. **Check for Empty list**: If the list is empty, make the new node the head of the list.
-4. **Handle insertion at the beginning case**: Transverse through the list and sets the next of new node to head and last node's next to new node. Finally update the new node as head.
-5. **Check Validity**: Transverse the list(using current node) to the position where the node is to be placed.
+4. **Handle insertion at the beginning case**: Traverse through the list and sets the next of new node to head and last node's next to new node. Finally update the new node as head.
+5. **Check Validity**: Traverse the list(using current node) to the position where the node is to be placed.
 6. **Insert the Node**: Set the next of new node to current's next then current's next to new node.
 
 ## Display the List
