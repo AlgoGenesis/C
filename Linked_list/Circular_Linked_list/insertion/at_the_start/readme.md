@@ -17,7 +17,7 @@ The `insertAtStart` function allows you to add a new node to the beginning of th
 3. **Check for Empty List**:
    - If the linked list is empty, new node becomes the head of the list and points to itself.
 4. **Make the new node point to head**:
-   - Transverse the nodes till end (pointer of temp points to head again) and update new node's next to head (1st element).
+   - Traverse the nodes till end (pointer of temp points to head again) and update new node's next to head (1st element).
 5. **Add the new node to the list**: Update temp's next to new node.
 6. **Update the head**: Change the head to new node.
 
