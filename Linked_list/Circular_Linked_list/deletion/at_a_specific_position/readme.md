@@ -50,12 +50,13 @@ When running the program, the output shows the linked list before and after the 
 - **Deleting from the beginning...**:
 
   Deleting node at position 3...
+  
   List after deletion at position 3:
 10 -> 20 -> 40 -> (Back to head)
 
- Deleting node at position 1...
-  List after deletion at position 1:
-20 -> 40 -> (Back to head)
+     Deleting node at position 1...
+ 
+     List after deletion at position 1: 20 -> 40 -> (Back to head)
 
 
 ## How to Run
