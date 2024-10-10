@@ -23,7 +23,7 @@ The `insertAtStart` function allows you to add a new node to the beginning of th
 
 ## Display the List
 
-The `display` function traverses the linked list and prints the data of each node. It continues until the end of the list is reached (i.e., when the next pointer is points to the `head` again after printing the complete list). The output format shows the data values of the nodes followed by an arrow, ending with `Back to head` to indicate the end of the list i.e., again pointing to the start of list (head).
+The `display` function traverses the linked list and prints the data of each node. It continues until the end of the list is reached (i.e., when the next pointer points to the `head` again after printing the complete list). The output format shows the data values of the nodes followed by an arrow, ending with `Back to head` to indicate the end of the list i.e., again pointing to the start of list (head).
 
 ## Full Example
 
