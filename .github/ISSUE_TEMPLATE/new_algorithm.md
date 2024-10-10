@@ -32,10 +32,3 @@ Propose a new algorithm to be added to the repository
 ### Assignees:  
 - [ ] Contributor in GSSoC-ext
 - [ ] Want to work on it
-
----
-
-## Description:
-
-```markdown
-Please provide a detailed description of the algorithm you are proposing.
