@@ -45,7 +45,7 @@ When running the program, the output shows the linked list before and after the 
 - **Original List**:
 10 -> 20 -> 30 -> 40 -> (Back to head)
 
--**Deleting from the beginning...**:
+- **Deleting from the beginning...**:
 List after deletion from the start:
 20 -> 30 -> 40 -> (Back to head)
 
