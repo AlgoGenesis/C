@@ -7,36 +7,41 @@ struct Node {
     struct Node* next;     // Pointer to the next node in the list
 };
 
-// Function to insert a node at the beginning of the circular linked list
-void insertAtStart(struct Node **head_ref, int new_data) {
+// Function to insert a node at a specified position in the circular linked list
+void insertAtPosition(struct Node **head_ref, int new_data, int position) {
     // Allocate memory for the new node
     struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
-    
-    // Assign the data to the new node
     new_node->data = new_data;
 
     // If the list is empty, make the new node point to itself and set it as head
     if (*head_ref == NULL) {
         new_node->next = new_node;
         *head_ref = new_node;
-    } else {
-        // If the list is not empty
+        return;
+    }
+
+    // If inserting at the first position
+    if (position == 1) {
         struct Node* temp = *head_ref;
-        
-        // Traverse to the last node to maintain the circular structure
         while (temp->next != *head_ref) {
             temp = temp->next;
         }
-
-        // Make the new node point to the current head
+        // Insert the new node at the beginning
         new_node->next = *head_ref;
-
-        // Update the last node's next to point to the new node (new head)
         temp->next = new_node;
-
-        // Update the head to the new node
         *head_ref = new_node;
+        return;
     }
+
+    // For any other position, find the correct place to insert the new node
+    struct Node* current = *head_ref;
+    for (int i = 1; i < position - 1 && current->next != *head_ref; i++) {
+        current = current->next;
+    }
+
+    // Insert the new node in the list
+    new_node->next = current->next;
+    current->next = new_node;
 }
 
 // Function to display the elements of the circular linked list
@@ -58,14 +63,14 @@ int main() {
     // Initialize the head of the list as NULL (empty list)
     struct Node* head = NULL;
 
-    // Insert elements at the beginning of the list
-    insertAtStart(&head, 40);  // List: 40 -> (back to head)
-    insertAtStart(&head, 30);  // List: 30 -> 40 -> (back to head)
-    insertAtStart(&head, 20);  // List: 20 -> 30 -> 40 -> (back to head)
-    insertAtStart(&head, 10);  // List: 10 -> 20 -> 30 -> 40 -> (back to head)
+    // Insert elements at specific positions
+    insertAtPosition(&head, 40, 1);  // List: 40 -> (back to head)
+    insertAtPosition(&head, 30, 2);  // List: 40 -> 30 -> (back to head)
+    insertAtPosition(&head, 20, 2);  // List: 40 -> 20 -> 30 -> (back to head)
+    insertAtPosition(&head, 10, 1);  // List: 10 -> 40 -> 20 -> 30 -> (back to head)
 
     // Display the linked list
-    printf("Circular Linked List after insertions at the beginning:\n");
+    printf("Circular Linked List after insertions at specified positions:\n");
     display(head);
 
     return 0;
