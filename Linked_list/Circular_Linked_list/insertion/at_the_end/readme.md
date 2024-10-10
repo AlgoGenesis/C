@@ -19,7 +19,7 @@ The `insertAtEnd` function allows you to add a new node to the end of the linked
 4. **Traverse till the last node**: 
    - If the list is not empty, traverse to the last node.
 5. **Add the New Node**:
-   -Update the last node’s next pointer to point to the new node.
+   - Update the last node’s next pointer to point to the new node.
 6. **Update Next Pointer**: Set the new node's next pointer to `head`.
    
 ## Display the List
