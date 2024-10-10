@@ -24,7 +24,7 @@ The `insertAtEnd` function allows you to add a new node to the end of the linked
    
 ## Display the List
 
-The `display` function is used to traverse the linked list and print the data of each node. It continues until the end of the list is reached (i.e., when the next pointer is `head` again). The output format shows the data values of the nodes followed by an arrow, ending with `NULL` to indicate the end of the list.
+The `display` function is used to traverse the linked list and print the data of each node. It continues until the end of the list is reached (i.e., when the next pointer is `head` again). The output format shows the data values of the nodes followed by an arrow, ending with `back to head` to indicate the end of the list.
 
 ## Full Example
 
