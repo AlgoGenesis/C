@@ -24,7 +24,7 @@ To delete a node from a specific position of the linked list:
 - If the first element is to be deleted
     -If list has only one element, free the node and set the head to `NULL`.
     -Otherwise, traverse
-- Traverse the list to the last node and update the last node's pointer to point to the next node of head.
+- Traverse the list to the last node and update the last node's next pointer to the next node of head.
 - Update the head to next of current head
 - Free the memory of the old head node.
 
@@ -49,8 +49,13 @@ When running the program, the output shows the linked list before and after the 
 
 - **Deleting from the beginning...**:
 
-  List after deletion from a specific position:
-20 -> 30 -> 40 -> (Back to head)
+  Deleting node at position 3...
+  List after deletion at position 3:
+10 -> 20 -> 40 -> (Back to head)
+
+ Deleting node at position 1...
+  List after deletion at position 1:
+20 -> 40 -> (Back to head)
 
 
 ## How to Run
