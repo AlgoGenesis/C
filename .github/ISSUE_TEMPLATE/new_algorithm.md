@@ -1,3 +1,11 @@
+---
+name: "Add New Algorithm"
+about: Propose a new algorithm to be added to the repository
+title: "[NEW ALGORITHM] "
+labels: new algorithm, gssoc-ext, hacktoberfest, level1
+assignees: ''
+---
+
 ## Issue will be closed if:
 
 > 1) You mention more than one algorithm. You can create a separate issue for each algorithm once the current one is completed.  
@@ -22,7 +30,8 @@ Propose a new algorithm to be added to the repository
 ---
 
 ### Assignees:  
-Leave blank unless assigning yourself
+- [ ] Contributor in GSSoC-ext
+- [ ] Want to work on it
 
 ---
 
@@ -30,9 +39,3 @@ Leave blank unless assigning yourself
 
 ```markdown
 Please provide a detailed description of the algorithm you are proposing.
-## Checklist:
-- [ ] Contributor in GSSoC-ext
-- [ ] I want to work on this issue
-
-## Additional Information:
-Provide any other relevant information or resources regarding the algorithm.
