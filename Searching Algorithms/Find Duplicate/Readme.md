@@ -16,7 +16,7 @@ Input: {2, 10,10, 100, 2, 10, 81,2,81,2}
 Output: 2 10 81
 
 
-Input: {50, 8, 1, 8, 100, 1, 50, 1}
+Input: {50, 8, 1, 8, 10, 1, 50,6, 1}
 Output: 50 8 1
 
 ## Time and Space Complexity
