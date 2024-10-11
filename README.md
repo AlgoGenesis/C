@@ -1,4 +1,4 @@
- 🚀 AlgoGenesis: Mastering C Algorithms 📘<br>
+<h1>  🚀 AlgoGenesis: Mastering C Algorithms 📘</h1><br>
 Welcome to AlgoGenesis, your one-stop collection of algorithms implemented in C! 🌟 Whether you're a beginner or an experienced developer, this repository is here to help you master algorithmic challenges efficiently and confidently.
 
 ---
