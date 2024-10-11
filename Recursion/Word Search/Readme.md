@@ -1,9 +1,9 @@
-##Word Search in 2D Grid
+## Word Search in 2D Grid
 
-###Problem Description
+### Problem Description
 The problem gives us a 2D grid of characters called board and a string word. Our task is to determine if word exists in the grid. A word is said to exist in the grid if it can be formed by tracing a path through adjacent cells. Cells are considered adjacent if they are directly above, below, to the left, or to the right of one another (diagonal adjacency is not allowed). As we trace the path to form the word, we cannot use the same cell more than once. The goal is to return true if the word can be constructed from the grid following these rules, otherwise, we return false.
 
-Does the problem have small constraints?
+## Does the problem have small constraints?
 
 Yes: The constraints are small enough that a solution involving exploration of all possible paths (like checking every potential start position for the word) could be feasible.
 
@@ -21,7 +21,7 @@ Termination Conditions: The DFS should terminate when we have successfully found
 
 Writing this logic into a recursive function dfs, we're able to perform a thorough search from each starting cell until we find a path that matches word. By using the function any(), we execute our DFS starting from each cell and return true as soon as at least one call to dfs returns true.
 
-##Solution Approach
+## Solution Approach
 The solution utilizes a recursive Depth-First Search (DFS) algorithm to navigate through the board. Let's walk through the key components of the implementation.
 
 Base Case
@@ -93,5 +93,5 @@ Since we've found at least one path that spells "SEE", we can stop the search an
 ##Time Complexity
 The time complexity of the problem is O(m*n*k) where m is the number of rows, n is the number of columns and k is the length of the word
 
- ##Space Complexity 
+ ## Space Complexity 
  Auxiliary space:O(k), recursion stack space 
