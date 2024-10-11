@@ -3,35 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Binary Exponentiation</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-        }
-        h2, h3 {
-            color: #333;
-        }
-        pre {
-            background-color: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        code {
-            display: block;
-            white-space: pre;
-            font-family: monospace;
-            line-height: 1.5;
-        }
-        ul {
-            margin: 10px 0;
-        }
-        ol {
-            margin: 10px 0;
-        }
-    </style>
 </head>
 <body>
 
@@ -109,7 +80,7 @@ END FUNCTION
 
 <h2><strong>Time Complexity</strong></h2>
 
-<p>The time complexity of binary exponentiation is \( O(\log n) \), where \( n \) is the exponent. This is due to the halving of the exponent at each step.</p>
+<p>The time complexity of binary exponentiation is <b>O(log n)</b>, where <b>n</b> is the exponent. This is due to the halving of the exponent at each step.</p>
 
 <h2><strong>Conclusion</strong></h2>
 
