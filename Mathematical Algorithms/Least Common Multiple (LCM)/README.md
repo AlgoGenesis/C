@@ -90,8 +90,7 @@ Time complexity can vary based on the number of prime factors but is generally s
 This method can have a time complexity of up to **O(a×b)** in the worst case, especially if the two numbers are coprime (meaning they share no common factors other than 1). The number of iterations could be quite large, leading to inefficiency.<br><br>
 3.**Using GCD Formula:**
 The time complexity for finding LCM using the GCD formula is primarily determined by the GCD calculation, which is **O(log(min(a,b)))**. Thus, this method is highly efficient and optimal for both small and large integers.
-
-## program output
+## Input and Output
 ![image](https://github.com/user-attachments/assets/f249526a-cf0f-4926-816c-c36525d81617)
 
 
