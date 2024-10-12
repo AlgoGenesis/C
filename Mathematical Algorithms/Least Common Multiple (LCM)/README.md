@@ -91,6 +91,8 @@ This method can have a time complexity of up to **O(a×b)** in the worst case, e
 3.**Using GCD Formula:**
 The time complexity for finding LCM using the GCD formula is primarily determined by the GCD calculation, which is **O(log(min(a,b)))**. Thus, this method is highly efficient and optimal for both small and large integers.
 
+## program output
+![image](https://github.com/user-attachments/assets/f249526a-cf0f-4926-816c-c36525d81617)
 
 
 
