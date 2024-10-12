@@ -46,12 +46,34 @@ The relationship between LCM and GCD can be expressed as:<br>
                           LCM(a, b) = |a × b| / GCD(a, b)
 
  ## Pseudocode for Optimized LCM Calculation
- 
-FUNCTION GCD(a, b) WHILE b ≠ 0 DO temp = b b = a MOD b a = temp END WHILE RETURN a END FUNCTION
+ ```bash
+FUNCTION GCD(a, b)
+    WHILE b ≠ 0 DO
+        temp = b
+        b = a MOD b
+        a = temp
+    END WHILE
+    RETURN a
+END FUNCTION
 
-FUNCTION LCM(a, b) RETURN \frac{|a \times b|}{GCD(a, b)} END FUNCTION
+FUNCTION LCM(a, b)
+    RETURN (|a × b|) / GCD(a, b)
+END FUNCTION
 
-// Example usage SET num1 = 12 SET num2 = 18 SET result = LCM(num1, num2) PRINT "The LCM of", num1, "and", num2, "is", result
+// Example usage
+SET num1 = 12
+SET num2 = 18
+SET result = LCM(num1, num2)
+PRINT "The LCM of", num1, "and", num2, "is", result
+```
+## Explanation of Pseudocode
+
+### GCD Function:
+Uses the Euclidean algorithm to efficiently calculate the GCD of two numbers by repeatedly replacing a with b and b with a MOD b until b is zero.
+### LCM Function:
+Calculates the LCM using the formula 
+### Example Usage:
+Demonstrates how to call the LCM function with numbers (12 and 18) and prints the result. 
 
 ## ​Advantages of Using GCD to Find LCM:
 1.**Efficiency:**
