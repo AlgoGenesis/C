@@ -37,6 +37,7 @@ If the value is larger, go to the right subtree.
 
 
 When an appropriate null position is found, insert the new node there.
+
 2. Deletion
 
 To delete a node in a binary search tree:

@@ -99,6 +99,44 @@ void levelOrderTraversal(struct Node* root) {
     }
 }
 
+// Find minimum node - used in delete node algorithm
+struct Node* findMin(struct Node* root) {
+    while (root->left != NULL) {
+        root = root->left;
+    }
+    return root;
+}
+
+// Delete Node Algorithm in binary tree
+struct Node* deleteNode(struct Node* root, int key) {
+    if (root == NULL) {
+        return root; 
+    }
+
+    if (key < root->data) {
+        root->left = deleteNode(root->left, key);
+    } else if (key > root->data) {
+        root->right = deleteNode(root->right, key);
+    } else {
+        // Node with only one child or no child
+        if (root->left == NULL) {
+            struct Node* temp = root->right;
+            free(root);
+            return temp;
+        } else if (root->right == NULL) {
+            struct Node* temp = root->left;
+            free(root);
+            return temp;
+        }
+
+        // Node with two children: Get the in-order successor (smallest in the right subtree)
+        struct Node* temp = findMin(root->right);
+        root->data = temp->data; // Copy the in-order successor's content to this node
+        root->right = deleteNode(root->right, temp->data); // Delete the in-order successor
+    }
+    return root;
+}
+
 
 int main() {
     struct Node* root = NULL; 
@@ -135,6 +173,14 @@ int main() {
 
     printf("\nLevel-order Traversal (Breadth-First):\n");
     levelOrderTraversal(root);
+    printf("NULL\n");
+
+    // Deleting a node
+    root = deleteNode(root, 70);
+    printf("\nAfter deleting node 70:\n");
+
+    printf("\nIn-order Traversal (Depth-First):\n");
+    inorderTraversal(root);
     printf("NULL\n");
 
     return 0;
