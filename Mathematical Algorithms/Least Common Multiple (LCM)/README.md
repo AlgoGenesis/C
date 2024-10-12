@@ -44,7 +44,15 @@ Formula:
 The relationship between LCM and GCD can be expressed as:<br>
 
                           LCM(a, b) = |a × b| / GCD(a, b)
-                          
+
+ ## Pseudocode for Optimized LCM Calculation
+ 
+FUNCTION GCD(a, b) WHILE b ≠ 0 DO temp = b b = a MOD b a = temp END WHILE RETURN a END FUNCTION
+
+FUNCTION LCM(a, b) RETURN \frac{|a \times b|}{GCD(a, b)} END FUNCTION
+
+// Example usage SET num1 = 12 SET num2 = 18 SET result = LCM(num1, num2) PRINT "The LCM of", num1, "and", num2, "is", result
+
 ## ​Advantages of Using GCD to Find LCM:
 1.**Efficiency:**
 - The GCD can be computed efficiently using the Euclidean algorithm, which has a time
