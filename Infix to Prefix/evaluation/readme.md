@@ -71,8 +71,9 @@ The evaluation proceeds as:
 - now comes +
   - pop 3 and 12 from the stack and perform `12 + 3 = 15`
 -push 15 onto the stack.
-after complete processing is done
--pop 15 from the stack 
+
+After complete processing is done
+- pop 15 from the stack 
 
 The final result is 15.
 
