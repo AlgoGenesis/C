@@ -3,6 +3,7 @@
 
 #define TABLE_SIZE 10
 #define EMPTY -1
+#define DELETED -2
 
 // Hash table declaration
 int hashTable[TABLE_SIZE];
@@ -27,11 +28,10 @@ int secondaryHash(int key) {
 void insert(int key) {
     int index = primaryHash(key);
     int stepSize = secondaryHash(key);
-    
     int originalIndex = index;
 
     // Check for collision and resolve using double hashing
-    while (hashTable[index] != EMPTY) {
+    while (hashTable[index] != EMPTY && hashTable[index] != DELETED) {
         index = (index + stepSize) % TABLE_SIZE; // Probe to the next index using step size
         if (index == originalIndex) { // Loop around; hash table is full
             printf("Hash table is full, cannot insert key: %d\n", key);
@@ -39,15 +39,15 @@ void insert(int key) {
         }
     }
 
-    // Insert key when an empty slot is found
+    // Insert key when an empty or deleted slot is found
     hashTable[index] = key;
+    printf("Key %d inserted at index %d.\n", key, index);
 }
 
 // Search for a key in the hash table
 int search(int key) {
     int index = primaryHash(key);
     int stepSize = secondaryHash(key);
-
     int originalIndex = index;
     
     // Traverse the hash table using the probing sequence
@@ -63,13 +63,13 @@ int search(int key) {
     return -1; // Key not found
 }
 
-// Delete a key from the hash table
+// Delete a key from the hash table (mark it as deleted)
 void deleteKey(int key) {
     int index = search(key);
     if (index == -1) {
         printf("Key %d not found in the hash table.\n", key);
     } else {
-        hashTable[index] = EMPTY;
+        hashTable[index] = DELETED;
         printf("Key %d deleted from the hash table.\n", key);
     }
 }
@@ -80,6 +80,8 @@ void display() {
     for (int i = 0; i < TABLE_SIZE; i++) {
         if (hashTable[i] == EMPTY) {
             printf("Slot %d: EMPTY\n", i);
+        } else if (hashTable[i] == DELETED) {
+            printf("Slot %d: DELETED\n", i);
         } else {
             printf("Slot %d: %d\n", i, hashTable[i]);
         }
