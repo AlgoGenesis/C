@@ -60,7 +60,6 @@ int findMaximumXOR(int *nums, int n) {
 
     return maxResult; // Return the maximum XOR found
 }
-
 int main() {
     int nums[] = {3, 10, 5, 25, 2, 8};
     int n = sizeof(nums) / sizeof(nums[0]);

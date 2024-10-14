@@ -31,7 +31,6 @@ int nums[] = {3, 10, 5, 25, 2, 8};
 ```
 Maximum XOR: 28
 ```
-
 ### Key Points:
 - The Binary Trie allows efficient lookup and insertion of binary representations of numbers.
 - The XOR is maximized by selecting the opposite bit at each level, ensuring we get the maximum possible value.
