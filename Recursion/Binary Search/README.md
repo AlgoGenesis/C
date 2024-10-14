@@ -7,10 +7,12 @@ Binary Search is an efficient algorithm for finding an item from a sorted list o
 ### Problem Definition
 
 Given:
+
 - A sorted array of integers.
 - An integer value to search for in the array.
 
 Objective:
+
 - Find the index of the target value in the array using recursive binary search.
 
 ### Algorithm Overview
