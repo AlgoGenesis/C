@@ -63,7 +63,7 @@ void printPath(int *parent_src, int *parent_dest, int intersect_node, int src, i
         path[path_len++] = node;
         node = parent_src[node];
     }
-    
+
     // Print the path from source to intersection
     for (int i = path_len - 1; i >= 0; i--)
         printf("%d ", path[i]);
@@ -161,3 +161,4 @@ int main() {
 
     return 0;
 }
+// Bidirectional Search // 
