@@ -31,14 +31,14 @@ char decrypt_char(char ch, int a, int b) {
     return ch;
 }
 
-// Function to encrypt an entire message
+// Function to encrypt a message
 void encrypt(char *message, int a, int b) {
     for (int i = 0; message[i] != '\0'; i++) {
         message[i] = encrypt_char(toupper(message[i]), a, b);
     }
 }
 
-// Function to decrypt the message
+// Function to decrypt a message
 void decrypt(char *message, int a, int b) {
     for (int i = 0; message[i] != '\0'; i++) {
         message[i] = decrypt_char(toupper(message[i]), a, b);
