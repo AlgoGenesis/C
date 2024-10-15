@@ -1,0 +1,32 @@
+INTRODUCTION: Huffman coding is a lossless compression algorithm that reduces data size by assigning shorter binary codes to more frequent characters and longer codes to less frequent ones.
+
+STEPS: 
+Frequency Calculation: Count the frequency of each character.
+Build Huffman Tree: Construct a binary tree based on character frequencies.
+Generate Codes: Assign binary codes to each character.
+Encoding: Replace characters with their binary codes.
+
+EXAMPLE:
+For the string "hello":
+Frequencies: h=1, e=1, l=2, o=1
+Generated codes: h=00, e=01, l=10, o=11
+Encoded: "hello" → 0001101110
+
+SAMPLE INPUT/OUTPUT OF THE CODE:
+
+Enter number of characters: 4
+Enter the characters:
+Character 1: a
+Character 2: b
+Character 3: c
+Character 4: d
+Enter the frequencies:
+Frequency of a: 9
+Frequency of b: 12
+Frequency of c: 10
+Frequency of d: 5
+Huffman Codes:
+d: 00
+a: 01
+c: 10
+b: 11
