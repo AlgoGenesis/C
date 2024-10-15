@@ -43,30 +43,30 @@ Both left and right subtrees must also be binary search trees.
 ### Algorithm Review::
 
 1. Insertion
-Insertion in a BST follows these steps:
-
-Start at the root and compare the element with the current node.
-If the element is smaller, move to the left subtree; if larger, move to the right subtree.
-Repeat this process until you find an empty spot and insert the new node.
+  Insertion in a BST follows these steps:
+  
+  Start at the root and compare the element with the current node.
+  If the element is smaller, move to the left subtree; if larger, move to the right subtree.
+  Repeat this process until you find an empty spot and insert the new node.
 
 2. Deletion
-Deletion in a BST is more complex as there are three scenarios to consider:
-
-Node to delete has no children: Simply remove the node.
-Node to delete has one child: Replace the node with its child.
-Node to delete has two children: Replace the node with its in-order successor (smallest node in the right subtree) or in-order predecessor (largest node in the left subtree).
+  Deletion in a BST is more complex as there are three scenarios to consider:
+  
+  Node to delete has no children: Simply remove the node.
+  Node to delete has one child: Replace the node with its child.
+  Node to delete has two children: Replace the node with its in-order successor (smallest node in the right subtree) or in-order predecessor (largest node in the left subtree).
 
 3. Searching
-Searching in a BST is done by comparing the target value with the current node:
-
-If the target value equals the node’s value, return the node.
-If the target value is smaller, recursively search the left subtree.
-If larger, recursively search the right subtree.
+  Searching in a BST is done by comparing the target value with the current node:
+  
+  If the target value equals the node’s value, return the node.
+  If the target value is smaller, recursively search the left subtree.
+  If larger, recursively search the right subtree.
 
 4. Tree Traversals
-In-order traversal (LNR): Traverse the left subtree, visit the root, and then traverse the right subtree. This returns elements in sorted order.
-Pre-order traversal (NLR): Visit the root first, then traverse the left subtree, followed by the right subtree.
-Post-order traversal (LRN): Traverse the left subtree, then the right subtree, and finally visit the root.
+  In-order traversal (LNR): Traverse the left subtree, visit the root, and then traverse the right subtree. This returns elements in sorted order.
+  Pre-order traversal (NLR): Visit the root first, then traverse the left subtree, followed by the right subtree.
+  Post-order traversal (LRN): Traverse the left subtree, then the right subtree, and finally visit the root.
 
 ***************************************************************
 
@@ -90,11 +90,13 @@ Worst case (unbalanced): O(n)
 Average case: O(log n)
 Worst case (unbalanced): O(n)
 
-### 5 Search:
+### 
+5 Search:
 Average case: O(log n)
 Worst case (unbalanced): O(n)
 
-### 6 Traversal:
+### 
+6 Traversal:
 All traversals (in-order, pre-order, post-order): O(n)
 
 
