@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include <math.h>
+
+void insertionSort(int arr[], int start, int end) {
+    for (int i = start + 1; i <= end; i++) {
+        int key = arr[i];
+        int j = i - 1;
+        while (j >= start && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}
+
+void merge(int arr[], int temp[], int left, int mid, int right) {
+    int i = left, j = mid + 1, k = left;
+    while (i <= mid && j <= right) {
+        if (arr[i] <= arr[j]) {
+            temp[k++] = arr[i++];
+        } else {
+            temp[k++] = arr[j++];
+        }
+    }
+    while (i <= mid) temp[k++] = arr[i++];
+    while (j <= right) temp[k++] = arr[j++];
+    for (i = left; i <= right; i++) {
+        arr[i] = temp[i];
+    }
+}
+
+void blockSort(int arr[], int n) {
+    if (n <= 1) return; // Handle edge cases of empty or single-element arrays
+    int blockSize = sqrt(n);
+    int temp[n];
+
+    for (int i = 0; i < n; i += blockSize) {
+        int end = (i + blockSize - 1 < n) ? (i + blockSize - 1) : (n - 1);
+        insertionSort(arr, i, end);
+    }
+
+    for (int size = blockSize; size < n; size *= 2) {
+        for (int left = 0; left < n - size; left += 2 * size) {
+            int mid = left + size - 1;
+            int right = (left + 2 * size - 1 < n) ? (left + 2 * size - 1) : (n - 1);
+            merge(arr, temp, left, mid, right);
+        }
+    }
+}
+
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int n;
+
+    // Input size of the array with validation
+    printf("Enter the number of elements: ");
+    if (scanf("%d", &n) != 1 || n < 0) {
+        printf("Invalid input. Array size must be a non-negative integer.\n");
+        return 1;
+    }
+
+    if (n == 0) {
+        printf("Array is empty. Nothing to sort.\n");
+        return 0;
+    }
+
+    int arr[n];
+
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < n; i++) {
+        if (scanf("%d", &arr[i]) != 1) {
+            printf("Invalid input. Array elements must be integers.\n");
+            return 1;
+        }
+    }
+
+    printf("Original array:\n");
+    printArray(arr, n);
+
+    blockSort(arr, n);
+
+    printf("Sorted array:\n");
+    printArray(arr, n);
+
+    return 0;
+}
