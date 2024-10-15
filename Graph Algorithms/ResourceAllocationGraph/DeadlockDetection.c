@@ -5,7 +5,7 @@ struct Resource;
 
 typedef struct Process {
     int id;
-    struct Resource *allocated_resource;
+    struct Resource *requested_resource;
     struct Process *next_process; 
     int visited; 
 } Process;
@@ -29,8 +29,8 @@ void Cleanup();
 int main() {
     Allocate(1, 1);
     Allocate(2, 2);
-    Request(1, 2);
-    // Request(2, 1); 
+    // Request(1, 2);
+    Request(2, 1); 
 
     Cleanup();
     return 0;
@@ -69,7 +69,7 @@ void Allocate(int R, int P) {
     }
 
     ProcessNode->id = P;
-    ProcessNode->allocated_resource = NULL; 
+    ProcessNode->requested_resource = NULL; 
     ProcessNode->next_process = NULL;
     ProcessNode->visited = 0;
 
@@ -113,8 +113,8 @@ int DFS(Process *process) {
 
     process->visited = 1;
 
-    if (process->allocated_resource != NULL) {
-        Process *allocated_process = process->allocated_resource->allocated_process;
+    if (process->requested_resource != NULL) {
+        Process *allocated_process = process->requested_resource->allocated_process;
         if (DFS(allocated_process)) {
             return 1; // Cycle detected
         }
@@ -173,12 +173,12 @@ void Request(int P, int R) {
         return;
     }
 
-    if (ProcessNode->allocated_resource != NULL) {
+    if (ProcessNode->requested_resource != NULL) {
         printf("Process %d already has a resource request.\n", P);
         return;
     }
 
-    ProcessNode->allocated_resource = ResourceNode;    
+    ProcessNode->requested_resource = ResourceNode;    
     printf("\nRequest: Process P%d --> Resource R%d\n", P, R);
 
     // Check for cycles after making the request
