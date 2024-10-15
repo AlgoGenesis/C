@@ -30,7 +30,6 @@ The goal is to implement a Binary Search Tree that supports:
 
 Example:
 For inserting the value 8 into this tree:
-
     10
    /  \
   5    20
@@ -52,7 +51,7 @@ Worst case (unbalanced): O(n)
 Example:
 For deleting the value 10 from this tree:
 
-    10
+   10
    /  \
   5    20
 
@@ -75,7 +74,7 @@ Worst case (unbalanced): O(n)
 Example:
 For searching 5 in this tree:
 
-     10
+   10
    /  \
   5    20
 
