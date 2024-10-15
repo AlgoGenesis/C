@@ -30,9 +30,9 @@ The goal is to implement a Binary Search Tree that supports:
 
 Example:
 For inserting the value 8 into this tree:
-    10
-   /  \
-  5    20
+      10
+   /      \
+  5        20
 We compare 8 with 10 (less, so move left), then 8 with 5 (greater, so move right), and insert 8 as the right child of 5.
 
 Time Complexity:
@@ -52,8 +52,8 @@ Example:
 For deleting the value 10 from this tree:
 
    10
-   /  \
-  5    20
+   /      \
+  5        20
 
 If 10 is deleted, the in-order successor (smallest node in the right subtree) is 20, so 20 will replace 10 as the new root.
 
@@ -74,9 +74,9 @@ Worst case (unbalanced): O(n)
 Example:
 For searching 5 in this tree:
 
-   10
-   /  \
-  5    20
+  10
+   /      \
+  5        20
 
 We compare 5 with 10 (less, move left), then we find 5.
 
