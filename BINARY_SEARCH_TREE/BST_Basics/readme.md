@@ -40,7 +40,7 @@ Both left and right subtrees must also be binary search trees.
 
 ***************************************************************
 
-Algorithm Review::
+### Algorithm Review::
 
 1. Insertion
 Insertion in a BST follows these steps:
@@ -74,15 +74,19 @@ Post-order traversal (LRN): Traverse the left subtree, then the right subtree, a
 
 The time complexity of operations in a BST depends on the height of the tree:
 
-### 1 Balanced BST: The height is O(log n), and all operations (insertion, deletion, search) are O(log n).
+###
+1 Balanced BST: The height is O(log n), and all operations (insertion, deletion, search) are O(log n).
 
-### 2 Unbalanced BST: In the worst case (when the tree becomes a linked list), the height can become O(n), and the operations will take O(n) time.
+### 
+2 Unbalanced BST: In the worst case (when the tree becomes a linked list), the height can become O(n), and the operations will take O(n) time.
 
-### 3 Insertion:
+### 
+3 Insertion:
 Average case: O(log n)
 Worst case (unbalanced): O(n)
 
-### 4 Deletion:
+### 
+4 Deletion:
 Average case: O(log n)
 Worst case (unbalanced): O(n)
 
