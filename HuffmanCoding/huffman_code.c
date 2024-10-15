@@ -5,21 +5,21 @@
 #define HEIGHT_MAX 100
 
 // A Huffman tree node
-struct MinHeapNode {
+struct MinHeapNode{
     char data;
     unsigned freq;
     struct MinHeapNode *left, *right;
 };
 
 // A Min Heap
-struct MinHeap {
+struct MinHeap{
     unsigned size;
     unsigned capacity;
     struct MinHeapNode** array;
 };
 
 // Function to create a new min heap node
-struct MinHeapNode* newNode(char data, unsigned freq) {
+struct MinHeapNode* newNode(char data, unsigned freq){
     struct MinHeapNode* temp = (struct MinHeapNode*)malloc(sizeof(struct MinHeapNode));
     temp->left = temp->right = NULL;
     temp->data = data;
@@ -44,7 +44,7 @@ void swapMinHeapNode(struct MinHeapNode** a, struct MinHeapNode** b) {
 }
 
 // Standard minHeapify function
-void minHeapify(struct MinHeap* minHeap, int idx) {
+void minHeapify(struct MinHeap* minHeap, int idx){
     int smallest = idx;
     int left = 2 * idx + 1;
     int right = 2 * idx + 2;

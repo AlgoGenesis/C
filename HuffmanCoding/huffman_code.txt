@@ -1,4 +1,5 @@
-INTRODUCTION: Huffman coding is a lossless compression algorithm that reduces data size by assigning shorter binary codes to more frequent characters and longer codes to less frequent ones.
+INTRODUCTION: 
+Huffman coding is a lossless compression algorithm that reduces data size by assigning shorter binary codes to more frequent characters and longer codes to less frequent ones.
 
 STEPS: 
 Frequency Calculation: Count the frequency of each character.
