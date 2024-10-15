@@ -1,8 +1,8 @@
-# Binary Insertion Sort
+# Cocktail Sort
 
 ## Description
 
-Binary Insertion Sort is an efficient sorting algorithm that improves upon the traditional Insertion Sort by using binary search to find the correct position to insert each element. This reduces the number of comparisons required when sorting, making it particularly effective for larger datasets or partially sorted arrays.
+Cocktail Sort is a variation of Bubble Sort that sorts the array in both directions, making it more efficient than standard Bubble Sort. It traverses the list in a bidirectional manner, moving large elements to the end and small elements to the start during each iteration. This approach minimizes the number of unnecessary comparisons and improves performance on nearly sorted arrays.
 
 ## Problem Definition
 
@@ -10,21 +10,19 @@ Given:
 - An array `arr` of `n` elements.
 
 Objectives:
-- Sort the array in ascending order using the Binary Insertion Sort algorithm.
+- Sort the array in ascending order using the Cocktail Sort algorithm.
 
 ## Algorithm Overview
 
-1. **Iteration**: Start with the second element in the array (the first element is already considered sorted).
-2. **Binary Search**: For each element, use binary search to find the correct position in the sorted portion of the array (from the start of the array to the current element).
-3. **Shift Elements**: Shift all elements after the found position one position to the right to make space for the current element.
-4. **Insert**: Insert the current element at its correct position.
-5. **Repeat**: Repeat the process until the entire array is sorted.
+1. **Forward Pass**: Traverse the array from left to right, comparing adjacent elements. If two elements are in the wrong order, swap them. Move the largest element to its correct position at the end of the array.
+2. **Backward Pass**: Traverse the array from right to left, comparing adjacent elements. If two elements are in the wrong order, swap them. Move the smallest element to its correct position at the beginning of the array.
+3. **Repeat**: Repeat the forward and backward passes until no swaps are made during a complete traversal, indicating that the array is sorted.
 
 ## Time Complexity
 
-The time complexity of Binary Insertion Sort is:
+The time complexity of Cocktail Sort is O(n²) in the worst case, similar to Bubble Sort. However, it can perform better on nearly sorted arrays.
 
-- Best case: O(n log n) (when the array is already sorted)
+- Best case: O(n) (when the array is nearly sorted)
 - Average case: O(n²)
 - Worst case: O(n²)
 
@@ -33,18 +31,18 @@ Where:
 
 ## Space Complexity
 
-The space complexity is O(1) because it only uses a constant amount of additional space for temporary variables during the sorting process.
+The space complexity is O(1) because it only uses a constant amount of additional space for temporary variables during the swapping process.
 
 ## Advantages
 
-- Reduces the number of comparisons compared to traditional Insertion Sort by using binary search.
-- Efficient for small or partially sorted datasets.
+- More efficient than Bubble Sort for nearly sorted data due to its bidirectional nature.
+- Simple and easy to implement.
 
 ## Disadvantages
 
-- The worst-case performance remains O(n²), making it less efficient for large, unsorted datasets compared to more advanced sorting algorithms like Merge Sort or Quick Sort.
-- More complex to implement than simple sorting algorithms like Bubble Sort or standard Insertion Sort.
+- The worst-case performance is still O(n²), which makes it inefficient for large datasets.
+- It is not a stable sort (equal elements may not preserve their original order).
 
 ## Conclusion
 
-Binary Insertion Sort is a simple yet effective sorting algorithm that enhances the Insertion Sort by utilizing binary search. While it may not be the best choice for large datasets, it can perform well with small or partially sorted arrays where its efficiency shines.
+Cocktail Sort is a simple and intuitive sorting algorithm that improves upon Bubble Sort by making use of bidirectional traversal. While not suitable for very large datasets, it can be a good choice for smaller or nearly sorted arrays where it performs quite efficiently.
