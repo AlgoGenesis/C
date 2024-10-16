@@ -24,7 +24,9 @@ Choose the initial coefficients for the independent variables, which will be opt
 
 ### 2. Sigmoid Function
 Calculate the predicted probability using the sigmoid function:
-\[ P(y=1 | X) = \frac{1}{1 + e^{-z}} \]
+
+$P(y=1 \mid X) = \frac{1}{1 + e^{-z}}$
+
 where \( z \) is the linear combination of input features and their coefficients.
 
 ### 3. Cost Function
