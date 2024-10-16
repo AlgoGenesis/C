@@ -1,0 +1,56 @@
+ #include <stdio.h>
+#include <limits.h>
+
+#define N 4  // Number of cities
+#define INF INT_MAX
+
+int dp[1 << N][N]; // DP table (1 << N) possible visited sets
+int dist[N][N] = { // Distance matrix
+    {0, 10, 15, 20},
+    {10, 0, 35, 25},
+    {15, 35, 0, 30},
+    {20, 25, 30, 0}
+};
+
+// Function to solve TSP using dynamic programming with bitmasking
+int tsp(int mask, int pos) {
+    // If all cities have been visited, return to the starting city
+    if (mask == (1 << N) - 1) {
+        return dist[pos][0]; // Return the distance from the last city back to the starting city
+    }
+
+    // If already calculated, return the stored value
+    if (dp[mask][pos] != -1) {
+        return dp[mask][pos];
+    }
+
+    int ans = INF;
+
+    // Try to visit every other city
+    for (int city = 0; city < N; city++) {
+        // Check if the city has already been visited
+        if ((mask & (1 << city)) == 0) {
+            // Calculate the cost of visiting this city
+            int newAns = dist[pos][city] + tsp(mask | (1 << city), city);
+            ans = (newAns < ans) ? newAns : ans; // Update the minimum cost
+        }
+    }
+
+    return dp[mask][pos] = ans;
+}
+
+int main() {
+    // Initialize dp array with -1 (indicating uncalculated states)
+    for (int i = 0; i < (1 << N); i++) {
+        for (int j = 0; j < N; j++) {
+            dp[i][j] = -1;
+        }
+    }
+
+    // Start the TSP from the first city (0) with only this city visited
+    int result = tsp(1, 0);
+
+    printf("The minimum cost of the Travelling Salesman Problem is: %d\n", result);
+
+    return 0;
+}
