@@ -155,8 +155,8 @@ void runTests() {
         {"(A-B)*(C+D)", " *-AB+CD", "Test 5"} // Test case 5
     };
 
-    printf("%-10s | %-10s   | %-10s | %-10s | %-10s\n", "Test No", "Infix", "Expected", "Actual", "Status");
-    printf("------------------------------------------------------------\n");
+    printf("%-10s | %-15s | %-15s | %-15s | %-10s\n", "Test No", "Infix", "Expected", "Actual", "Status");
+    printf("-----------------------------------------------------------------------------\n");
     
     for (int i = 0; i < 5; i++) {
         char prefix[MAX];
@@ -166,7 +166,7 @@ void runTests() {
         const char* status = (strcmp(prefix, testCases[i][1]) == 0) ? "Pass" : "Fail";
         
         // Printing test results
-        printf("%-10s | %-10s  | %-10s | %-10s | %-10s\n", testCases[i][2], testCases[i][0], testCases[i][1], prefix, status);
+        printf("%-10s | %-15s | %-15s | %-15s | %-10s\n", testCases[i][2], testCases[i][0], testCases[i][1], prefix, status);
     }
 }
 
