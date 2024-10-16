@@ -6,7 +6,7 @@ labels: gssoc-ext, hacktoberfest-accepted, level1
 Provide a brief description of what your pull request does.
 
 ## Issue Number:
-Mention the issue number related to this pull request (e.g., #123).
+(Mandatory) Mention the issue number related to this pull request (e.g., #123). **Pull requests without an issue number will not be reviewed and rejected immediately**
 
 ## Checklist:
 - [ ] Are you assigned for this?

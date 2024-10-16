@@ -23,7 +23,25 @@ Objective:
    - If `arr[mid]` is greater than `x`, move the `right` pointer to `mid - 1`.
 3. If the target value is not found, return `-1`.
 
-### Time Complexity
+### Recursive Binary Search
 
-The time complexity of the binary search algorithm is `O(log n)`, making it much more efficient than linear search for large datasets.
+The recursive version of binary search follows the same logic but uses a recursive function to handle the subarray search instead of an iterative loop. 
 
+1. The function accepts the array, the target `x`, and two boundary indices (`left` and `right`).
+2. A base case is added to terminate the recursion when the `left` index exceeds `right`.
+3. In each recursive step:
+   - The middle index `mid` is calculated.
+   - The function checks if `arr[mid]` matches the target `x`. If so, it returns `mid`.
+   - If `x` is smaller, the function calls itself on the left subarray (`left` to `mid - 1`).
+   - If `x` is larger, the function calls itself on the right subarray (`mid + 1` to `right`).
+
+#### Time Complexity
+- Like the iterative approach, the time complexity remains `O(log n)` because each step halves the search space.
+
+#### Space Complexity
+- **Recursive binary search** has a space complexity of **O(log n)** due to the additional memory consumed by recursive function calls (stack space).
+- In contrast, the **iterative binary search** has a constant space complexity of **O(1)**.
+
+### Time Complexity For Both Functions 
+
+The time complexity of both recursive and iterative binary search algorithms is `O(log n)`, making them much more efficient than linear search for large datasets.

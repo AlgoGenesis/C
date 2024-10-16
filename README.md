@@ -24,7 +24,6 @@ The repository is a collection of open-source implementations of a variety of al
 ## Our Valuable Contributors ❤️✨
 
 [![Contributors](https://contrib.rocks/image?repo=AlgoGenesis/C)](https://github.com/AlgoGenesis/C/graphs/contributors)
-## 📜 License
 
 ---
 
