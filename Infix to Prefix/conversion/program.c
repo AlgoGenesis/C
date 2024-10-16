@@ -146,6 +146,7 @@ void infixToPrefix(const char* infix, char* prefix) {
     reverse(prefix);
 }
 
+/*
 int main() {
     char infix[MAX], prefix[MAX];
 
@@ -158,3 +159,4 @@ int main() {
 
     return 0;
 }
+*/
