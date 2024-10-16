@@ -1,0 +1,103 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define TABLE_SIZE 10
+
+// Node for the linked list to handle collisions
+struct Node {
+    int key;
+    int value;
+    struct Node* next;
+};
+
+// Hash Table with separate chaining
+struct Node* hashTable[TABLE_SIZE];
+
+// Function to create a new node
+struct Node* createNode(int key, int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->key = key;
+    newNode->value = value;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Hash function (simple modulo operation)
+int hashFunction(int key) {
+    return key % TABLE_SIZE;
+}
+
+// Insert key-value pair into the hash table
+void insert(int key, int value) {
+    int index = hashFunction(key);
+    struct Node* newNode = createNode(key, value);
+
+    // If no collision
+    if (hashTable[index] == NULL) {
+        hashTable[index] = newNode;
+    } else {
+        // Collision occurred, add to the linked list (separate chaining)
+        struct Node* temp = hashTable[index];
+        while (temp->next != NULL) {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+    }
+    printf("Inserted (key: %d, value: %d) at index %d\n", key, value, index);
+}
+
+// Search for a key in the hash table
+int search(int key) {
+    int index = hashFunction(key);
+    struct Node* temp = hashTable[index];
+
+    while (temp != NULL) {
+        if (temp->key == key) {
+            return temp->value;
+        }
+        temp = temp->next;
+    }
+    return -1; // Key not found
+}
+
+// Display the hash table
+void displayHashTable() {
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        printf("Index %d: ", i);
+        struct Node* temp = hashTable[i];
+        while (temp != NULL) {
+            printf("(key: %d, value: %d) -> ", temp->key, temp->value);
+            temp = temp->next;
+        }
+        printf("NULL\n");
+    }
+}
+
+int main() {
+    // Initialize hash table
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        hashTable[i] = NULL;
+    }
+
+    // Inserting some key-value pairs
+    insert(1, 10);
+    insert(2, 20);
+    insert(12, 120);  // Will cause a collision with key 2
+    insert(22, 220);  // Will cause a collision with key 12 and 2
+    insert(15, 150);
+    
+    // Display the hash table
+    displayHashTable();
+
+    // Search for a key
+    int key = 12;
+    int value = search(key);
+    if (value != -1) {
+        printf("\nValue for key %d is %d\n", key, value);
+    } else {
+        printf("\nKey %d not found in the hash table\n", key);
+    }
+
+    return 0;
+}
