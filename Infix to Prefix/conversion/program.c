@@ -25,16 +25,16 @@ int isFull(struct Stack* stack) {
 
 void push(struct Stack* stack, char c) {
     if (isFull(stack)) {
-        fprintf(stderr, "Stack overflow: Unable to push '%c'\n", c); 
-        exit(EXIT_FAILURE); 
+        fprintf(stderr, "Stack overflow: Unable to push '%c'\n", c);
+        exit(EXIT_FAILURE);
     }
     stack->items[++stack->top] = c;
 }
 
 char pop(struct Stack* stack) {
     if (isEmpty(stack)) {
-        fprintf(stderr, "Stack underflow: No elements to pop\n"); 
-        exit(EXIT_FAILURE); 
+        fprintf(stderr, "Stack underflow: No elements to pop\n");
+        exit(EXIT_FAILURE);
     }
     return stack->items[stack->top--];
 }
@@ -112,7 +112,6 @@ void infixToPrefix(const char* infix, char* prefix) {
 
     int i = 0, j = 0;
     while (reversed[i] != '\0') {
-
         if (isalnum(reversed[i])) {
             prefix[j++] = reversed[i];
         }
@@ -124,7 +123,7 @@ void infixToPrefix(const char* infix, char* prefix) {
                 prefix[j++] = pop(&stack);
             }
             if (!isEmpty(&stack)) {
-                pop(&stack); 
+                pop(&stack);
             }
         }
         // If the character is an operator
@@ -142,21 +141,30 @@ void infixToPrefix(const char* infix, char* prefix) {
     while (!isEmpty(&stack)) {
         prefix[j++] = pop(&stack);
     }
-    prefix[j] = '\0'; 
+    prefix[j] = '\0';
     reverse(prefix);
 }
 
-/*
+// Function to run test cases
+void runTests() {
+    const char* testCases[][2] = {
+        {"A+B", " +AB"},
+        {"(A-B)/C", " /-ABC"},
+        {"A*B+C", " +*ABC"},
+        {"A+(B*C)", " +A*BC"},
+        {"(A-B)*(C+D)", " *-AB+CD"}
+    };
+
+    for (int i = 0; i < 5; i++) {
+        char prefix[MAX];
+        infixToPrefix(testCases[i][0], prefix);
+        printf("Infix: %s -> Prefix: %s\n", testCases[i][0], prefix);
+    }
+}
+
 int main() {
-    char infix[MAX], prefix[MAX];
-
-    printf("Enter infix expression: ");
-    scanf("%s", infix);
-
-    infixToPrefix(infix, prefix);
-
-    printf("Prefix: %s\n", prefix);
+    // Running test cases
+    runTests();
 
     return 0;
 }
-*/
