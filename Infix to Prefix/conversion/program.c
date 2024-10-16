@@ -147,18 +147,26 @@ void infixToPrefix(const char* infix, char* prefix) {
 
 // Function to run test cases
 void runTests() {
-    const char* testCases[][2] = {
-        {"A+B", " +AB"},
-        {"(A-B)/C", " /-ABC"},
-        {"A*B+C", " +*ABC"},
-        {"A+(B*C)", " +A*BC"},
-        {"(A-B)*(C+D)", " *-AB+CD"}
+    const char* testCases[][3] = {
+        {"A+B", " +AB", "Test 1"},        // Test case 1
+        {"(A-B)/C", " /-ABC", "Test 2"},   // Test case 2
+        {"A*B+C", " +*ABC", "Test 3"},     // Test case 3
+        {"A+(B*C)", " +A*BC", "Test 4"},   // Test case 4
+        {"(A-B)*(C+D)", " *-AB+CD", "Test 5"} // Test case 5
     };
 
+    printf("%-10s | %-10s   | %-10s | %-10s | %-10s\n", "Test No", "Infix", "Expected", "Actual", "Status");
+    printf("------------------------------------------------------------\n");
+    
     for (int i = 0; i < 5; i++) {
         char prefix[MAX];
         infixToPrefix(testCases[i][0], prefix);
-        printf("Infix: %s -> Prefix: %s\n", testCases[i][0], prefix);
+        
+        // Checking status
+        const char* status = (strcmp(prefix, testCases[i][1]) == 0) ? "Pass" : "Fail";
+        
+        // Printing test results
+        printf("%-10s | %-10s  | %-10s | %-10s | %-10s\n", testCases[i][2], testCases[i][0], testCases[i][1], prefix, status);
     }
 }
 
