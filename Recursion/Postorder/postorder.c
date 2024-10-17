@@ -48,7 +48,7 @@ int main()
   struct node *root = NULL;
   int n, value;
 
-  printf("Enter the number of nodes: ");
+  printf("Enter the number of the  nodes: ");
   scanf("%d", &n);
 
   for (int i = 0; i < n; i++)

@@ -108,7 +108,6 @@ The tree may be empty (i.e., the root is `null` or `None`).
 
 The values of the nodes can be of any comparable data type (e.g., integers, strings)
 
-
 ### **Limitations:**
 
 * **Recursive Depth Limitation** :
@@ -119,7 +118,7 @@ The values of the nodes can be of any comparable data type (e.g., integers, stri
 * **No Immediate Node Processing** :
 * Unlike other traversal methods (like Preorder), Postorder Traversal processes the root node after its children. This might not be suitable for applications that require immediate processing of the root node.
 * **Limited Use Cases** :
-* Postorder Traversal is specifically useful for scenarios where child nodes must be processed before their parent nodes (e.g., deleting trees, evaluating expressions). It may not be suitable for other applications, such as those requiring breadth-first or level-order traversal.
+* Postorder Traversal is specifically useful for scenarios where child nodes must be processed before their parent nodes (e.g., deleting trees, evaluating expressions). It may not be suitable for other applications, such as those requiring breadth-first or the  level-order traversal.
 * **Iterative Implementation Complexity** :
 * While the recursive approach is straightforward, implementing Postorder Traversal iteratively (using stacks) can be more complex and less intuitive. This could lead to increased development time and potential for errors.
 * **Memory Consumption** :
