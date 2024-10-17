@@ -16,9 +16,8 @@ Operators (`+`, `-`, `*`, `/`, `^`)
 Parentheses to override operator precedence.
 
 The output of converting a prefix expression to an infix expression should follow these guidelines-
-   
-    - Correct Placement of Operators: Operators should be placed between their respective operands.
-    - Use of Parentheses: Parentheses should be used where necessary to maintain the order of operations based on operator precedence and associativity.
+   1. Correct Placement of Operators: Operators should be placed between their respective operands.
+   2. Use of Parentheses: Parentheses should be used where necessary to maintain the order of operations based on operator precedence and associativity.
 
 
 ## Algorithm
