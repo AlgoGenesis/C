@@ -15,27 +15,28 @@ Operators (`+`, `-`, `*`, `/`, `^`)
 
 Parentheses to override operator precedence.
 
-The output of converting a prefix expression to an infix expression should follow these guidelines:
-
+The output of converting a prefix expression to an infix expression should follow these guidelines-
+   
     - Correct Placement of Operators: Operators should be placed between their respective operands.
     - Use of Parentheses: Parentheses should be used where necessary to maintain the order of operations based on operator precedence and associativity.
 
+
 ## Algorithm
 
-    - **Initialize a Stack**: Create an empty stack to hold the operands.
+**Initialize a Stack**: Create an empty stack to hold the operands.
 
-    - **Read the Prefix Expression**: Start reading the prefix expression from right to left.
+**Read the Prefix Expression**: Start reading the prefix expression from right to left.
 
-    - **Process Each Symbol**:
-        - If the Symbol is an Operand:
+**Process Each Symbol**:
+    - If the Symbol is an Operand:
             - Push it onto the stack.
-        - If the Symbol is an Operator:
+    - If the Symbol is an Operator:
             - Pop the top two operands from the stack. Let’s call them operand1 and operand2.
             - Create a new string in the format: (operand1 operator operand2).
             - Push this new string back onto the stack.
-    - **Repeat**: Continue this process until you have processed all symbols in the prefix expression.
+**Repeat**: Continue this process until you have processed all symbols in the prefix expression.
 
-    - **Final Result**: The stack will contain one element at the end, which is the required infix expression.
+**Final Result**: The stack will contain one element at the end, which is the required infix expression.
 
 
 ## Example
