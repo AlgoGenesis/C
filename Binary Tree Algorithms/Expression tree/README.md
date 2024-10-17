@@ -30,7 +30,7 @@ Operators are applied to the left and right operands, and the final result is pr
 Enter postfix expression: 53+82-*
 
 ### Output: 
-Infix expression: ((5+3)*(8-2))
+Infix expression: ((5+3)*(8-2))                        
 Evaluated value: 48
 
 ---
