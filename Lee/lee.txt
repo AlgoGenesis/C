@@ -1,0 +1,19 @@
+Lee's Algorithm:
+Lee's algorithm is a specialized application of breadth-first search (BFS) algorithm, tailored for grid-based environments. It operates by exploring all possible paths from a starting point and expanding outward in all four directions (up, down, left, right) until the destination is reached. This algorithm is primarily used in maze-solving, robotics pathfinding, and printed circuit board routing.
+
+Need for Lee's Algorithm:
+Shortest Path Guarantee: Lee's algorithm guarantees finding the shortest path in an unweighted grid, unlike depth-first search (DFS) which doesn't guarantee the shortest path.
+Handling Obstacles: It efficiently handles grids with obstacles by marking inaccessible areas.
+Simplicity: The algorithm is simple to implement and works well for grids where movement is restricted to adjacent cells.
+
+Sample Input/Output:
+Enter the dimensions of the grid (rows and columns): 5 5
+Enter the grid (0 for free cell, 1 for obstacle):
+0 0 0 0 0
+0 1 1 1 0
+0 0 0 1 0
+0 1 0 0 0
+0 0 0 0 0
+Enter the start point (x y): 0 0
+Enter the end point (x y): 4 4
+Shortest path found with distance: 8
