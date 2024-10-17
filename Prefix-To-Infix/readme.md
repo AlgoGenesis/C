@@ -33,6 +33,7 @@ The output of converting a prefix expression to an infix expression should follo
             - Pop the top two operands from the stack. Let’s call them operand1 and operand2.
             - Create a new string in the format: (operand1 operator operand2).
             - Push this new string back onto the stack.
+            
 **Repeat**: Continue this process until you have processed all symbols in the prefix expression.
 
 **Final Result**: The stack will contain one element at the end, which is the required infix expression.
