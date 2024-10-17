@@ -1,4 +1,4 @@
-# tim sot
+# 👉🏻Tim sort Algorithm
 
 # Description
 
@@ -31,5 +31,5 @@ Worst Case:
 ted array. Suitable for small dataset.
 
 
-##Space Complexity 
+## Space Complexity 
 O(n)-TimSort requires additional space for temporary arrays used during the merge process. Specifically, it creates two temporary arrays (LeftArray and RightArray) for merging, each proportional to the size of the runs being merged.
