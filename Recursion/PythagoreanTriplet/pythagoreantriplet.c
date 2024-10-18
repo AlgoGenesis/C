@@ -24,7 +24,7 @@ void findPythagoreanTriplets(int a, int b, int n)
 int main()
 {
   int n;
-  printf("Enter a number (n) to find Pythagorean triplets up to n: ");
+  printf("Enter a number n to find Pythagorean triplets up to n: ");
   scanf("%d", &n);
 
   printf("Finding Pythagorean triplets up to %d:\n", n);

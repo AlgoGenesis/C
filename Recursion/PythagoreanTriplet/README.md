@@ -42,7 +42,7 @@ In this context, the program uses recursion to explore potential values for **a*
 #### Advantages:
 
 - **Educational Tool** : This program serves as a practical example of recursion in programming, illustrating how to handle combinatorial problems.
-- **Efficiency** : Although it uses recursion, it maintains clarity and simplicity, making it suitable for beginners in programming and mathematics.
+- **Efficiency** : Although it uses recursion, it maintains clarity and simplicity, making it suitable for beginners in the  programming and mathematics.
 
 #### Potential Enhancements:
 
