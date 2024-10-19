@@ -99,6 +99,14 @@ void levelOrderTraversal(struct Node* root) {
     }
 }
 
+//Method to free tree
+void freeTree(struct Node* root) {
+    if (root != NULL) {
+        freeTree(root->left);
+        freeTree(root->right);
+        free(root);
+    }
+}
 
 int main() {
     struct Node* root = NULL; 
@@ -136,6 +144,8 @@ int main() {
     printf("\nLevel-order Traversal (Breadth-First):\n");
     levelOrderTraversal(root);
     printf("NULL\n");
+
+    freeTree(root);
 
     return 0;
 }
