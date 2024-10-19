@@ -56,6 +56,88 @@ void insertAtEnd(struct Node** head, int data) {
     }
 }
 
+// Function to insert a node at a specific position
+void insertAtPosition(struct Node** head, int data, int position) {
+    struct Node* newNode = createNode(data);
+
+    if (*head == NULL) {
+        *head = newNode; // If the list is empty, set head to the new node
+        return;
+    }
+
+    struct Node* current = *head;
+
+    // Traverse to the position
+    for (int i = 1; i < position - 1 && current->next != *head; i++) {
+        current = current->next;
+    }
+
+    // Insert the new node at the desired position
+    struct Node* nextNode = current->next;
+
+    current->next = newNode;
+    newNode->prev = current;
+    newNode->next = nextNode;
+    nextNode->prev = newNode;
+
+    // If inserting at the head position
+    if (position == 1) {
+        *head = newNode;
+    }
+}
+
+//Function to delete the node at beginning
+void deleteAtBeginning(struct Node** head) {
+    if (*head == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    struct Node* tail = (*head)->prev;
+    struct Node* temp = *head;
+
+    // If there's only one node
+    if ((*head)->next == *head) {
+        free(*head);
+        *head = NULL;
+    } else {
+        struct Node* nextNode = (*head)->next;
+
+        // Update tail and nextNode's pointers
+        tail->next = nextNode;
+        nextNode->prev = tail;
+
+        // Free the old head and update the new head
+        free(temp);
+        *head = nextNode;
+    }
+}
+
+//Function to delete a node at end
+void deleteAtEnd(struct Node** head) {
+    if (*head == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    struct Node* tail = (*head)->prev;
+
+    // If there's only one node
+    if ((*head)->next == *head) {
+        free(*head);
+        *head = NULL;
+    } else {
+        struct Node* prevNode = tail->prev;
+
+        // Update the previous node's next pointer and head's prev pointer
+        prevNode->next = *head;
+        (*head)->prev = prevNode;
+
+        // Free the tail
+        free(tail);
+    }
+}
+
 // Function to delete a node by value
 void deleteNode(struct Node** head, int value) {
     if (*head == NULL) {
@@ -132,6 +214,7 @@ int main() {
     // Inserting nodes
     insertAtBeginning(&head, 10);
     insertAtBeginning(&head, 20);
+    insertAtBeginning(&head, 50);
     insertAtEnd(&head, 30);
     insertAtEnd(&head, 40);
 
@@ -141,6 +224,16 @@ int main() {
     printf("List after insertion (backward): ");
     traverseBackward(head);
 
+    // Insert at position
+    insertAtPosition(&head, 25, 3);  // Insert 25 at position 3
+    printf("List after inserting 25 at position 3 (forward): ");
+    traverseForward(head);
+
+    //Delete at beginning
+    deleteAtBeginning(&head);
+    printf("List after deleting node at beginning (forward): ");
+    traverseForward(head);
+    
     // Deleting a node
     deleteNode(&head, 20);
     printf("List after deleting 20 (forward): ");
@@ -150,8 +243,13 @@ int main() {
     printf("List after deleting 40 (forward): ");
     traverseForward(head);
 
+    // Deleting the last node
+    deleteAtEnd(&head);
+    printf("List after deleting node at end (forward): ");
+    traverseForward(head);
+
     // Deleting a non-existent node
-    deleteNode(&head, 50);
+    deleteNode(&head, 60);
 
     return 0;
 }
