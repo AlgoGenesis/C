@@ -1,29 +1,40 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 // Function to print Pascal's Triangle
 void printPascal(int n) {
-    int arr[n][n];
+    int *arr = (int*)malloc(n * sizeof(int));
 
-    // Iterate through every line and print the corresponding elements
+    // Iterate through every line
     for (int line = 0; line < n; line++) {
-        // Initialize the first and last elements of every row to 1
-        for (int i = 0; i <= line; i++) {
-            // The first and last values in every row are 1
-            if (i == 0 || i == line)
-                arr[line][i] = 1;
-            else // Other values are the sum of the two values above it
-                arr[line][i] = arr[line - 1][i - 1] + arr[line - 1][i];
+        // Initialize the last element in this row
+        arr[line] = 1;
+        
+        // Update and print elements in reverse order to avoid overwriting
+        for (int i = line - 1; i > 0; i--) {
+            arr[i] = arr[i] + arr[i - 1];
+        }
 
-            printf("%d ", arr[line][i]);
+        // Print the current row
+        for (int i = 0; i <= line; i++) {
+            printf("%d ", arr[i]);
         }
         printf("\n");
     }
+
+    free(arr);
 }
 
 int main() {
     int n;
     printf("Enter the number of rows for Pascal's Triangle: ");
     scanf("%d", &n);
+
+    if (n <= 0) {
+        printf("Number of rows must be positive.\n");
+        return 1;
+    }
+
     printPascal(n);
     return 0;
 }
