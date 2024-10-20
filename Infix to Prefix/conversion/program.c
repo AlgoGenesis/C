@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+
 #define MAX 100
+#define OPERATOR_PRECEDENCE 3 // Added constant for operator precedence
 
 struct Stack {
     int top;
@@ -23,23 +25,23 @@ int isFull(struct Stack* stack) {
 
 void push(struct Stack* stack, char c) {
     if (isFull(stack)) {
-        printf("Stack overflow\n");
-        return;
+        fprintf(stderr, "Stack overflow: Unable to push '%c'\n", c); 
+        exit(EXIT_FAILURE); 
     }
     stack->items[++stack->top] = c;
 }
 
 char pop(struct Stack* stack) {
     if (isEmpty(stack)) {
-        printf("Stack underflow\n");
-        return -1;
+        fprintf(stderr, "Stack underflow: No elements to pop\n"); 
+        exit(EXIT_FAILURE); 
     }
     return stack->items[stack->top--];
 }
 
 char peek(struct Stack* stack) {
     if (isEmpty(stack)) {
-        return -1;
+        return '\0';
     }
     return stack->items[stack->top];
 }
@@ -48,11 +50,16 @@ int isOperator(char c) {
     return (c == '+' || c == '-' || c == '*' || c == '/' || c == '^');
 }
 
+// Changed to switch-case for better clarity
 int precedence(char c) {
-    if (c == '^') return 3;
-    if (c == '*' || c == '/') return 2;
-    if (c == '+' || c == '-') return 1;
-    return 0;
+    switch (c) {
+        case '^': return 3;
+        case '*':
+        case '/': return 2;
+        case '+':
+        case '-': return 1;
+        default: return 0;
+    }
 }
 
 // Function to reverse a string
@@ -67,8 +74,7 @@ void reverse(char* exp) {
 
 // Function to swap '(' with ')' and vice versa
 void swapBrackets(char* exp) {
-    int length = strlen(exp);
-    for (int i = 0; i < length; i++) {
+    for (int i = 0; exp[i] != '\0'; i++) {
         if (exp[i] == '(') {
             exp[i] = ')';
         } else if (exp[i] == ')') {
@@ -77,50 +83,66 @@ void swapBrackets(char* exp) {
     }
 }
 
-void infixToPrefix(char* infix, char* prefix) {
+// Added input validation function
+int isValidInfix(const char* exp) {
+    int openBrackets = 0;
+    for (int i = 0; exp[i] != '\0'; i++) {
+        if (exp[i] == '(') openBrackets++;
+        if (exp[i] == ')') openBrackets--;
+        if (openBrackets < 0) return 0;
+    }
+    return (openBrackets == 0);
+}
+
+void infixToPrefix(const char* infix, char* prefix) {
     struct Stack stack;
     initStack(&stack);
 
+    // Validate the infix expression
+    if (!isValidInfix(infix)) {
+        fprintf(stderr, "Invalid infix expression: Unmatched parentheses\n"); // Improved error message
+        exit(EXIT_FAILURE); // Exit program on invalid input
+    }
+
     // Reverse the infix expression and handle brackets
-    reverse(infix);
-    swapBrackets(infix);
+    char reversed[MAX];
+    strcpy(reversed, infix);
+    reverse(reversed);
+    swapBrackets(reversed);
 
     int i = 0, j = 0;
-    while (infix[i] != '\0') {
+    while (reversed[i] != '\0') {
 
-        // If the character is an operand, add it to the prefix output
-        if (isalnum(infix[i])) {
-            prefix[j++] = infix[i];
+        if (isalnum(reversed[i])) {
+            prefix[j++] = reversed[i];
         }
-        // If the character is '(', push it to the stack
-        else if (infix[i] == '(') {
-            push(&stack, infix[i]);
+        else if (reversed[i] == '(') {
+            push(&stack, reversed[i]);
         }
-        // If the character is ')', pop from the stack until '(' is found
-        else if (infix[i] == ')') {
+        else if (reversed[i] == ')') {
             while (!isEmpty(&stack) && peek(&stack) != '(') {
                 prefix[j++] = pop(&stack);
             }
-            pop(&stack);  // Pop '('
+            if (!isEmpty(&stack)) {
+                pop(&stack); 
+            }
         }
         // If the character is an operator
-        else if (isOperator(infix[i])) {
-            while (!isEmpty(&stack) && precedence(peek(&stack)) > precedence(infix[i])) {
+        else if (isOperator(reversed[i])) {
+            while (!isEmpty(&stack) && precedence(peek(&stack)) >= precedence(reversed[i])) {
                 prefix[j++] = pop(&stack);
             }
-            push(&stack, infix[i]);
+            push(&stack, reversed[i]);
+        } else {
+            fprintf(stderr, "Invalid character in infix expression: %c\n", reversed[i]); // Error for invalid characters
+            exit(EXIT_FAILURE); // Exit program on invalid character
         }
         i++;
     }
-
-    // Pop all the remaining operators from the stack
     while (!isEmpty(&stack)) {
         prefix[j++] = pop(&stack);
     }
-
-    prefix[j] = '\0';  // Null-terminate the string
-
-    // Reverse the prefix expression to get the correct result
+    prefix[j] = '\0'; 
     reverse(prefix);
 }
 
