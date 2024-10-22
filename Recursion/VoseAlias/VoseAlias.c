@@ -81,7 +81,7 @@ int sampleAlias(AliasTable *table)
   int i = rand() % table->n;
   return rand() / (double)RAND_MAX < table->prob[i] ? i : table->alias[i];
 }
-
+// main function
 int main()
 {
   int n;

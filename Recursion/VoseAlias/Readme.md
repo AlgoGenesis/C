@@ -31,7 +31,7 @@ You are given:
 * The number of probabilities `n` is such that `1 <= n <= 10^5`.
 * The probabilities must sum to 1. If they do not, return an error message.
 
-#### Example : 
+#### Example :
 
 Enter the number of probabilities: 4
 Enter the probabilities (space-separated, must sum to 1):
