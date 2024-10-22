@@ -40,18 +40,18 @@ The matrix is transformed into an upper triangular form using row operations. Th
  The matrix is decomposed into a lower and an upper triangular matrix (L and U) such that A = LU. The determinant is the product of the diagonal elements of U. This method is also efficient (O(n^3)) and widely used in numerical applications.
 
 ### Program Flow
-### Input Phase: 
+#### Input Phase: 
 The user inputs the matrix size and elements.
-### Selection Phase: 
+#### Selection Phase: 
 The user selects the method for calculating the determinant.
-### Computation Phase: 
+#### Computation Phase: 
 The determinant is calculated using the selected method.
-### Output Phase: 
+#### Output Phase: 
 The program displays the computed determinant.
-### Advantages of Different Methods
+#### Advantages of Different Methods
 Recursive Method: 
 Offers an intuitive understanding of the determinant calculation but is inefficient for large matrices.
 Gaussian Elimination: 
 Highly efficient for larger matrices. It can also handle singular matrices effectively.
-LU Decomposition: Provides not only the determinant but also the factors required for matrix inversion or solving systems of equations.
-Future Enhancements
+LU Decomposition: 
+Provides not only the determinant but also the factors required for matrix inversion or solving systems of equations
