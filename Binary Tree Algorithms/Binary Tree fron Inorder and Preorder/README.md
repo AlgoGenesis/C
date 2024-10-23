@@ -1,0 +1,3 @@
+**Construct a Binary Tree from Inorder and Preorder**
+
+The algorithm constructs a binary tree using inorder and preorder traversals. The first element of the preorder traversal is the root. The algorithm locates this root in the inorder traversal to determine the left and right subtrees. It uses recursion to build the left and right subtrees by updating the inorder range based on the root's index. The base case is when there are no elements to process. After the tree is constructed, a separate function prints the preorder traversal of the constructed tree. The algorithm operates in O(n) time complexity, efficiently reconstructing the tree from the traversals.
