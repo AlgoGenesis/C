@@ -1,3 +1,5 @@
+// Added to miscellaneous algorithm folder
+
 #include <stdio.h>
 
 // Function to calculate the SMA
