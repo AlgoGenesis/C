@@ -1,3 +1,43 @@
+<div align="center">
+
+# AlgoGenesis: C Algorithms 📘🖌️
+
+<img  src="https://readme-typing-svg.herokuapp.com?color=45ffaa&center=true&vCenter=true&size=40&width=900&height=80&lines=Welcome+to+AlgoGenesis+C-Algorithms!"/>
+</div>
+
+<div align = "center">
+<br>
+
+<table align="center">
+    <thead align="center">
+        <tr border: 1px;>
+            <td><b>🌟 Stars</b></td>
+            <td><b>🍴 Forks</b></td>
+            <td><b>🐛 Issues</b></td>
+            <td><b>🔔 Open PRs</b></td>
+            <td><b>🔕 Close PRs</b></td>
+            <td><b>🛠️ Languages</b></td>
+            <td><b>👥 Contributors</b></td>
+        </tr>
+     </thead>
+    <tbody>
+         <tr>
+            <td><img alt="Stars" src="https://img.shields.io/github/stars/AlgoGenesis/C?style=flat&logo=github"/></td>
+            <td><img alt="Forks" src="https://img.shields.io/github/forks/AlgoGenesis/C?style=flat&logo=github"/></td>
+            <td><img alt="Issues" src="https://img.shields.io/github/issues/AlgoGenesis/C?style=flat&logo=github"/></td>
+            <td><img alt="Open Pull Requests" src="https://img.shields.io/github/issues-pr/AlgoGenesis/C?style=flat&logo=github"/></td>
+           <td><img alt="Close Pull Requests" src="https://img.shields.io/github/issues-pr-closed/AlgoGenesis/C?style=flat&color=critical&logo=github"/></td>
+           <td><img alt="GitHub language count" src="https://img.shields.io/github/languages/count/AlgoGenesis/C?style=flat&color=green&logo=github"></td>
+         <td><img alt="GitHub Contributors count" src="https://img.shields.io/github/contributors/AlgoGenesis/C?style=flat&color=blue&logo=github"/></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<br>
+
+<!--Line-->
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="900"> 
+
 # AlgoGenesis: C Algorithms 📘
 
 Welcome to the **AlgoGenesis** collection of algorithms implemented in the **C programming language**. This repository aims to provide a centralized, well-documented source of algorithms that can help both beginners and advanced developers in understanding and solving algorithmic problems efficiently.
