@@ -47,13 +47,16 @@ void beamSearch(Node* root, int beam_width) {
 
             // Add children to the next beam
             for (int j = 0; j < current->n_children; j++) {
-                if (next_beam_size < beam_width) {
-                    next_beam[next_beam_size++] = current->children[j];
-                } else {
-                    // Replace the lowest scoring node in the next beam if a better node is found
-                    qsort(next_beam, next_beam_size, sizeof(Node*), compareNodes);
-                    if (current->children[j]->value > next_beam[next_beam_size - 1]->value) {
-                        next_beam[next_beam_size - 1] = current->children[j];
+                Node* child = current->children[j];
+                if (child != NULL) { // Check for NULL before adding
+                    if (next_beam_size < beam_width) {
+                        next_beam[next_beam_size++] = child;
+                    } else {
+                        // Replace the lowest scoring node in the next beam if a better node is found
+                        qsort(next_beam, next_beam_size, sizeof(Node*), compareNodes);
+                        if (child->value > next_beam[next_beam_size - 1]->value) {
+                            next_beam[next_beam_size - 1] = child;
+                        }
                     }
                 }
             }
@@ -76,6 +79,16 @@ void beamSearch(Node* root, int beam_width) {
     }
 
     free(beam);
+}
+
+// Function to free the memory allocated for the tree
+void freeTree(Node* node) {
+    if (node == NULL) return;
+    for (int i = 0; i < node->n_children; i++) {
+        freeTree(node->children[i]);
+    }
+    free(node->children);
+    free(node);
 }
 
 // Main function
@@ -104,11 +117,7 @@ int main() {
     beamSearch(root, beam_width);
 
     // Free the allocated memory
-    free(root->children[0]->children);
-    free(root->children[1]->children);
-    free(root->children[2]->children);
-    free(root->children);
-    free(root);
+    freeTree(root);
 
     return 0;
 }
