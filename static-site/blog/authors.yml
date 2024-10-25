@@ -1,23 +1,9 @@
-yangshun:
-  name: Yangshun Tay
-  title: Front End Engineer @ Facebook
-  url: https://github.com/yangshun
-  image_url: https://github.com/yangshun.png
+yashksaini-coder:
+  name: Yash Kumar Saini
+  title: Open Source Contributor
+  url: https://github.com/yashksaini-coder
+  image_url: https://avatars.githubusercontent.com/u/115717039?s=400&u=d86f6a86d63432afcd2df20f13677bd9486688d8&v=4
   page: true
   socials:
-    x: yangshunz
-    github: yangshun
-
-slorber:
-  name: Sébastien Lorber
-  title: Docusaurus maintainer
-  url: https://sebastienlorber.com
-  image_url: https://github.com/slorber.png
-  page:
-    # customize the url of the author page at /blog/authors/<permalink>
-    permalink: '/all-sebastien-lorber-articles'
-  socials:
-    x: sebastienlorber
-    linkedin: sebastienlorber
-    github: slorber
-    newsletter: https://thisweekinreact.com
+    x: EasycodesDev
+    github: yashksaini-coder
