@@ -1,61 +1,49 @@
-#include <stdio.h>
-
-void findSubsetSum(int currentSum, int index, int remainingSum);
-int n, targetSum;
-int weights[25], included[25];
-
-int main() {
-    int i, totalSum = 0;
-
-    // Input number of elements in the set
-    printf("Enter the number of elements: ");
-    scanf("%d", &n);
-
-    // Input the elements (weights)
-    printf("Enter the elements: ");
-    for (i = 0; i < n; i++) {
-        scanf("%d", &weights[i]);
-        totalSum += weights[i];
-    }
-
-    // Input the required subset sum
-    printf("Enter the required sum: ");
-    scanf("%d", &targetSum);
-
-    // Check if a solution is possible
-    if (totalSum < targetSum) {
-        printf("No solution possible since the sum of all elements is less than the required sum.\n");
-        return 0;
-    }
-
-    // Start the backtracking process
-    findSubsetSum(0, 0, totalSum);
-
-    return 0;
+#include<stdio.h>
+void floyd(int[10][10],int);
+int min(int,int);
+void main()
+{
+int n,a[10][10],i,j;
+printf("Enter the no.of nodes : ");
+scanf("%d",&n);
+printf("\nEnter the cost adjacency matrix\n");
+for(i=1;i<=n;i++)
+for(j=1;j<=n;j++)
+scanf("%d",&a[i][j]);
+floyd(a,n);
 }
-
-void findSubsetSum(int currentSum, int index, int remainingSum) {
-    if (currentSum == targetSum) {
-        // A valid subset has been found
-        printf("Subset found: ");
-        for (int i = 0; i < n; i++) {
-            if (included[i]) {
-                printf("%d ", weights[i]);
-            }
-        }
-        printf("\n");
-        return;
-    }
-
-    if (index >= n || currentSum > targetSum) {
-        return;  // Base case: no solution or out of bounds
-    }
-
-    // Include the current element and recurse
-    included[index] = 1;
-    findSubsetSum(currentSum + weights[index], index + 1, remainingSum - weights[index]);
-
-    // Exclude the current element and recurse
-    included[index] = 0;
-    findSubsetSum(currentSum, index + 1, remainingSum - weights[index]);
+void floyd(int a[10][10],int n)
+{
+int d[10][10],i,j,k;
+for(i=1;i<=n;i++)
+{
+for(j=1;j<=n;j++)
+d[i][j]=a[i][j];
+}
+for(k=1;k<=n;k++)
+{
+for(i=1;i<=n;i++)
+{
+for(j=1;j<=n;j++)
+{
+d[i][j]=min(d[i][j],d[i][k]+d[k][j]);
+}
+}
+}
+printf("\nThe distance matrix is\n");
+for(i=1;i<=n;i++)
+{
+for(j=1;j<=n;j++)
+{
+printf("%d\t",d[i][j]);
+}
+printf("\n");
+}
+}
+int min (int a,int b)
+{
+if(a<b)
+return a;
+else
+return b;
 }
