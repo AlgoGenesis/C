@@ -8,8 +8,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'AlgoGenesis',
-  tagline: 'C was invented by Dennis Ritchie in 1972',
+  title: 'AlgoGenesis C Algorithms',
+  tagline: 'C was invented by Dennis Ritchie in 1972, and it is a powerful and efficient programming language used for system programming, application development, and embedded systems.',
   favicon: 'img/logo.ico',
 
   // Set the production url of your site here
@@ -47,7 +47,7 @@ const config = {
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
-          showReadingTime: true,
+          showReadingTime: false,
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
@@ -84,7 +84,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Introduction',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
@@ -98,11 +98,11 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'C Algorithms',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Introduction',
+                to: '/C/intro',
               },
             ],
           },
@@ -110,16 +110,16 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Github',
+                href: 'https://github.com/AlgoGenesis',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: 'Star Us',
+                href: 'https://github.com/AlgoGenesis',
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                label: 'Follow Us',
+                href: 'https://twitter.com/AlgoGenesis',
               },
             ],
           },
@@ -131,8 +131,8 @@ const config = {
                 to: '/blog',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'Contributors',
+                href: 'https://github.com/AlgoGenesis/C/graphs/contributors',
               },
             ],
           },
