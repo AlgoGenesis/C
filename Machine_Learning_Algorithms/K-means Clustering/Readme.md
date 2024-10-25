@@ -1,4 +1,4 @@
-### Understanding the K-Means Clustering Algorithm
+# Understanding the K-Means Clustering Algorithm
 
 K-Means is one of the most popular and widely used unsupervised machine learning algorithms. It's primarily used for **clustering**, a process that aims to group similar data points into clusters. The "K" in K-Means refers to the number of clusters the data is to be divided into. K-Means clustering is simple yet effective for tasks like customer segmentation, image compression, and even anomaly detection.
 
