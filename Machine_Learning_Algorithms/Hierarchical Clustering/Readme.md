@@ -1,4 +1,4 @@
-### Understanding the Hierarchical Clustering Algorithm
+# Understanding the Hierarchical Clustering Algorithm
 
 Hierarchical clustering is one of the most powerful and flexible clustering techniques in unsupervised machine learning. Unlike other clustering algorithms like K-Means that require the number of clusters to be specified in advance, hierarchical clustering builds a hierarchy of clusters that can be visualized in a tree-like structure called a **dendrogram**. This makes it especially useful for exploring the structure of data when the number of clusters is not known beforehand.
 
