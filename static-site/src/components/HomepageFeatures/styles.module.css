@@ -3,9 +3,27 @@
   align-items: center;
   padding: 2rem 0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+.featureCenter {
+  display: inline-block;
+  width: 100%;
+  display: block;
+  gap: 20px;
 }
+
+
+.featureSvg {
+  height: 100px;
+  width: 100px;
+}
+
+.featurePng {
+  height: 300px;
+  width: 500px;
+}
+
