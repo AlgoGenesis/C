@@ -132,7 +132,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} AlgoGenesis, Org. Built by <a href="https://github.com/yashksaini-coder"><strong>Yash K. Saini</strong></a>.`,
       },
       prism: {
         theme: prismThemes.github,
