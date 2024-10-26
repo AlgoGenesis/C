@@ -20,17 +20,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: yarn
+          cache: npm
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: cd static-site && npm install 
       - name: Build website
-        run: yarn build
+        run: cd static-site && npm run build
 
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: build
+          path: static-site/build
 
   deploy:
     name: Deploy to GitHub Pages
