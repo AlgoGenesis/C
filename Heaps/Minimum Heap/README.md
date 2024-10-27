@@ -115,8 +115,4 @@ Example: In a large dataset of student grades, a Min-Heap can help find the top 
 Use Case: Min-Heaps can efficiently merge multiple sorted arrays into a single sorted array.
 Example: In external sorting (used when data is too large to fit into memory), Min-Heaps help merge sorted chunks of data.
 
-## Event Simulation Systems:
-
-Use Case: Min-Heaps are useful in event-driven simulation systems to determine the next event to process.
-Example: In a network packet simulation, events might include packet arrivals or departures. A Min-Heap can be used to process events based on their timestamps, ensuring the simulation proceeds in chronological order.
 ---
