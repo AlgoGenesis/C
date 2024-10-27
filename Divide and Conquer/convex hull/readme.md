@@ -46,24 +46,4 @@ This C program implements a **divide-and-conquer** algorithm to find the convex 
 
 ---
 
-### Sample Input and Output:
-
-**Input:**
-```c
-Pair a[] = {{0, 0}, {1, -4}, {-1, -5}, {-5, -3}, {-3, -1}, 
-            {-1, -3}, {-2, -2}, {-1, -1}, {-2, -1}, {-1, 1}};
-int n = sizeof(a) / sizeof(a[0]);
-```
-
-**Output:**
-```
-Convex hull:
--5 -3
-0 0
-1 -4
--1 -5
-```
-
----
-
 This program provides a clear demonstration of how the divide-and-conquer approach can be applied to geometric problems like finding the convex hull. The recursive division, combined with sorting and merging, efficiently finds the smallest polygon that encloses the given points.
