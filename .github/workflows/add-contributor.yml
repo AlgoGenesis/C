@@ -1,0 +1,27 @@
+name: Update Contributors in README
+
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+
+jobs:
+  contrib-readme-job:
+    runs-on: ubuntu-latest
+    name: A job to automate contrib in readme
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Update Contributors List
+        uses: akhilmhdh/contributors-readme-action@v2.3.10
+        with:
+          commit_message: "Updated contributors list"
+          committer_username: "yashksaini"
+          committer_email: "115717039+yashksaini-coder@users.noreply.github.com"
+          readme_path: "static-site/src/pages/Contributors.md"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
