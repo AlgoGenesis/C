@@ -93,30 +93,30 @@ This problem provides a simple yet effective way to explore fundamental programm
 **Time Complexity** :
 
 * **Single Round** : In each round, the game performs a few operations:
+
   * Capturing user input (constant time, O(1),
   * Generating a random move for the computer (constant time, O(1)
   * Determining the round winner by comparing moves (constant time, O(1).
 
-   Since all operations in a single round take constant time, each round runs in O(1) time complexity.
-
+  Since all operations in a single round take constant time, each round runs in O(1) time complexity.
 * **Multiple Rounds** : If there are nn**n** rounds, the game will have a time complexity of O(n) because it iterates once per round, and each round consists of O(1) operations.
 
-   Therefore, the overall time complexity is:
-   O(n) where n is the number of rounds.
+  Therefore, the overall time complexity is:
+  O(n) where n is the number of rounds.
 
 **Space Complexity** :
 
 * **Single Round** : The space complexity per round is minimal since it only requires variables to store the users choice, the computers choice, and the result of the round. Each of these variables uses constant space, resulting in O(1) space per round.
 * **Multiple Rounds** : Since we only track the total scores for the user and computer without storing the results of each round individually, the space complexity remains constant regardless of the number of rounds.
 
-   Therefore, the overall space complexity is:
-   O(1)
+  Therefore, the overall space complexity is:
+  O(1)
 
 **Recursive Solution Complexity** :
 If implemented recursively, each recursive call represents a single game round. With n rounds, there would be n recursive calls, resulting in a **space complexity of O(n)** due to the call stack. The time complexity remains the same at O(n) as each recursive call operates in O(1) time.
 
 ### Summary
 
-* **Time Complexity** : O(n)O(n)**O**(**n**)
-* **Space Complexity (Iterative)** : O(1)O(1)**O**(**1**)
-* **Space Complexity (Recursive)** : O(n)O(n)**O**(**n**)
+* **Time Complexity** : O(n)
+* **Space Complexity (Iterative)** : O(1)
+* **Space Complexity (Recursive)** : O(n)
