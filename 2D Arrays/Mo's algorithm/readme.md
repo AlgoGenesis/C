@@ -1,6 +1,6 @@
 **Title:** Add Mo's Algorithm for Efficient Range Queries
 
-**Description:**Mo's Algorithm is an offline algorithm used to optimize the processing of multiple range queries on a static array. By using a clever block decomposition approach, it minimizes redundant computations for overlapping range queries, making it ideal for large datasets where querying the entire array repeatedly would be inefficient.
+**Description:** Mo's Algorithm is an offline algorithm used to optimize the processing of multiple range queries on a static array. By using a clever block decomposition approach, it minimizes redundant computations for overlapping range queries, making it ideal for large datasets where querying the entire array repeatedly would be inefficient.
 
 This feature will allow users to perform complex range queries such as sum, frequency, or XOR operations in significantly reduced time, especially for arrays where updates are rare or non-existent.
 
