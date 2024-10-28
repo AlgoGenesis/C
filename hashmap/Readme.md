@@ -4,11 +4,17 @@ such as insertion, search, and deletion of key-value pairs. The chaining mechani
 
 ## Features
 Chaining-based collision handling: Handles collisions using linked lists in each bucket.
+
 Hashing: Uses a simple modulo-based hash function.
+
 Operations:
+
 Insertion of key-value pairs.
+
 Searching for a value by its key.
+
 Deleting key-value pairs.
+
 Memory management: Clean up memory to avoid memory leaks.
 
 ## 1. Insertion
