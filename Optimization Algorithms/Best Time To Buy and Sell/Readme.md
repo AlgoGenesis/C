@@ -56,5 +56,5 @@ Return Maximum Profit: Having processed all days, we have found that the maximum
 ## Time and Space Complexity
 The time complexity of the given function is O(n), where n is the length of the input list prices. This is because the function includes a single loop that iterates through each element in the list exactly once, performing a constant amount of work at each step; thus, the total work done is linear in the size of the input.
 
-## Space Complexity
+## Space  Complexity
 The space complexity of the function is O(1), indicating that the amount of additional memory used by the function does not depend on the size of the input.
