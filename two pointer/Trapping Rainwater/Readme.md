@@ -1,7 +1,7 @@
 ## Trapping Rainwater
 
 ## Problem Description
- Given an array of non-negative integers representation elevation of ground. Your task is to find the water that can be trapped after rain.
+Used to calculate how much water can trapped. Given an array of non-negative integers representation elevation of ground. Your task is to find the water that can be trapped after rain.
 
  ## Solution Proposed
 Solution 1: Brute force
