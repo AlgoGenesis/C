@@ -1,7 +1,7 @@
 ## Leaf-Similar Tree
 
 # Problem Description
-In the given problem, we are asked to compare two binary trees to check if they are 'leaf-similar'. Binary trees are a type of data structure in which each node has at most two children, referred to as the left child and the right child. A leaf node is a node with no children. The 'leaf value sequence' is the list of values of these leaf nodes read from left to right. Two binary trees are considered 'leaf-similar' if the sequences of their leaf values are identical.
+In the given problem, we are asked to compare two binary trees to check if they are 'leaf-similar'. Binary trees are a type of data structure in which each node has at most two children, referred to as the left child and the right child. A leaf node is a node with no children. The 'leaf value sequence' is the list of values of these leaf nodes read from left to right. Two binary trees are considered 'leaf-similar' if the sequences that of their leaf values are identical.
 
 # Solution Approach
 The solution is implemented in Python, and it focuses on a Depth-First Search (DFS) approach to traverse through the binary trees. The implementation defines a nested function dfs within the leafSimilar method, with the purpose of performing the actual DFS traversal, searching the entire tree for its leaves, and building the leaf sequence.
