@@ -47,4 +47,4 @@ The algorithm identifies which part of the array is sorted and narrows down the 
 5. *Repeat Until Target is Found*: Continue adjusting the search space until the target is found or the search space is exhausted.
 
 ## Time Complexity
-The time complexity of the rotated binary search algorithm is O(log n), where n is the number of elements in the array. This is because the array is halved in each iteration of the binary search:
+The time complexity of the rotated binary search algorithm is O(log n), where n is the  size :number of elements in the array. This is because the array is halved in each iteration of the binary search:
