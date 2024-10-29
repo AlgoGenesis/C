@@ -1,0 +1,64 @@
+# Minimum Cost to Cut a Stick
+
+This project is an implementation of an algorithm to calculate the minimum cost required to cut a stick into specified pieces. The goal is to determine the optimal sequence of cuts that minimizes the total cost.
+
+## Problem Description
+
+Given a stick of length `n` and an array of integers `cuts`, where each integer represents a position on the stick where a cut can be made, the objective is to minimize the total cost of making the cuts. The cost of each cut is the length of the stick being cut at that step. The task is to compute the minimum cost to perform all cuts.
+
+### Example
+
+For a stick of length `n = 7` and cuts at positions `[1, 3, 4, 5]`, the minimum cost to cut the stick is computed by choosing the sequence of cuts that result in the lowest possible total cost.
+
+## Approach
+
+This solution uses dynamic programming to solve the problem efficiently.
+
+1. **Sorting the Cuts**: The positions of the cuts are sorted to determine the order of making cuts from the smallest to the largest position.
+
+2. **Dynamic Programming Table**: A 2D DP table (`dp`) is created, where `dp[i][j]` represents the minimum cost to cut the stick between positions `i` and `j`.
+
+3. **Iterative Solution**: Using a nested loop structure, the algorithm iteratively fills the DP table with minimum costs by checking possible partitions (cuts) between each sub-stick segment.
+
+4. **Result Extraction**: The final result, the minimum cost to cut the stick, is stored in `dp[0][cutsSize + 1]`, which represents the cost to cut the stick from the start to the end position.
+
+## Code Explanation
+
+The core code is implemented in C. Here is an overview of the key components:
+
+### 1. `compare` Function
+A helper function used to sort the `cuts` array for correct order of cuts.
+
+### 2. `minCost` Function
+This function calculates the minimum cost to cut the stick using dynamic programming.
+
+- **Parameters**:
+  - `n`: Length of the stick.
+  - `cuts`: Array of positions where cuts are needed.
+  - `cutsSize`: Number of cuts in the `cuts` array.
+
+- **Steps**:
+  1. Initialize an array `c` to store sorted positions of cuts, including the start (0) and end (n) of the stick.
+  2. Sort `c` for easier calculation.
+  3. Define a 2D DP array and initialize all entries to zero.
+  4. Iterate over possible sub-stick segments and compute the minimum cost for each segment using dynamic programming.
+  5. Return the minimum cost from the `dp` array.
+
+### 3. `main` Function
+The `main` function provides a test case to run the `minCost` function and displays the result.
+
+### Example Usage
+The `main` function in this code provides an example usage of the `minCost` function, printing the minimum cost to cut the stick of length `7` with cuts at positions `[1, 3, 4, 5]`.
+
+### Input
+The program can be modified to take different inputs for `n` and the `cuts` array.
+
+### Output
+The output will display the minimum cost to make all cuts.
+
+## Installation
+
+1. Clone this repository.
+   ```bash
+   git clone https://github.com/yourusername/min-cost-stick-cutting.git
+   cd min-cost-stick-cutting
