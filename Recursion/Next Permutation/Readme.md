@@ -18,7 +18,7 @@ Explanation: The next permutation of the given array is 2 4 5 0 1 7
 
 Input: arr = {3, 2, 1}
 Output: {1, 2, 3}
-Explanation: As arr[] is the last permutation. So, the next permutation is the lowest one.
+Explanation: As arr[] is the last permutation. So, the next permutation is the  least lowest one.
 
 # Time and Space Complexity
 Time Complexity: O(n!*n*log(n!)), n represents the number of elements present in the input sequence represent all possible permutation.
