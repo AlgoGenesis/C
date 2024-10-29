@@ -31,9 +31,9 @@ Input: arr[] = {5,4,3,2,1}
 Output: 10
 Explanation: There is no pair of indexes i, j exists in the given array such that arr[i] > arr[j] and i < j
 
-## Time Complexity 
+## Time Complexity and Space Complexity
 Time Complexity: O(N*logN), where N = size of the given array.
 Reason: We are not changing the merge sort algorithm except by adding a variable to it. So, the time complexity is as same as the merge sort.
 
-# Space Complexity
+
 Space Complexity: O(N), as in the merge sort We use a temporary array to store elements in sorted order.
