@@ -1,7 +1,7 @@
 <<<<<<< Updated upstream:Searching Algorithms/Find the Duplicate number/Readme.md
 ### Find Duplicate
 =======
-### Find Duplicate Number
+### Find Duplicate 
 >>>>>>> Stashed changes:Searching Algorithms/Find Duplicate/Readme.md
 
 ## Problem Statement
