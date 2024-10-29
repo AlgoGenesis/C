@@ -28,24 +28,25 @@ Cloned list: 1' -> 2' -> 3' -> 4' -> 5' | | | ↓ ↓ ↓ 3' 5' 1'
 
 ## Solution
 
-We can solve this problem using an `unordered_map` to map nodes in the original list to nodes in the cloned list. This approach involves two main steps:
-1. **Clone Each Node** (without setting `next` and `random` pointers yet).
-2. **Assign `next` and `random` Pointers** to cloned nodes based on the structure of the original list.
+This solution uses an array to map nodes from the original list to their corresponding cloned nodes. The approach involves two main passes through the list:
 
-### Steps of the Solution
+1. **Initialize a Mapping Array:** 
+- Allocate an array of pointers nodeMap to store mappings of each node’s value in the original list to the cloned node with the same value.
+- The array size is set to 100 for simplicity. This should be adjusted based on expected node values or made dynamically allocated for general use.
+2. **First Pass - Clone All Nodes:** 
+- Traverse the original list, and for each node, create a new node with the same val and store it in nodeMap at the index of the original node’s value. At this stage, only the val is copied, not the next or random pointers.
 
-1. **Create a HashMap (`unordered_map`)**:
-   - Use a `unordered_map` to map each original node to its clone. This way, we can easily find the corresponding cloned node for any original node.
+3. **Second Pass - Set next and random Pointers:**
 
-2. **First Pass** - Clone All Nodes:
-   - Traverse the original list and, for each node, create a clone with only the `val` attribute copied (without setting `next` or `random` pointers yet). Store each cloned node in the map with the original node as the key.
+- Traverse the original list again. For each node:
+   - Use nodeMap to set the next pointer of the cloned node based on the next pointer of the original node.
+   - Use nodeMap to set the random pointer of the cloned node based on the random pointer of the original node.
 
-3. **Second Pass** - Set `next` and `random` Pointers:
-   - Traverse the original list again. For each original node, use the map to set the `next` and `random` pointers of the corresponding cloned node.
+4. **Return the Head of the Cloned List:**
+- Return the cloned head from nodeMap that corresponds to the head of the original list.
 
-4. **Return the Head of the Cloned List**:
-   - The head of the cloned list is the cloned node mapped to the head of the original list.
-
+5. **Freeing Memory:**
+- After cloning, both the original and cloned lists are freed to prevent memory leaks.
 
 **Explanation of Complexity**
 - Time Complexity: 
