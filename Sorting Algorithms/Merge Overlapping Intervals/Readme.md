@@ -13,6 +13,7 @@ Approach
 The steps are as follows:
 
 First, we will group the closer intervals by sorting the given array of intervals(if it is not already sorted).
+
 After that, we will select one interval at a time using a loop(say i) and insert it into our answer list(if the answer list is empty or the current interval cannot be merged with the last interval of the answer list). While traversing and inserting we will skip the intervals that lie in the last inserted interval of our answer list.
 Now, for each interval arr[i], using another loop (say j) we are going to check the rest of the intervals(i.e. From index i+1 to n-1) if they can be merged with the selected interval.
 Inside loop j, we will continue to merge all the intervals that lie in the selected interval. 
