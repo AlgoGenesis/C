@@ -67,7 +67,7 @@ Imagine we have the following grid and word:
 
 board = [
     ['A', 'B', 'C', 'E'],
-    ['S', 'F', 'C', 'S'],
+    ['S', 'E', 'C', 'S'],
     ['A', 'D', 'E', 'E']
 ]
 word = "SEE"

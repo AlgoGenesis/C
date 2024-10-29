@@ -1,81 +1,64 @@
-// C++ program to search a word in a 2D grid
-#include <bits/stdc++.h>
-using namespace std;
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
 
+#define MAX_ROW 100
+#define MAX_COL 100
 
-// This function checks if the given 
-// coordinate is valid
-bool validCoordinate(int x, int y, int m, int n) {
-    if (x>=0 && x<m && y>=0 && y<n)
+bool dfs(char board[MAX_ROW][MAX_COL], int row, int col, char *word, int index, int numRows, int numCols) {
+    // If we have matched the whole word
+    if (index == strlen(word)) {
         return true;
-    return false;
+    }
+
+    // Check for out of bounds and if the current character matches
+    if (row < 0 || row >= numRows || col < 0 || col >= numCols || board[row][col] != word[index]) {
+        return false;
+    }
+
+    // Mark the cell as visited by using a special character
+    char temp = board[row][col];
+    board[row][col] = '#';
+
+    // Explore all four directions: up, down, left, right
+    bool found = dfs(board, row - 1, col, word, index + 1, numRows, numCols) || // up
+                 dfs(board, row + 1, col, word, index + 1, numRows, numCols) || // down
+                 dfs(board, row, col - 1, word, index + 1, numRows, numCols) || // left
+                 dfs(board, row, col + 1, word, index + 1, numRows, numCols);   // right
+
+    // Restore the cell's original value
+    board[row][col] = temp;
+
+    return found;
 }
 
-// This function searches for the given word
-// in a given direction from the coordinate.
-bool findWord(int index, string word, vector<vector<char>> &grid,
-              int x, int y, int dirX, int dirY) {
-    
-    // if word has been found
-    if (index == word.length()) return true;
-    
-    // if the current coordinate is 
-    // valid and characters match, then
-    // check the next index
-    if (validCoordinate(x, y, grid.size(), grid[0].size())
-        && word[index] == grid[x][y])
-        return findWord(index+1, word, grid, x+dirX, 
-                        y+dirY, dirX, dirY);
-        
-    return false;
-}
-
-// This function calls search2D for each coordinate
-vector<vector<int>>searchWord(vector<vector<char>>grid, 
-                              string word){
-    int m = grid.size();
-    int n = grid[0].size();
-    
-    vector<vector<int>>ans;
-    
-    // x and y are used to set the direction in which
-    // word needs to be searched.
-    vector<int>x = { -1, -1, -1, 0, 0, 1, 1, 1 };
-    vector<int>y = { -1, 0, 1, -1, 1, -1, 0, 1 };
-    
-    for(int i = 0; i < m; i++){
-        for(int j = 0; j < n; j++){
-            
-            // Search in all 8 directions
-            for (int k=0; k<8; k++) {
-                
-                // If word is found, then append the 
-                // coordinates into answer and break.
-                if (findWord(0, word, grid, i, j, x[k], y[k])) {
-                    ans.push_back({i,j});
-                    break;
-                }
+bool exist(char board[MAX_ROW][MAX_COL], int numRows, int numCols, char *word) {
+    for (int i = 0; i < numRows; i++) {
+        for (int j = 0; j < numCols; j++) {
+            if (board[i][j] == word[0] && dfs(board, i, j, word, 0, numRows, numCols)) {
+                return true;
             }
         }
     }
-    
-    return ans;
+    return false;
 }
 
-void printResult(vector<vector<int>> ans) {
-    for (int i=0; i<ans.size(); i++) {
-        cout << "{" << ans[i][0] << "," << ans[i][1] << "}" << " ";
-    }
-    cout<<endl;
-}
-
+// Main function to test the exist function
 int main() {
-    vector<vector<char>> grid = {{'a','b','a','b'},
-                                 {'a','b','e','b'},
-                                 {'e','b','e','b'}};
-    string word = "abe";
-    
-    vector<vector<int>> ans = searchWord(grid, word);
-    
-    printResult(ans);
+    char board[MAX_ROW][MAX_COL] = {
+        {'A', 'B', 'C', 'E'},
+        {'S', 'F', 'C', 'S'},
+        {'A', 'D', 'E', 'E'}
+    };
+    char word[] = "ABCCED";
+    int numRows = 3;
+    int numCols = 4;
+
+    if (exist(board, numRows, numCols, word)) {
+        printf("The word \"%s\" exists in the board.\n", word);
+    } else {
+        printf("The word \"%s\" does not exist in the board.\n", word);
+    }
+
+    return 0;
 }
