@@ -1,6 +1,10 @@
+<<<<<<< Updated upstream:Searching Algorithms/Find the Duplicate number/Readme.md
 ### Find Duplicate
+=======
+### Find Duplicate Number
+>>>>>>> Stashed changes:Searching Algorithms/Find Duplicate/Readme.md
 
-##Problem Statement
+## Problem Statement
 Given an array A of size N + 1. Each element in array A is between 1 and N. Write a program to find one of the duplicates in array A. If there are multiple answers, then print any.
 
 ## Solution Approach
