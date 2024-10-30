@@ -1,7 +1,7 @@
 # Process Scheduling Simulation in C (First-Come, First-Serve Algorithm)
 
 ## Table of Contents
-- [Project Overview](#project-overview)
+- [Algorithm Overview](#algorithm-overview)
 - [Features](#features)
 - [First-Come, First-Serve (FCFS) Algorithm](#first-come-first-serve-fcfs-algorithm)
 - [Detailed Explanation of Functions](#detailed-explanation-of-functions)
