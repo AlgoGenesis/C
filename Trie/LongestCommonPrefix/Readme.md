@@ -68,7 +68,6 @@ The longest common prefix we found is `"fl"`.
 ```
 Longest Common Prefix: fl
 ```
-
 ### Key Points:
 
 - The Trie helps build a common prefix by inserting each word one character at a time and following the path that is shared by all words.

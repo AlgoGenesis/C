@@ -1,0 +1,21 @@
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.carouselItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carouselTitle {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+.carouselDescription {
+  text-align: center;
+} 
