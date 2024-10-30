@@ -41,10 +41,14 @@ PPO addresses these challenges by refining the policy-gradient update approach t
 5. **Update the Policy with Clipping**: Use the surrogate objective function with a clipping factor to update the policy. The objective is given by:
 
    \[
-   L^{CLIP}(\theta) = \mathbb{E} \left[ \min(r_t(\theta) \hat{A_t}, \text{clip}(r_t(\theta), 1 - \epsilon, 1 + \epsilon) \hat{A_t}) \right]
+   L^{\text{CLIP}}(\theta) = \mathbb{E} \left[ \min \left( r_t(\theta) \hat{A}_t, \, \text{clip}\left( r_t(\theta), 1 - \epsilon, 1 + \epsilon \right) \hat{A}_t \right) \right]
    \]
 
-   where \( r_t(\theta) = \frac{\pi_{\theta}(a|s)}{\pi_{\theta_{old}}(a|s)} \) and \( \epsilon \) is the clipping threshold.
+   where:
+   
+   - \( r_t(\theta) = \frac{\pi_{\theta}(a|s)}{\pi_{\theta_{\text{old}}}(a|s)} \): the probability ratio between the new policy and the old policy.
+   - \( \epsilon \): the clipping threshold.
+   - \( \hat{A}_t \): the advantage function, which estimates the relative benefit of taking action \( a \) in state \( s \) compared to the average action in that state.
 
 6. **Update the Value Network**: Minimize the difference between the estimated values \( V_{\phi}(s) \) and the computed returns for more accurate value predictions.
 7. **Repeat**: Iterate steps 2-6 until convergence or a pre-defined number of episodes.
@@ -55,8 +59,24 @@ PPO addresses these challenges by refining the policy-gradient update approach t
 
 The time complexity of PPO mainly depends on:
 
-1. **Policy Network Forward Pass**: The forward pass complexity is \( O(N \cdot T \cdot P) \), where \( N \) is the number of trajectories, \( T \) is the trajectory length, and \( P \) is the policy network's complexity.
-2. **Gradient Update**: PPO typically requires several updates per episode, leading to a training complexity of \( O(E \cdot N \cdot T \cdot P) \), where \( E \) is the number of episodes.
+1. **Policy Network Forward Pass**: The forward pass complexity is given by:
+
+   \[
+   O(N \cdot T \cdot P)
+   \]
+
+   where:
+   - \( N \): number of trajectories.
+   - \( T \): trajectory length.
+   - \( P \): complexity of the policy network.
+
+2. **Gradient Update**: PPO typically requires several updates per episode, leading to a training complexity of:
+
+   \[
+   O(E \cdot N \cdot T \cdot P)
+   \]
+
+   where \( E \) is the number of episodes.
 
 Overall, PPO has lower time complexity than more constrained methods like TRPO but requires more samples than off-policy algorithms like DDPG.
 
@@ -64,14 +84,14 @@ Overall, PPO has lower time complexity than more constrained methods like TRPO b
 
 ## Applications
 
-1. **Game Playing**: PPO has achieved superhuman performance in various games, such as Dota 2 and the Atari suite, where it efficiently learns strategies in high-dimensional environments.
-2. **Robotics**: In robotic manipulation and locomotion tasks, PPO helps control robots by learning policies that handle both continuous and discrete actions.
-3. **Autonomous Vehicles**: PPO aids in decision-making processes, such as lane-changing or obstacle avoidance, making it useful in the autonomous driving domain.
-4. **Finance**: PPO optimizes trading strategies by adjusting policies based on historical trading data and market signals.
-5. **Healthcare**: Used in treatment planning and decision-making in dynamic environments with uncertain outcomes, such as personalized medicine or clinical trials.
+PPO is widely used in applications that benefit from robust policy optimization, including:
+
+1. **Robotics**: Control tasks for robotic arms and autonomous agents.
+2. **Gaming**: Game AI that needs to learn complex behaviors in environments like chess, Go, and various video games.
+3. **Autonomous Vehicles**: Path planning and decision-making systems in self-driving cars.
 
 ---
 
 ## Conclusion
 
-Proximal Policy Optimization (PPO) has become one of the most popular algorithms in reinforcement learning for its simplicity, stability, and robust performance across diverse applications. Its use of a clipped objective function prevents large, unstable policy updates, improving sample efficiency and training stability. While it may be computationally demanding in high-dimensional tasks, PPO’s balance of complexity and performance makes it suitable for tasks that require fine-grained control and optimization. As reinforcement learning continues to evolve, PPO remains foundational, driving advancements in both research and practical implementations across industries.
+Proximal Policy Optimization (PPO) is a powerful reinforcement learning algorithm designed to stabilize the policy-gradient update process. Its clipped objective function provides a balance between exploration and exploitation, which improves stability, data efficiency, and convergence speed in various reinforcement learning applications.
