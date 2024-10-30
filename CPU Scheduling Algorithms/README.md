@@ -14,9 +14,9 @@
 - [Contributing](#contributing)
 - [License](#license)
 
-## Project Overview
+## Algorithm Overview
 
-This project simulates a **First-Come, First-Serve (FCFS) scheduling** algorithm for processes in an operating system. In FCFS scheduling, the CPU processes requests in the order of their arrival, ensuring that each process is completed before the next begins. This code calculates and displays essential metrics like **response time**, **turnaround time**, and **waiting time** for each process.
+This algorithm simulates a **First-Come, First-Serve (FCFS) scheduling** algorithm for processes in an operating system. In FCFS scheduling, the CPU processes requests in the order of their arrival, ensuring that each process is completed before the next begins. This code calculates and displays essential metrics like **response time**, **turnaround time**, and **waiting time** for each process.
 
 The FCFS algorithm is a non-preemptive scheduling algorithm and is straightforward to implement, making it ideal for understanding basic process scheduling.
 
