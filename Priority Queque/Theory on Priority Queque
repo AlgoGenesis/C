@@ -1,0 +1,29 @@
+Theory of Priority Queue
+A priority queue is a special type of data structure where each element is assigned a priority. Elements are dequeued based on their priority, not on the insertion order. A max-priority queue serves the highest-priority elements first, while a min-priority queue serves the lowest.
+
+Common Operations:
+
+Insert (Enqueue): Adds an element based on its priority.
+Remove Max: Removes the element with the highest priority.
+Peek: Retrieves the highest-priority element without removing it.
+Priority Queue using Max-Heap Algorithm
+A max-heap is commonly used to implement a max-priority queue efficiently. In a max-heap, each parent node’s value is greater than or equal to its children. This structure makes it easy to retrieve the maximum element, which is always at the root.
+
+Insert Operation:
+
+Add the element at the end of the heap (last available position).
+Perform "heapify-up" (or "bubble-up") to maintain the max-heap property:
+Compare the added element with its parent.
+Swap if the child is greater than the parent.
+Repeat until the max-heap property is restored or the element becomes the root.
+Remove Max Operation:
+
+Remove the root element (maximum element).
+Move the last element to the root.
+Perform "heapify-down" to restore the max-heap property:
+Compare the root with its children.
+Swap with the larger child if the root is smaller.
+Repeat until the max-heap property is restored or the element reaches a leaf node.
+Peek Operation:
+
+Retrieve the root element, which is the maximum element in a max-heap.
