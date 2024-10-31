@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include "priority_queue.h"
+
+int main() {
+    PriorityQueue pq;
+    init(&pq);
+
+    insert(&pq, 10);
+    insert(&pq, 5);
+    insert(&pq, 20);
+    insert(&pq, 15);
+
+    printf("Max Element: %d\n", peek(&pq));  // Output: 20
+    printf("Removed Max: %d\n", remove_max(&pq));  // Output: 20
+    printf("New Max Element: %d\n", peek(&pq));  // Output: 15
+
+    return 0;
+}
