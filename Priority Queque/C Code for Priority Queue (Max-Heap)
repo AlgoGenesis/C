@@ -1,0 +1,97 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_SIZE 100
+
+typedef struct PriorityQueue {
+    int data[MAX_SIZE];
+    int size;
+} PriorityQueue;
+
+void init(PriorityQueue *pq) {
+    pq->size = 0;
+}
+
+int is_empty(PriorityQueue *pq) {
+    return pq->size == 0;
+}
+
+int peek(PriorityQueue *pq) {
+    if (is_empty(pq)) {
+        printf("Queue is empty.\n");
+        return -1;
+    }
+    return pq->data[0];
+}
+
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void heapify_up(PriorityQueue *pq, int index) {
+    while (index > 0) {
+        int parent = (index - 1) / 2;
+        if (pq->data[index] <= pq->data[parent]) break;
+        
+        swap(&pq->data[index], &pq->data[parent]);
+        index = parent;
+    }
+}
+
+void insert(PriorityQueue *pq, int value) {
+    if (pq->size >= MAX_SIZE) {
+        printf("Queue is full.\n");
+        return;
+    }
+    pq->data[pq->size] = value;
+    pq->size++;
+    heapify_up(pq, pq->size - 1);
+}
+
+void heapify_down(PriorityQueue *pq, int index) {
+    while (index < pq->size) {
+        int left = 2 * index + 1;
+        int right = 2 * index + 2;
+        int largest = index;
+
+        if (left < pq->size && pq->data[left] > pq->data[largest]) {
+            largest = left;
+        }
+        if (right < pq->size && pq->data[right] > pq->data[largest]) {
+            largest = right;
+        }
+        if (largest == index) break;
+
+        swap(&pq->data[index], &pq->data[largest]);
+        index = largest;
+    }
+}
+
+int remove_max(PriorityQueue *pq) {
+    if (is_empty(pq)) {
+        printf("Queue is empty.\n");
+        return -1;
+    }
+    int max_value = pq->data[0];
+    pq->data[0] = pq->data[pq->size - 1];
+    pq->size--;
+    heapify_down(pq, 0);
+    return max_value;
+}
+
+int main() {
+    PriorityQueue pq;
+    init(&pq);
+
+    insert(&pq, 10);
+    insert(&pq, 5);
+    insert(&pq, 20);
+
+    printf("Max Element: %d\n", peek(&pq));
+    printf("Removed Max: %d\n", remove_max(&pq));
+    printf("New Max Element: %d\n", peek(&pq));
+
+    return 0;
+}
