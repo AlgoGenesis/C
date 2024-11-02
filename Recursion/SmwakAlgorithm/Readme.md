@@ -4,7 +4,7 @@
 
 In various computational fields, including data analysis and optimization, the need to efficiently find minimum values in large matrices is critical. The **SMAWK algorithm** addresses this challenge by providing an efficient method for identifying row minima in **totally monotone matrices** , where the values decrease or remain constant along each row and column.
 
-Given an m×n matrix that meets the total monotonicity property, the objective is to implement the SMAWK algorithm to compute the index of the minimum value for each row. This algorithm is particularly useful in scenarios such as:
+Given an m×n matrix that meets the total monotonicity property, the objective is to implement the SMAWK algorithm to compute the index of the minimum value for each row. This algorithm is particularly useful in scenarios such as following ones :
 
 1. **Data Processing** : Streamlining operations in machine learning pipelines that require quick access to row minima.
 2. **Resource Allocation** : Optimizing tasks in operations research where minimizing costs or distances is crucial.
