@@ -1,3 +1,5 @@
+# Min Stack
+
 ## Problem Statement
 Design a Data Structure MinStack that supports all the stack operations like push(), pop(), isEmpty(), isFull() and an additional operation getMin() which should return minimum element from the MinStack. All these operations of MinStack must have a time complexity of O(1)
 
