@@ -79,7 +79,7 @@ int *smawk(int **matrix, int rows, int cols)
 int main()
 {
   int rows, cols;
-  printf("Enter number of rows and columns: ");
+  printf("Enter number of rows and columns for matrix : ");
   scanf("%d %d", &rows, &cols);
 
   int **matrix = (int **)malloc(rows * sizeof(int *));
