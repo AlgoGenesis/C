@@ -33,5 +33,5 @@ gcc segregate_even_odd.c -o segregate_even_odd
 
 The program will output the original list and the modified list with even nodes first:
 
-Original Linked list:  1 4 6 9 10 11 
-Modified Linked list:  4 6 10 1 9 11 
+- Original Linked list:  1 4 6 9 10 11 
+- Modified Linked list:  4 6 10 1 9 11 
