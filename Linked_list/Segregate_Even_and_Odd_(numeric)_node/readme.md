@@ -13,7 +13,8 @@ This project provides a C program to segregate even and odd nodes in a singly li
    - `newNode`: Creates a new node with a specified integer value.
    - `segregateEvenOdd`: Segregates even and odd nodes in the list, placing all even nodes at the start of the list followed by the odd nodes. Returns the head of the modified list.
    - `printList`: Prints the entire linked list.
-
+   - `insertAtEnd` : Inserts the Linked list node at the end of the list.
+     
 3. **Main Function**
    - Creates a sample linked list and displays it.
    - Calls `segregateEvenOdd` to segregate even and odd nodes.
