@@ -1,18 +1,29 @@
 #include <stdio.h>
+#include <stdbool.h>
+
+#define MAX 10000  // Assume maximum array values are within this range
 
 void findIntersection(int arr1[], int arr2[], int n1, int n2) {
-    printf("Intersection of the two arrays: ");
-    int i = 0;
-    while (i < n1) {
-        int j = 0;
-        while (j < n2) {
-            if (arr1[i] == arr2[j]) {
-                printf("%d ", arr1[i]);
-                break;  // Move to the next element in arr1 after finding a match
-            }
-            j++;
+    bool hash[MAX] = { false };
+    printf("Intersection of the two arrays (unique elements only): ");
+
+    // Mark elements in the first array in the hash table
+    for (int i = 0; i < n1; i++) {
+        hash[arr1[i]] = true;
+    }
+
+    // Traverse the second array and print elements if they are in hash and not printed before
+    bool found = false;
+    for (int j = 0; j < n2; j++) {
+        if (hash[arr2[j]]) {
+            printf("%d ", arr2[j]);
+            hash[arr2[j]] = false;  // Mark as printed to avoid duplicates
+            found = true;
         }
-        i++;
+    }
+
+    if (!found) {
+        printf("No common elements found.");
     }
     printf("\n");
 }
