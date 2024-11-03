@@ -1,0 +1,76 @@
+/* 
+Bridges are those edges in a graph, which upon removal from the graph will make it disconnected.
+The idea of a bridge tree is to shrink the maximal components without a bridge into one node, leaving only the bridges of the original graph as the edges in the bridge tree.
+
+Properties of the bridge tree -->
+1. All the bridges of the original graph are represented as edges in the bridge tree.
+2. The bridge tree is connected if the original graph is connected.
+3. The bridge tree does not contain any cycles.
+4. The bridge tree will contain ≤ N nodes, where N is the number of nodes in the original graph.
+5. The bridge tree will contain ≤ N−1 edges, where N is the number of nodes in the original graph.
+
+The time complexity of making the bridge tree
+In this section, N stands for the number of nodes and M stands for the number of edges in the original graph. The bridges in the graph can be found in O(N+M).
+The time complexity for the DFS function is O(N+M). Note that we can store the ID of the edge alongside the adjacent node in the adjacency list. We can have 
+an array isBridge, and mark isBridge[edge] = true for every edge which is a bridge. During the DFS, just check if the current edge is marked as a bridge using its stored ID.
+
+Thus the total time complexity will be O((N+M)+(N+M)), which is equivalent to O(N+M).
+
+*/
+// Pseudocode for making the bridge tree
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+#define MAX_NODES 1000 // Adjust according to your needs
+
+int component[MAX_NODES];
+bool vis[MAX_NODES];
+int graph[MAX_NODES][MAX_NODES]; // Adjacency matrix or list
+int n; // Number of nodes
+
+void dfs(int node, int component_number) {
+    component[node] = component_number; // Assign component number to the node
+    vis[node] = true; // Mark node as visited
+    
+    for (int next = 0; next < n; next++) {
+        // Check for an edge and that it is not a bridge
+        if (graph[node][next] && !vis[next]) {
+            // Perform DFS on the next node
+            dfs(next, component_number);
+        }
+    }
+}
+
+void find_bridges() {
+    // Implement bridge-finding algorithm here
+    // Store found bridges in a suitable structure
+}
+
+int main() {
+    // Initialize graph and read input
+    // Example: initialize n and populate the graph
+
+    // Find all the bridges in the graph
+    find_bridges();
+
+    // Reset visited array for DFS
+    for (int i = 0; i < n; i++) {
+        vis[i] = false;
+    }
+
+    int unique_component_number = 1; // Start component numbering from 1
+    for (int i = 0; i < n; i++) {
+        if (!vis[i]) {
+            dfs(i, unique_component_number); // Call DFS if not visited
+            unique_component_number++; // Increment for next component
+        }
+    }
+
+    // Optionally, print components or handle them as needed
+    for (int i = 0; i < n; i++) {
+        printf("Node %d is in component %d\n", i, component[i]);
+    }
+
+    return 0;
+}
