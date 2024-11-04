@@ -81,7 +81,7 @@ The C implementation of the space-optimized dynamic programming solution is in t
 
    ```bash
    gcc program.c -o program
-   ```bash
+  
 
 3. Run the compiled program:
    ./program
