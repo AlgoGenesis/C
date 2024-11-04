@@ -27,9 +27,28 @@ calculateMaxRectangle: Iterates over each column and calculates the area for eac
 
 Complexity Analysis
 Time Complexity: 
-𝑂(𝑚×𝑛)O(m×n), where 𝑚
+𝑂
+(
+𝑚
+×
+𝑛
+)
+O(m×n), where 
+𝑚
 m is the number of rows and 
-𝑛n is the number of columns. Each cell is processed once, and boundary updates are linear.
-Space Complexity: 𝑂(𝑛)         O(n), for storing heights, leftBoundaries, and rightBoundaries.
+𝑛
+n is the number of columns. Each cell is processed once, and boundary updates are linear.
+Space Complexity: 
+𝑂
+(
+𝑛
+)
+O(n), for storing heights, leftBoundaries, and rightBoundaries.
 Summary
 This approach leverages a dynamic programming technique to keep track of heights and boundaries, transforming the problem into a maximal rectangle calculation on each row as if it were a histogram. By iteratively updating the boundaries and heights, we efficiently compute the maximal rectangle area in a binary matrix. This method ensures that the solution is optimal for large matrices while maintaining manageable space complexity.
+
+
+
+
+
+
