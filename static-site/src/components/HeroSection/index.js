@@ -7,7 +7,7 @@ import styles from './styles.module.css';
 const programmingLanguages = [
   {
     title: 'C',
-    image: require('@site/static/img/c.png').default,
+    image: require('@site/static/img/C.png').default,
     description: 'C is a powerful and efficient programming language used for system programming, application development, and embedded systems.',
   },
   {
