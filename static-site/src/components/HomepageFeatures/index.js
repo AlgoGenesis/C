@@ -17,7 +17,7 @@ const FeatureList = [
 function Feature({Svg, Png, title, description}) {
   return (
     <div className={clsx('col', styles.featureCenter)}>
-      <div className="text--center">
+      <div className="text--center" style={{borderRadius: '100px' }}>
         {Png ? <img src={Png} className={styles.featurePng} alt="Feature Icon" /> : <Svg className={styles.featureSvg} role="img" />}
       </div>
       <div className="text--center padding-horiz--md align-center display-block">
