@@ -25,7 +25,8 @@ bool helper(int x) {
         int r = queue[front][0];
         int c = queue[front++][1];
 
-        if (r == n - 1 && c == n - 1) {
+        if (r == n - 1 && c == n - 1) 
+        {
             for (int i = 0; i < n; i++) {
                 free(visited[i]);
             }
