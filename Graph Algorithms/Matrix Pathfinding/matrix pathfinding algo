@@ -1,0 +1,46 @@
+Problem Breakdown
+Objective: Given a 5x5 matrix filled with 1s and 0s, find a path from the top-left corner (0, 0) to the bottom-right corner (4, 4). The path can only pass through cells containing a 1, and each cell can be visited only once in a path.
+
+If a path is found, output the coordinates of the cells that form the path.
+If no path is found, output "No path exists".
+Constraints
+Matrix size is fixed at 5x5.
+Only four movements are allowed: up, down, left, and right.
+Each cell in the matrix can contain either 1 (walkable) or 0 (blocked).
+The starting cell (0, 0) and the destination cell (4, 4) are always 1 (ensuring the possibility of a path if one exists).
+Detailed Steps of the Solution
+Define Movement Directions:
+
+Define four possible movements using directional arrays: dx and dy.
+dx and dy represent the change in x and y coordinates for each move:
+
+These arrays allow us to compute the new position by adding dx[i] and dy[i] to the current (x, y) coordinates for each direction.
+Initialize a Visited Array:
+
+Use a 5x5 boolean array visited initialized to false. This array keeps track of whether each cell has been visited in the current DFS path.
+Marking cells as visited prevents cycles and redundant checks.
+Create the Recursive Function (findPath):
+
+This function will attempt to find a path from the current cell (x, y) to the destination (4, 4).
+Steps within findPath:
+Base Case: If (x, y) equals (4, 4), the path is complete, so print the path and stop further recursion.
+Mark as Visited: Set visited[x][y] = true.
+Recursive Exploration: For each of the four directions:
+Compute the new cell (newX, newY).
+Check if (newX, newY) is within matrix bounds, contains a 1, and has not been visited. If all are true, recursively call findPath(newX, newY).
+Backtracking: After all moves from (x, y) have been tried, set visited[x][y] = false to allow other paths to use this cell.
+Path Existence Check:
+
+In the main function, if the recursive function completes without reaching (4, 4), print "No path exists".
+Main Function:
+
+Initialize the matrix, the visited array, and call findPath starting from (0, 0).
+
+Output Example
+For the given matrix, a possible output (if a path exists) might look like this:
+output-
+(0, 0) -> (1, 0) -> (1, 1) -> (2, 2) -> (3, 3) -> (4, 4)
+
+If no path is found:
+output-
+No path exists
