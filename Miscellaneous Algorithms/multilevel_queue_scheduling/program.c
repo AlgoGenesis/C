@@ -1,89 +1,84 @@
-#include <iostream>
-#include <queue>
-#include <vector>
-using namespace std;
+#include <stdio.h>
+#include <stdlib.h>
 
-// Structure to represent a process
-struct Process {
-    int pid;       // Process ID
-    int burstTime; // Burst time
-    int priority;  // Priority (1 = high, 2 = low)
-    int arrivalTime; // Arrival time for Round Robin
-};
+#define MAX 10
 
-// Function for FCFS Scheduling for high-priority queue
-void FCFS(queue<Process> &highPriorityQueue) {
-    cout << "\nExecuting High-Priority Queue (FCFS):\n";
-    int time = 0;
-    while (!highPriorityQueue.empty()) {
-        Process p = highPriorityQueue.front();
-        highPriorityQueue.pop();
-        cout << "Process " << p.pid << " executed from time " << time << " to " << time + p.burstTime << endl;
-        time += p.burstTime;
+typedef struct {
+    int pid;        // Process ID
+    int burstTime;  // Burst Time
+    int queue;      // Queue Type: 1=System, 2=Interactive, 3=Batch
+} Process;
+
+// Function to sort processes based on queue priority
+void sortProcessesByQueue(Process processes[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (processes[j].queue > processes[j + 1].queue) {
+                Process temp = processes[j];
+                processes[j] = processes[j + 1];
+                processes[j + 1] = temp;
+            }
+        }
     }
 }
 
-// Function for Round Robin Scheduling for low-priority queue
-void RoundRobin(queue<Process> &lowPriorityQueue, int timeQuantum) {
-    cout << "\nExecuting Low-Priority Queue (Round Robin):\n";
-    int time = 0;
-    queue<Process> readyQueue = lowPriorityQueue;
+// Function to calculate waiting time and turn around time
+void calculateTimes(Process processes[], int n) {
+    int waitingTime[MAX], turnAroundTime[MAX];
+    int totalWaitingTime = 0, totalTurnAroundTime = 0;
+    int completionTime = 0;
 
-    while (!readyQueue.empty()) {
-        Process p = readyQueue.front();
-        readyQueue.pop();
+    printf("\nProcess Execution Order:\n");
 
-        if (p.burstTime > timeQuantum) {
-            cout << "Process " << p.pid << " executed from time " << time << " to " << time + timeQuantum << endl;
-            time += timeQuantum;
-            p.burstTime -= timeQuantum;
-            readyQueue.push(p); // Put back into queue if not finished
-        } else {
-            cout << "Process " << p.pid << " executed from time " << time << " to " << time + p.burstTime << endl;
-            time += p.burstTime;
-        }
+    for (int i = 0; i < n; i++) {
+        waitingTime[i] = completionTime;
+        completionTime += processes[i].burstTime;
+        turnAroundTime[i] = waitingTime[i] + processes[i].burstTime;
+
+        totalWaitingTime += waitingTime[i];
+        totalTurnAroundTime += turnAroundTime[i];
+
+        printf("Process %d (Queue %d): Waiting Time = %d, Turnaround Time = %d\n",
+               processes[i].pid, processes[i].queue, waitingTime[i], turnAroundTime[i]);
     }
+
+    printf("\nAverage Waiting Time = %.2f", (float)totalWaitingTime / n);
+    printf("\nAverage Turnaround Time = %.2f\n", (float)totalTurnAroundTime / n);
 }
 
 int main() {
-    int n, timeQuantum;
-    cout << "Enter the number of processes: ";
-    cin >> n;
+    Process processes[MAX];
+    int n;
 
-    vector<Process> processes(n);
-    
-    // Taking process information from the user
-    for (int i = 0; i < n; ++i) {
-        cout << "\nEnter details for Process " << i + 1 << ":\n";
-        processes[i].pid = i + 1; // Automatically assigning process ID
-        cout << "Burst Time: ";
-        cin >> processes[i].burstTime;
-        cout << "Priority (1 = high, 2 = low): ";
-        cin >> processes[i].priority;
-        cout << "Arrival Time: ";
-        cin >> processes[i].arrivalTime;
+    printf("Enter the number of processes (max %d): ", MAX);
+    scanf("%d", &n);
+
+    if (n > MAX) {
+        printf("Number of processes should be less than or equal to %d.\n", MAX);
+        return 1;
     }
 
-    cout << "\nEnter the time quantum for Round Robin: ";
-    cin >> timeQuantum;
+    // Input process details
+    for (int i = 0; i < n; i++) {
+        printf("\nEnter details for Process %d:\n", i + 1);
+        printf("Process ID: ");
+        scanf("%d", &processes[i].pid);
+        printf("Burst Time: ");
+        scanf("%d", &processes[i].burstTime);
+        printf("Queue (1=System, 2=Interactive, 3=Batch): ");
+        scanf("%d", &processes[i].queue);
 
-    queue<Process> highPriorityQueue;
-    queue<Process> lowPriorityQueue;
-
-    // Sort processes into queues based on priority
-    for (auto &process : processes) {
-        if (process.priority == 1) {
-            highPriorityQueue.push(process);
-        } else {
-            lowPriorityQueue.push(process);
+        if (processes[i].queue < 1 || processes[i].queue > 3) {
+            printf("Invalid queue type. Please enter 1, 2, or 3.\n");
+            i--; // Retry current process input
         }
     }
 
-    // Execute high-priority queue with FCFS
-    FCFS(highPriorityQueue);
+    // Sort processes by queue priority
+    sortProcessesByQueue(processes, n);
 
-    // Execute low-priority queue with Round Robin
-    RoundRobin(lowPriorityQueue, timeQuantum);
+    // Calculate and display times
+    calculateTimes(processes, n);
 
     return 0;
 }
