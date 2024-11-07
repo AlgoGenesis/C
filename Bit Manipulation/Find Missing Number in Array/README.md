@@ -23,6 +23,15 @@ This method works because identical numbers cancel each other out with XOR, leav
 ## How to Run the Program
 
 1. Save the code in a file named `program.c`.
-2. Compile the program:
-   ```
-   gcc program.c -o find_missing_number
+2. Compile the program
+3. Run the program
+
+## Example Output
+For the input array `{1, 2, 4, 5}` and `N = 5`:
+
+Missing number is: 3
+
+## Complexity
+
+   - Time Complexity: `O(N)`, where `N` is the range of numbers from `1 to N`.
+   - Space Complexity: `O(1)`, as we only use a few additional variables for the XOR calculations.
