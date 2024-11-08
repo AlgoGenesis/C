@@ -53,7 +53,6 @@ This approach balances seek time across requests, avoiding starvation and reduci
 ## Usage
 
 Run the program and provide the required inputs when prompted:
-
 Enter the number of disk requests.
 Enter the individual track requests as space-separated integers.
 Enter the initial head position.
