@@ -1,31 +1,40 @@
 Climbing Stairs Problem
-This problem is based on a classic dynamic programming challenge where you have to calculate the number of distinct ways to reach the top of a staircase with n steps, given that you can climb either 1 or 2 steps at a time.
+This program provides a solution to the "Climbing Stairs" problem, a classic example of dynamic programming. The problem can be stated as follows:
 
-Problem Explanation
-The problem is a simple application of combinatorial logic. At each step, there are two choices:
+Problem Statement:
+A person is at the bottom of a staircase with n steps and wants to reach the top. They can take either 1 or 2 steps at a time. The task is to determine the number of distinct ways the person can reach the top of the staircase.
 
-Take a single step.
-Take two steps.
-We can break down the solution as follows:
+Approach:
+Dynamic Programming:
 
-If we are on the n-th step, there are two possibilities for reaching it:
-We arrived from the (n-1)-th step by taking a single step.
-We arrived from the (n-2)-th step by taking two steps.
-This logic forms a recurrence relation: dp[𝑛]=dp[𝑛−1]+dp[𝑛−2]
-dp[n]=dp[n−1]+dp[n−2]
+This problem has overlapping subproblems, making it a suitable candidate for dynamic programming.
+Define dp[i] as the number of ways to reach the i-th step.
+The number of ways to reach step i is the sum of ways to reach the previous step i-1 and the step before that, i-2. This is because the person can arrive at step i by taking a single step from i-1 or a double step from i-2.
+Thus, the recurrence relation is:
 
-Here, dp[i] represents the number of ways to reach the i-th step.
-
-Solution Approach
-Dynamic Programming Array: We initialize an array dp where dp[i] will store the number of ways to reach the i-th step.
+𝑑𝑝[𝑖]=𝑑𝑝[𝑖−1]+𝑑𝑝[𝑖−2]dp[i]=dp[i−1]+dp[i−2]
 Base Cases:
-dp[0] = 1: There is 1 way to stay at the ground (by doing nothing).
-dp[1] = 1: There is only one way to reach the first step (a single step).
-Iterative Calculation:
-Starting from i = 2 up to i = n, we compute dp[i] based on the relation dp[i] = dp[i-1] + dp[i-2].
-This ensures that each step is built upon the previous ones, leveraging previously computed values to avoid redundant calculations.
-Time Complexity
-The solution runs in O(n) time, as each step from 2 to n is computed once in a linear scan.
 
-Space Complexity
-The space complexity is O(n) due to the storage required for the dp array, which holds the number of ways to reach each step up to n.
+If there are no steps (n = 0), there is 1 way (doing nothing).
+If there is one step (n = 1), there is also 1 way to reach it.
+Building the Solution:
+
+Create an array dp of size n+1 to store the number of ways to reach each step up to n.
+Initialize dp[0] = 1 and dp[1] = 1 as per the base cases.
+Use a loop to fill the array from dp[2] up to dp[n] using the recurrence relation.
+Finally, dp[n] will contain the number of distinct ways to reach the top of the staircase with n steps.
+Example:
+For n = 5, the program calculates the ways as follows:
+
+dp[0] = 1
+dp[1] = 1
+dp[2] = dp[1] + dp[0] = 2
+dp[3] = dp[2] + dp[1] = 3
+dp[4] = dp[3] + dp[2] = 5
+dp[5] = dp[4] + dp[3] = 8
+So, there are 8 distinct ways to reach the 5th step.
+
+Complexity Analysis:
+Time Complexity: O(n) because we only need to compute each value in dp from 0 to n.
+Space Complexity: O(n) for storing the dp array.
+This dynamic programming approach efficiently computes the number of ways to climb the staircase, demonstrating how overlapping subproblems and optimal substructure can be leveraged to solve problems effectively.
