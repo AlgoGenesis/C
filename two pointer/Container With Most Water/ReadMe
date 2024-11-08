@@ -1,0 +1,13 @@
+Problem:
+Container With Most Water
+Problem Statement:
+Given an array heights where each element represents the height of a line at that index, find the maximum area of water that can be contained between two lines.
+Input
+An integer n, the number of lines.
+An array of n positive integers heights representing the heights of the lines.
+9
+1 8 6 2 5 4 8 3 7
+
+Output
+A single integer, which is the maximum area of water that can be contained between two lines in the array.
+49
