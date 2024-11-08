@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[data-theme='dark'] {
+  --ifm-color-primary: #24c4f9;
+  --ifm-color-primary-dark: #08bdf8;
+  --ifm-color-primary-darker: #06b3ec;
+  --ifm-color-primary-darkest: #0593c2;
+  --ifm-color-primary-light: #40cbfa;
+  --ifm-color-primary-lighter: #4ecffa;
+  --ifm-color-primary-lightest: #24c4f9;
+  --ifm-background-color: #030326;
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+html[data-theme="dark"] .docusaurus-highlight-code-line {
+  background-color: rgba(162, 1, 1, 0.1);
+}

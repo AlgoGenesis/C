@@ -1,0 +1,61 @@
+Swim In Rising Water
+This project implements a solution to the problem of determining the minimum time required to "swim" from the top-left corner to the bottom-right corner of an n x n grid, where each cell contains an elevation. The goal is to navigate to the destination with the minimum possible elevation threshold, where each step can only be taken if the current threshold is met or exceeded.
+
+Problem Description
+Given an n x n grid where each cell contains an integer representing the elevation level, the challenge is to find the smallest possible time T such that you can reach the bottom-right corner of the grid from the top-left corner. You may move in four directions (up, down, left, right), but only to cells with an elevation equal to or less than T.
+
+Example 1:
+
+
+Input: grid = [[0,2],[1,3]]
+Output: 3
+Explanation:
+At time 0, you are in grid location (0, 0).
+You cannot go anywhere else because 4-directionally adjacent neighbors have a higher elevation than t = 0.
+You cannot reach point (1, 1) until time 3.
+When the depth of water is 3, we can swim anywhere inside the grid.
+Example 2:
+
+
+Input: grid = [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]
+Output: 16
+Explanation: The final route is shown.
+We need to wait until time 16 so that (0, 0) and (4, 4) are connected.
+
+Solution Approach
+The solution employs a combination of binary search and breadth-first search (BFS) to determine the minimum threshold elevation required to reach the destination. The BFS checks if reaching the bottom-right corner is possible with a given elevation threshold. The binary search is used to minimize this threshold.
+
+Key Components
+Binary Search: Determines the smallest elevation T that allows a valid path from the start to the end.
+Breadth-First Search (BFS): Checks the existence of a path from (0, 0) to (n-1, n-1) under a given elevation threshold.
+Code Overview
+helper(int x)
+The helper function performs a BFS traversal from the starting cell (0, 0) to check if it is possible to reach the bottom-right corner of the grid with an elevation threshold of x.
+
+If the elevation at (0, 0) is greater than x, the function immediately returns false.
+Uses a queue to store cells to be explored, beginning with the starting cell.
+A visited array keeps track of visited cells to avoid re-exploration.
+For each cell, it checks the four possible directions (up, down, left, right) and adds cells to the queue if they have not been visited and their elevation is within the threshold.
+If it reaches (n-1, n-1), it returns true, indicating that it is possible to reach the destination with elevation x. Otherwise, returns false.
+swimInWater(int **grid, int gridSize)
+The swimInWater function manages the binary search over possible elevations.
+
+st and end represent the binary search bounds for the elevation threshold.
+For each midpoint mid in the binary search, it checks if there exists a path using the helper function.
+If helper(mid) returns true, it adjusts the upper bound end to search for a smaller possible threshold. Otherwise, it adjusts the lower bound.
+When the search completes, ans contains the minimum elevation threshold needed to reach the destination.
+main Function
+Reads the grid size n and grid values from standard input.
+Calls swimInWater with the grid and outputs the minimum required elevation.
+
+Input Format:
+
+Enter n, the grid size (integer).
+Enter the elevation values for each cell, row by row.
+
+Output: The program will output the minimum time needed to reach the bottom-right corner, i.e., the smallest elevation threshold that allows a path.
+
+Important Notes
+The program is designed to work with a maximum grid size based on the problem constraints, ensuring efficient memory usage.
+The helper function dynamically allocates and frees memory for the visited array to prevent memory leaks.
+
