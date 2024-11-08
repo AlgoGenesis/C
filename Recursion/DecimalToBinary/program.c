@@ -10,6 +10,7 @@ int main() {
         return 0;
     }
 
+    
     // Array to hold binary digits (assuming max 10 bits for N <= 1000)
     char binary[10];
     int index = 0;
