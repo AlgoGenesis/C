@@ -6,8 +6,6 @@ We will perform a programme in C language called climbing stairs
 
 ### Problem Defination
 
-Given a collection of elements, the goal is to:
-
 1. You are climbing a staircase.
 
 
