@@ -1,3 +1,4 @@
+fair share is another name of proportional scheduling..
 Fair Share Scheduling is a scheduling strategy that distributes CPU time fairly among users or groups of users. Instead of focusing solely on individual processes, fair share scheduling ensures that each user or group gets a specified proportion of CPU time, helping prevent any single user or group from monopolizing resources.
 
 Description
