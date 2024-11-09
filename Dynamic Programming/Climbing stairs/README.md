@@ -4,8 +4,8 @@ This program provides a solution to the "Climbing Stairs" problem, a classic exa
 Problem Statement:
 A person is at the bottom of a staircase with n steps and wants to reach the top. They can take either 1 or 2 steps at a time. The task is to determine the number of distinct ways the person can reach the top of the staircase.
 
-Approach:
-Dynamic Programming:
+Approach:s
+Dynamic Programming
 
 This problem has overlapping subproblems, making it a suitable candidate for dynamic programming.
 Define dp[i] as the number of ways to reach the i-th step.
