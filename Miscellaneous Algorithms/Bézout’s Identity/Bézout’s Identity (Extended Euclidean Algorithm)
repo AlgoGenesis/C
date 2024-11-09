@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+// Function to implement the Extended Euclidean Algorithm
+int extended_euclidean(int a, int b, int *x, int *y) {
+    // Base case
+    if (b == 0) {
+        *x = 1;
+        *y = 0;
+        return a;
+    }
+
+    int x1, y1; // Temporarily hold results
+    int gcd = extended_euclidean(b, a % b, &x1, &y1);
+
+    // Update x and y using results of recursive call
+    *x = y1;
+    *y = x1 - (a / b) * y1;
+
+    return gcd;
+}
+
+int main() {
+    int a, b;
+    printf("Enter two integers: ");
+    scanf("%d %d", &a, &b);
+
+    int x, y;
+    int gcd = extended_euclidean(a, b, &x, &y);
+
+    printf("GCD of %d and %d is %d\n", a, b, gcd);
+    printf("Coefficients x and y are: x = %d, y = %d\n", x, y);
+    printf("Verification: %d * (%d) + %d * (%d) = %d\n", a, x, b, y, gcd);
+
+    return 0;
+}
