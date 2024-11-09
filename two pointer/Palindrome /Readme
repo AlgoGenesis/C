@@ -1,0 +1,14 @@
+PROBLEM STATEMENT :
+To determine if a string is a valid palindrome, we first normalize the string by removing all non-alphanumeric characters and converting all letters to lowercase.
+Then, we check if the string reads the same forward and backward by comparing the cleaned string with its reverse.
+
+Sample Input 1:
+"A man, a plan, a canal, Panama"
+
+Sample Output 1:
+The string is a palindrome.
+
+Explanation:
+After removing spaces and punctuation and ignoring case, the string becomes:
+"amanaplanacanalpanama"
+This string is the same forwards and backwards, so it is a valid palindrome.
