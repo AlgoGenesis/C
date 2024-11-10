@@ -2,7 +2,6 @@
 name: "Add New Algorithm"
 about: Propose a new algorithm to be added to the repository
 title: "[NEW ALGORITHM] "
-labels: new algorithm, gssoc-ext, hacktoberfest, level1
 assignees: ''
 ---
 
