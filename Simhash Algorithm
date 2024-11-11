@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdint.h>
+
+#define HASH_BITS 8
+
+// Simple 8-bit hash function for demonstration purposes
+uint8_t hash(const char *word) {
+    uint8_t h = 0;
+    while (*word) {
+        h = h * 31 + *word;
+        word++;
+    }
+    return h & 0xFF; // Ensure it's 8-bit
+}
+
+// Function to calculate the SimHash of a text
+uint8_t simhash(const char *text) {
+    int weights[HASH_BITS] = {0}; // Array to store bit-wise weights
+    char word[50];
+    int len = 0;
+    
+    // Traverse each word in the text
+    for (int i = 0; text[i] != '\0'; i++) {
+        if (text[i] != ' ' && text[i] != '\n') {
+            word[len++] = text[i];
+        } else {
+            if (len > 0) {
+                word[len] = '\0'; // Null-terminate the word
+                uint8_t h = hash(word); // Hash the word
+                for (int j = 0; j < HASH_BITS; j++) {
+                    if (h & (1 << j))
+                        weights[j] += 1; // Increment weight if bit is 1
+                    else
+                        weights[j] -= 1; // Decrement weight if bit is 0
+                }
+                len = 0; // Reset word length for the next word
+            }
+        }
+    }
+    
+    // Process the last word (if any)
+    if (len > 0) {
+        word[len] = '\0';
+        uint8_t h = hash(word);
+        for (int j = 0; j < HASH_BITS; j++) {
+            if (h & (1 << j))
+                weights[j] += 1;
+            else
+                weights[j] -= 1;
+        }
+    }
+
+    // Combine the bits based on the weights
+    uint8_t simhash_value = 0;
+    for (int j = 0; j < HASH_BITS; j++) {
+        if (weights[j] > 0)
+            simhash_value |= (1 << j); // Set bit if weight is positive
+    }
+    
+    return simhash_value;
+}
+
+int main() {
+    const char *text = "The quick brown fox jumps over the lazy dog";
+    uint8_t hash_value = simhash(text);
+    printf("SimHash: 0x%02x\n", hash_value);
+    return 0;
+}
