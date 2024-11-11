@@ -2,7 +2,6 @@
 name: "Add New Algorithm"
 about: Propose a new algorithm to be added to the repository
 title: "[NEW ALGORITHM] "
-labels: new algorithm, gssoc-ext, hacktoberfest, level1
 assignees: ''
 ---
 
@@ -21,14 +20,3 @@ assignees: ''
 
 ### About:  
 Propose a new algorithm to be added to the repository
-
----
-
-### Labels:  
-```new algorithm, gssoc-ext, hacktoberfest, level1```
-
----
-
-### Assignees:  
-- [ ] Contributor in GSSoC-ext
-- [ ] Want to work on it

@@ -2,7 +2,6 @@
 name: Update Algorithm
 about: Suggest changes to an existing algorithm
 title: "[UPDATE ALGORITHM] "
-labels: algorithm update, gssoc-ext, hacktoberfest, level1
 assignees: ''
 ---
 
