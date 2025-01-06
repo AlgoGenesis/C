@@ -275,3 +275,76 @@ The **SRTF** scheduling algorithm works as follows:
 To run this program, you need:
 - A C compiler like `gcc`.
 - Basic command-line skills for compiling and executing C programs.
+
+
+# Process Scheduling Simulation in C (Priority Scheduling Algorithm)
+
+## Table of Contents
+- [Algorithm Overview](#algorithm-overview)
+- [Features](#features)
+- [Priority Scheduling Algorithm](#priority-scheduling-algorithm)
+- [Detailed Explanation of Functions](#detailed-explanation-of-functions)
+- [Requirements](#requirements)
+- [Installation and Execution](#installation-and-execution)
+- [Example Usage](#example-usage)
+- [Output Explanation](#output-explanation)
+- [Memory Management](#memory-management)
+- [Code Structure and Files](#code-structure-and-files)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Algorithm Overview
+
+This algorithm simulates a **Priority Scheduling** algorithm for processes in an operating system. In Priority Scheduling, each process is assigned a priority, and the process with the highest priority is executed first. If two processes have the same priority, the one with the earlier arrival time is executed first. This code calculates and displays essential metrics like **response time**, **turnaround time**, and **waiting time** for each process.
+
+Priority scheduling is a **non-preemptive** scheduling algorithm, which means that once a process starts execution, it will run to completion before the next process starts.
+
+## Features
+
+- **Sorts processes by priority** to ensure the highest priority process is executed first.
+- **Handles ties in priority** by sorting processes with equal priority by arrival time.
+- **Calculates Response Time** (time between arrival and first execution).
+- **Calculates Turnaround Time** (total time from arrival to completion).
+- **Calculates Waiting Time** (time spent waiting in the queue).
+- **Displays Results** in a well-formatted table, showing calculated metrics for each process.
+
+## Priority Scheduling Algorithm
+
+The **Priority Scheduling** algorithm works as follows:
+
+1. **Sorting by Priority and Arrival Time**: The program first sorts all processes by their arrival times. If two processes have the same arrival time, they are further sorted by their priority. Processes with higher priority (numerically smaller value) are executed first.
+2. **Sequential Execution**: Each process begins execution as soon as the CPU is available, based on the priority and arrival order.
+3. **Metric Calculation**: For each process, the program calculates:
+   - **Start Time**: When the process begins execution.
+   - **Completion Time**: When the process finishes execution.
+   - **Response Time**: Difference between start time and arrival time.
+   - **Turnaround Time**: Difference between completion time and arrival time.
+   - **Waiting Time**: Difference between turnaround time and burst time.
+
+## Detailed Explanation of Functions
+
+### 1. `find_response(struct Process* input, int n)`
+   - Calculates the **response time** for each process.
+   - Formula: **Response Time** = `start time - arrival time`
+
+### 2. `find_tat(struct Process* input, int n)`
+   - Calculates the **turnaround time** for each process.
+   - Formula: **Turnaround Time** = `completion time - arrival time`
+
+### 3. `find_wt(struct Process* input, int* tat, int n)`
+   - Calculates the **waiting time** for each process.
+   - Formula: **Waiting Time** = `turnaround time - burst time`
+
+### 4. `schedule(struct Process* input, int n)`
+   - Sorts processes by arrival time and priority using the **Priority Scheduling** approach.
+   - Determines **start time** and **completion time** for each process based on its priority and burst time.
+   - If two processes have the same priority, they are further sorted by arrival time.
+
+### 5. `comp(const void* a, const void* b)`
+   - Comparison function used by `qsort` to sort processes by arrival time, and by priority if arrival times are equal.
+
+## Requirements
+
+To run this program, you need:
+- A C compiler like `gcc`.
+- Basic command-line skills for compiling and executing C programs.
